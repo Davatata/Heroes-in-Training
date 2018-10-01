@@ -1,0 +1,54 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    [ngClass]="{hidden: !(isHandset$ | async)}"
+    fixedInViewport="false"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary" style="padding:0px;">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav close icon">close</mat-icon>
+        </button>
+        <span style="padding: 0px 25px 0 0;
+        width: -webkit-fill-available;
+        text-align: center;
+        letter-spacing: 10px;">HIT</span>
+    </mat-toolbar>
+    <mat-nav-list style="padding: 0">
+      <a mat-list-item href="#" class="hit-nav-button">Sign In</a>
+      <a mat-list-item href="#" class="hit-nav-button">Create Hero</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button
+          style="flex:5%"
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <div style="flex:5%" *ngIf="isHandset$ | async"></div>
+        <span style="flex:80%; text-align: center" *ngIf="isHandset$ | async">Heroes in Training</span>
+        <span style="flex:80%; text-align: left" *ngIf="!(isHandset$ | async)">Heroes in Training</span>
+        <div style="flex:5%" *ngIf="isHandset$ | async"></div>
+        <div style="flex:5%" *ngIf="isHandset$ | async"></div>
+        <mat-nav-list *ngIf="!(isHandset$ | async)" style="display: inline-flex; padding: 0 15px;">
+          <a mat-list-item href="#" class="hit-main-nav-button">Sign In</a>
+          <a mat-list-item href="#" class="hit-main-nav-button">Create Hero</a>
+        </mat-nav-list>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

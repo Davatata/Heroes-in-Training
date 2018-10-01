@@ -1,0 +1,60 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0,0,0.24);
+  background-color: #2f3543;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  color: white;
+  background-color: #2f3543;
+}
+
+.hit-navbar {
+  color: white;
+  background-color: #2f3543;
+}
+
+.hit-navbar-title {
+  margin: auto;
+  font-family: "FuturaNo2D", "century gothic", arial, sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.mat-icon-button {
+  color: #f9ab4f;
+}
+
+.hidden {
+  display: none;
+}
+
+/* @media (min-width: 768px) {
+  .sidenav {
+    display: none;
+  }
+} */
+
+.hit-nav-button {
+  border-top: 1px solid #313d56;
+  border-bottom: 1px solid #313d56;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hit-main-nav-button {
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+.hit-main-nav-button:hover {
+  color: #f9ab4f;
+  background-color: rgba(0,0,0,.2);
+}

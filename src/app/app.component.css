@@ -1,0 +1,16 @@
+mat-toolbar {
+  padding: 0 10px;
+}
+
+.hit-navbar {
+  color: white;
+  background-color: #2f3543;
+}
+
+.hit-navbar-title {
+  margin: auto;
+  font-family: "FuturaNo2D", "century gothic", arial, sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-style: italic;
+}
