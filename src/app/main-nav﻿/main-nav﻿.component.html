@@ -20,9 +20,17 @@
         text-align: center;
         letter-spacing: 10px;">HIT</span>
     </mat-toolbar>
-    <mat-nav-list style="padding: 0">
-      <a mat-list-item href="#" class="hit-nav-button">Sign In</a>
-      <a mat-list-item href="#" class="hit-nav-button">Create Hero</a>
+    <mat-nav-list style="padding: 0;">
+      <a [routerLink]="['/login']"
+         routerLinkActive="router-link-active"
+         mat-list-item
+         (click)="drawer.toggle()"
+         class="hit-nav-button">SIGN IN</a>
+      <a [routerLink]="['/hero-create']"
+         routerLinkActive="router-link-active"
+         mat-list-item
+         (click)="drawer.toggle()"
+         class="hit-nav-button">CREATE A HERO</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -38,13 +46,32 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
         <div style="flex:5%" *ngIf="isHandset$ | async"></div>
-        <span style="flex:80%; text-align: center" *ngIf="isHandset$ | async">Heroes in Training</span>
-        <span style="flex:80%; text-align: left" *ngIf="!(isHandset$ | async)">Heroes in Training</span>
+
+        <span style="flex:80%; text-align: center" *ngIf="isHandset$ | async">
+          <a [routerLink]="['/home']"
+            routerLinkActive="router-link-active"
+            mat-list-item
+            class="hit-main-nav-home">Heroes in Training</a>
+        </span>
+        <span style="flex:80%; text-align: left" *ngIf="!(isHandset$ | async)">
+          <a [routerLink]="['/home']"
+            routerLinkActive="router-link-active"
+            mat-list-item
+            class="hit-main-nav-home">Heroes in Training</a>
+        </span>
         <div style="flex:5%" *ngIf="isHandset$ | async"></div>
         <div style="flex:5%" *ngIf="isHandset$ | async"></div>
         <mat-nav-list *ngIf="!(isHandset$ | async)" style="display: inline-flex; padding: 0 15px;">
-          <a mat-list-item href="#" class="hit-main-nav-button">Sign In</a>
-          <a mat-list-item href="#" class="hit-main-nav-button">Create Hero</a>
+          <a [routerLink]="['/login']"
+            routerLinkActive="router-link-active"
+            mat-list-item
+            (click)="drawer.toggle()"
+            class="hit-main-nav-button">SIGN IN</a>
+          <a [routerLink]="['/hero-create']"
+            routerLinkActive="router-link-active"
+            mat-list-item
+            (click)="drawer.toggle()"
+            class="hit-main-nav-button">CREATE A HERO</a>
         </mat-nav-list>
       </mat-toolbar-row>
     </mat-toolbar>

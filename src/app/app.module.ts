@@ -12,11 +12,22 @@ import {MatButtonModule} from '@angular/material/button';
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './main-nav﻿/main-nav﻿.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { AppRoutingModule } from './app-routing.module';
+import { HeroDetailsComponent } from './hero-details/hero-details.component';
+import { HeroCreateComponent } from './hero-create/hero-create.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainNavComponent
+    MainNavComponent,
+    HeroDetailsComponent,
+    HeroCreateComponent,
+    LoginComponent,
+    SignupComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +37,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
-    LayoutModule
+    LayoutModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

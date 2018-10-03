@@ -30,6 +30,7 @@
 
 .mat-icon-button {
   color: #f9ab4f;
+  font-weight: bold;
 }
 
 .hidden {
@@ -56,5 +57,11 @@
 
 .hit-main-nav-button:hover {
   color: #f9ab4f;
-  background-color: rgba(0,0,0,.2);
+  /* background-color: rgba(0,0,0,.2); */
+}
+
+.hit-main-nav-home {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
