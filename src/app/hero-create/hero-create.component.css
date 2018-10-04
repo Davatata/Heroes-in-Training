@@ -1,0 +1,26 @@
+.example-radio-group {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.example-selected-value {
+  margin: 15px 0;
+}
+
+button {
+  background-color: lightgreen;
+    color: black;
+}
+
+.form-container {
+  display: grid;
+  justify-content: space-between;
+}
+
+mat-form-field {
+  flex: 1;
+}

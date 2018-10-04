@@ -1,3 +1,24 @@
-<p>
-  hero-create works!
-</p>
+<div class="form-container data-bg">
+  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+
+    <mat-form-field>
+      <mat-select placeholder="Role">
+        <mat-option *ngFor="let role of roles" [value]="role">
+          {{role}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <label for="difficulty">Difficulty</label>
+    <mat-radio-group id="difficulty">
+      <mat-radio-button value="1">Easy</mat-radio-button>
+      <mat-radio-button value="2">Medium</mat-radio-button>
+      <mat-radio-button value="3">Hard</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-icon class="star">star</mat-icon>
+    <mat-icon class="empty_star">star_border</mat-icon>
+    <button type="submit" mat-raised-button color="" [disabled]="!heroForm.form.valid">Submit</button>
+  </form>
+</div>
+

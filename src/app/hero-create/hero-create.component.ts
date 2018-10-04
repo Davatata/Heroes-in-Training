@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroCreateComponent implements OnInit {
 
+  roles = ['TANK', 'DAMAGE', 'SUPPORT'];
+  heroRole;
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSubmit() {
+
+  }
 }

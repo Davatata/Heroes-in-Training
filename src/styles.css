@@ -14,3 +14,33 @@ body {
 .ow_orange {
   color: #f9ab4f;
 }
+
+
+/* From: https://playoverwatch.com */
+.hero-detail-role-icon {
+  display: inline-block;
+  vertical-align: text-top;
+  margin-left: 14px;
+  fill: #F6F6F6;
+  height: 24px;
+  width: 24px;
+}
+
+.icon {
+  height: 24px;
+  fill: #F6F6F6;
+  stroke: #F6F6F6;
+  stroke-width: 0;
+}
+
+.data-bg {
+  background-color: #354967;
+}
+
+.star {
+  color: #ffe75b;
+}
+
+.empty_star {
+  color: slategray;
+}

@@ -26,6 +26,11 @@
          mat-list-item
          (click)="drawer.toggle()"
          class="hit-nav-button">SIGN IN</a>
+      <a [routerLink]="['/signup']"
+         routerLinkActive="router-link-active"
+         mat-list-item
+         (click)="drawer.toggle()"
+         class="hit-nav-button">SIGN UP</a>
       <a [routerLink]="['/hero-create']"
          routerLinkActive="router-link-active"
          mat-list-item
@@ -67,6 +72,11 @@
             mat-list-item
             (click)="drawer.toggle()"
             class="hit-main-nav-button">SIGN IN</a>
+          <a [routerLink]="['/signup']"
+            routerLinkActive="router-link-active"
+            mat-list-item
+            (click)="drawer.toggle()"
+            class="hit-main-nav-button">SIGN UP</a>
           <a [routerLink]="['/hero-create']"
             routerLinkActive="router-link-active"
             mat-list-item
