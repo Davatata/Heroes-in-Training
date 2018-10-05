@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -29,6 +30,7 @@ import { SignupComponent } from './signup/signup.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     SignupComponent,
     HomepageComponent,
     FooterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DialogComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -59,8 +62,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatRadioModule,
     MatSelectModule,
     HttpClientModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
+  entryComponents: [DialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -26,8 +26,7 @@
         mat-list-item
         (click)="drawer.toggle()"
         class="hit-nav-button">CREATE A HERO</a>
-      <a [routerLink]="['/login']"
-        routerLinkActive="router-link-active"
+      <a
         mat-list-item
         (click)="drawer.toggle()"
         class="hit-nav-button">
@@ -35,7 +34,8 @@
           class="logout-button"
           mat-flat-button
           color="warn"
-          (click)="httpService.logout();">Logout</button></a>
+          (click)="openDialog()"
+          >Logout</button></a>
     </mat-nav-list>
     <mat-nav-list *ngIf="!(httpService.user | async)" style="padding: 0;">
       <a [routerLink]="['/login']"
@@ -97,8 +97,7 @@
             mat-list-item
             (click)="drawer.toggle()"
             class="hit-main-nav-button">CREATE A HERO</a>
-          <a [routerLink]="['/login']"
-            routerLinkActive="router-link-active"
+          <a
             mat-list-item
             (click)="drawer.toggle()"
             class="hit-nav-button">
@@ -106,7 +105,7 @@
               class="logout-button"
               mat-flat-button
               color="warn"
-              (click)="httpService.logout();">Logout</button></a>
+              (click)="openDialog();">Logout</button></a>
           </mat-nav-list>
         </div>
 
