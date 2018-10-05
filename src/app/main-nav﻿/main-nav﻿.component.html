@@ -20,7 +20,24 @@
         text-align: center;
         letter-spacing: 10px;">HIT</span>
     </mat-toolbar>
-    <mat-nav-list style="padding: 0;">
+    <mat-nav-list *ngIf="httpService.user | async" style="padding: 0;">
+      <a [routerLink]="['/hero-create']"
+        routerLinkActive="router-link-active"
+        mat-list-item
+        (click)="drawer.toggle()"
+        class="hit-nav-button">CREATE A HERO</a>
+      <a [routerLink]="['/login']"
+        routerLinkActive="router-link-active"
+        mat-list-item
+        (click)="drawer.toggle()"
+        class="hit-nav-button">
+        <button
+          class="logout-button"
+          mat-flat-button
+          color="warn"
+          (click)="httpService.logout();">Logout</button></a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="!(httpService.user | async)" style="padding: 0;">
       <a [routerLink]="['/login']"
          routerLinkActive="router-link-active"
          mat-list-item
@@ -31,11 +48,6 @@
          mat-list-item
          (click)="drawer.toggle()"
          class="hit-nav-button">SIGN UP</a>
-      <a [routerLink]="['/hero-create']"
-         routerLinkActive="router-link-active"
-         mat-list-item
-         (click)="drawer.toggle()"
-         class="hit-nav-button">CREATE A HERO</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -66,23 +78,38 @@
         </span>
         <div style="flex:5%" *ngIf="isHandset$ | async"></div>
         <div style="flex:5%" *ngIf="isHandset$ | async"></div>
-        <mat-nav-list *ngIf="!(isHandset$ | async)" style="display: inline-flex; padding: 0 15px;">
-          <a [routerLink]="['/login']"
-            routerLinkActive="router-link-active"
-            mat-list-item
-            (click)="drawer.toggle()"
-            class="hit-main-nav-button">SIGN IN</a>
-          <a [routerLink]="['/signup']"
-            routerLinkActive="router-link-active"
-            mat-list-item
-            (click)="drawer.toggle()"
-            class="hit-main-nav-button">SIGN UP</a>
-          <a [routerLink]="['/hero-create']"
+        <div *ngIf="!(isHandset$ | async)">
+          <mat-nav-list *ngIf="!(httpService.user | async)" style="display: inline-flex; padding: 0 15px;">
+            <a [routerLink]="['/login']"
+              routerLinkActive="router-link-active"
+              mat-list-item
+              (click)="drawer.toggle()"
+              class="hit-main-nav-button">SIGN IN</a>
+            <a [routerLink]="['/signup']"
+              routerLinkActive="router-link-active"
+              mat-list-item
+              (click)="drawer.toggle()"
+              class="hit-main-nav-button">SIGN UP</a>
+          </mat-nav-list>
+          <mat-nav-list *ngIf="httpService.user | async" style="display: inline-flex; padding: 0 15px;">
+            <a [routerLink]="['/hero-create']"
             routerLinkActive="router-link-active"
             mat-list-item
             (click)="drawer.toggle()"
             class="hit-main-nav-button">CREATE A HERO</a>
-        </mat-nav-list>
+          <a [routerLink]="['/login']"
+            routerLinkActive="router-link-active"
+            mat-list-item
+            (click)="drawer.toggle()"
+            class="hit-nav-button">
+            <button
+              class="logout-button"
+              mat-flat-button
+              color="warn"
+              (click)="httpService.logout();">Logout</button></a>
+          </mat-nav-list>
+        </div>
+
       </mat-toolbar-row>
     </mat-toolbar>
     <!-- Add Content Here -->
