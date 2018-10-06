@@ -28,7 +28,7 @@ export class HttpService {
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Success!', value);
+        console.log('Success!');
         this.router.navigate(['/home']);
       })
       .catch(err => {
