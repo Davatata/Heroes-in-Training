@@ -33,9 +33,9 @@ body {
   stroke-width: 0;
 }
 
-/* .data-bg {
+.ability-bg {
   background-color: #354967;
-} */
+}
 
 .star {
   color: #ffe75b;
@@ -47,4 +47,8 @@ body {
 
 .authButton {
   background-color: #ffc37d;
+}
+
+.hero-detail-role-icon {
+  fill: black;
 }

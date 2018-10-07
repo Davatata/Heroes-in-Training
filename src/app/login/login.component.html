@@ -7,7 +7,7 @@
   </button>
 </div> -->
 <h2 style="text-align: center;">Log In</h2>
-<form *ngIf="!(httpService.user | async)" class="example-form">
+<form *ngIf="!(httpService.user$ | async)" class="example-form">
   <mat-form-field class="example-full-width" appearance="outline">
     <mat-label>Email</mat-label>
     <input matInput type="email" [(ngModel)]="email" name="email" >

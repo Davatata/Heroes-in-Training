@@ -1,2 +1,2 @@
-<h1 *ngIf="httpService.user | async">Welcome {{ (httpService.user | async)?.email }}!</h1>
-<h1 *ngIf="!(httpService.user | async)" style="text-align: center;">Not logged in.</h1>
+<h1 *ngIf="httpService.user$ | async">Welcome {{ (httpService.user$ | async)?.email }}!</h1>
+<h1 *ngIf="!(httpService.user$ | async)" style="text-align: center;">Not logged in.</h1>

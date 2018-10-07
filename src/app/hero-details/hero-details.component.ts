@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http-service.service';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-hero-details',
@@ -6,10 +10,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hero-details.component.css']
 })
 export class HeroDetailsComponent implements OnInit {
-
-  constructor() { }
+  heroName = '';
+  constructor(public httpService: HttpService,
+              private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer) {
+                this.matIconRegistry.addSvgIcon(
+                  `SUPPORT`,
+                  this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/svgs/support.svg`)
+                ).addSvgIcon(
+                  `DAMAGE`,
+                  this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/svgs/damage.svg`)
+                ).addSvgIcon(
+                  `TANK`,
+                  this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/svgs/tank.svg`)
+                );
+              }
 
   ngOnInit() {
   }
 
+  getHero(heroName) {
+    this.httpService.getHero(heroName);
+  }
+  addHero(heroName: string) {
+    this.httpService.addHero();
+  }
 }
