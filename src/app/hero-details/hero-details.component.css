@@ -5,3 +5,22 @@
   /* color: black; */
   border-radius: 10px;
 }
+
+/* .hit-stretched-tabs {
+  max-width: 800px;
+} */
+
+/* .mat-tab-label.mat-tab-label-active {
+  background-color: #354967 !important;
+  color: white !important;
+} */
+.mat-list-item {
+  margin-bottom: 10px;
+}
+.container {
+  max-width: 860px;
+  margin: auto;
+}
+#bio_list > mat-list-item > div {
+  align-items: top;
+}

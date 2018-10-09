@@ -29,8 +29,8 @@ export class HeroDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  getHero(heroName) {
-    this.httpService.getHero(heroName);
+  getHero() {
+    this.httpService.getHero('', this.heroName);
   }
   addHero(heroName: string) {
     this.httpService.addHero();

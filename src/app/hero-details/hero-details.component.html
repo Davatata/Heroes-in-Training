@@ -1,46 +1,48 @@
-<p>
-  hero-details works!
-</p>
+<div class="container">
+  <p>
+    hero-details works!
+  </p>
 
-<input matInput type="text" [(ngModel)]="heroName" name="heroName" >
+  <input matInput type="text" [(ngModel)]="heroName" name="heroName" >
 
-<!-- <input matInput type="text" name="heroName" id="heroName"> -->
-<button mat-raised-button color="primary" (click)="getHero('genji')">Get Hero</button>
-<button mat-raised-button color="primary" (click)="addHero()">Save Hero</button>
+  <!-- <input matInput type="text" name="heroName" id="heroName"> -->
+  <button mat-raised-button color="primary" (click)="getHero()">Get Hero</button>
+  <button mat-raised-button color="primary" (click)="addHero()">Save Hero</button>
 
-<div *ngIf="httpService.hero$ | async as hero">
-  <mat-tab-group>
-    <mat-tab label="Overview">
-      <p>Role: <mat-icon mat-list-icon svgIcon="{{hero.role}}"></mat-icon></p>
-      <p>Difficulty: {{ hero.difficulty }}</p>
-      <p>Description:{{ hero.heroDetailDescription }}</p>
-      <h2>Abilities</h2>
-      <mat-list role="list" class="ability-bg">
-        <mat-list-item style="color:white;" *ngFor="let ability of hero.abilities">
-          <!-- <mat-icon mat-list-icon s="{{ability.icon}}"></mat-icon> -->
-          <div>
-            <img class="hit-ability-icon mat-list-icon" src="{{ability.icon}}" alt="{{ability.name}}">
-          </div>
-          <div style="overflow: hidden;">
-            <h4 mat-line>{{ability.name}}</h4>
-            <p mat-line> {{ability.description}} </p>
-          </div>
-        </mat-list-item>
-      </mat-list>
-    </mat-tab>
-    <mat-tab label="Story">
-      <h2>Biography</h2>
-      <mat-list>
-        <mat-list-item>Realname: {{hero.realName}}, Age:{{hero.age}}</mat-list-item>
-        <mat-list-item>Occupation: {{hero.occupation}}</mat-list-item>
-        <mat-list-item>Base of operations: {{hero.baseOfOperations}}</mat-list-item>
-        <mat-list-item>Affiliation: {{hero.affiliation}}</mat-list-item>
-        <mat-list-item>{{hero.heroQuote}}</mat-list-item>
-        <mat-list-item>{{hero.heroDetailDescription}}</mat-list-item>
-      </mat-list>
-    </mat-tab>
-  </mat-tab-group>
+  <div *ngIf="httpService.hero$ | async as hero">
+    <mat-tab-group mat-stretch-tabs class="hit-stretched-tabs">
+      <mat-tab label="Overview">
+        <p>Role: <mat-icon mat-list-icon svgIcon="{{hero.role}}"></mat-icon></p>
+        <p>Difficulty: {{ hero.difficulty }}</p>
+        <p>Description:{{ hero.heroDetailDescription }}</p>
+        <h2>Abilities</h2>
+        <mat-list role="list" class="ability-bg">
+          <mat-list-item style="color:white;" *ngFor="let ability of hero.abilities">
+            <!-- <mat-icon mat-list-icon s="{{ability.icon}}"></mat-icon> -->
+            <div>
+              <img class="hit-ability-icon mat-list-icon" src="{{ability.icon}}" alt="{{ability.name}}">
+            </div>
+            <div style="overflow: hidden;">
+              <h4 mat-line>{{ability.name}}</h4>
+              <p mat-line> {{ability.description}} </p>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-tab>
+      <mat-tab label="Story">
+        <h2>Biography</h2>
+        <mat-list id="bio_list">
+          <mat-list-item>Realname: {{hero.realName}}, Age: {{hero.age}}</mat-list-item>
+          <mat-list-item>Occupation: {{hero.occupation}}</mat-list-item>
+          <mat-list-item>Base of operations: {{hero.baseOfOperations}}</mat-list-item>
+          <mat-list-item>Affiliation: {{hero.affiliation}}</mat-list-item>
+          <mat-list-item>{{hero.heroQuote}}</mat-list-item>
+          <mat-list-item>{{hero.heroDetailDescription}}</mat-list-item>
+        </mat-list>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+
 
 </div>
-
-

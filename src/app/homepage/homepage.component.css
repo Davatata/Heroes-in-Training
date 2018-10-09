@@ -1,0 +1,49 @@
+.container {
+  height: calc(100vh - 64px);
+  margin-top: -22px;
+  background-image: url(https://d3hmvhl7ru3t12.cloudfront.net/img/ow-fractal-bg-560a8b12481e653dd68127bfe7ab850c0ffd8b0ed6b591e329140a72f91b5f03f601d36ff54af87c62eac7cb743b58de7917f4c381c03b7ff92d22ffcec97ec2.jpg);
+  background-size: cover;
+}
+
+.hit-header {
+  font-family: "Big Noodle Too", impact, sans-serif;
+  font-size: x-large;
+  text-align: center;
+  font-style: italic;
+  padding: 3em 5px 0 5px;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  color: white;
+  word-spacing: 5px;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 2px black;
+}
+
+@media (max-width: 599px) {
+  .container {
+    height: calc(100vh - 56px);
+  }
+}
+
+.hero-pose-image {
+  /* background-image: url(https://d1u1mce87gyfbn.cloudfront.net/hero/genji/full-portrait.png); */
+  background-image: url(https://d1u5p3l4wpay3k.cloudfront.net/overwatch_gamepedia/8/81/Tracer-portrait.png);
+  display: block;
+  height: 70vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.hero-pose-name {
+  position: relative;
+  z-index: 0;
+  text-align: center;
+  color: #F6F6F6;
+  background: -webkit-linear-gradient(#F6F6F6 50%, rgba(246, 246, 246, 0));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
