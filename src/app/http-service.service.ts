@@ -1,4 +1,4 @@
-import { Injectable, OnInit, OnDestroy } from '@angular/core';
+import { Injectable, OnInit, OnDestroy, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -108,7 +108,11 @@ export class HttpService implements OnInit, OnDestroy {
   getHero(url: string, heroName: string) {
     heroName = heroName.toLocaleLowerCase();
     url = `${this.userId}/${heroName}`;
-    this.hero$ = this.db.object(url).valueChanges();
+    if (isDevMode()) {
+      this.hero$ = this.http.get(`../assets/data/${heroName}.json`);
+    } else {
+      this.hero$ = this.db.object(url).valueChanges();
+    }
     // this.hero$ = this.db.object(`/123/321`).valueChanges();
     // console.log(this.hero$);
   }

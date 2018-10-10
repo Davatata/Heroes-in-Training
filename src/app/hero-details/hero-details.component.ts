@@ -32,7 +32,7 @@ export class HeroDetailsComponent implements OnInit {
   getHero() {
     this.httpService.getHero('', this.heroName);
   }
-  addHero(heroName: string) {
+  addHero() {
     this.httpService.addHero();
   }
 }
