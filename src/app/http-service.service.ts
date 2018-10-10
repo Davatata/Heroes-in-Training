@@ -34,9 +34,6 @@ export class HttpService implements OnInit, OnDestroy {
               private router: Router,
               public firebaseAuth: AngularFireAuth) {
                 this.user$ = firebaseAuth.user;
-                firebaseAuth.authState.subscribe(data => {
-                  this.userId = data.uid;
-                });
               }
 
   ngOnInit() {
@@ -66,7 +63,10 @@ export class HttpService implements OnInit, OnDestroy {
       .then(value => {
         console.log('Success!');
         this.router.navigate(['/home']);
-        this.userId = this.firebaseAuth.auth['O'];
+        // this.userId = this.firebaseAuth.auth['O'];
+        this.firebaseAuth.authState.subscribe(data => {
+          this.userId = data.uid;
+        });
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);
@@ -80,6 +80,9 @@ export class HttpService implements OnInit, OnDestroy {
       .then(value => {
         console.log('Nice, logged in!');
         this.router.navigate(['/home']);
+        this.firebaseAuth.authState.subscribe(data => {
+          this.userId = data.uid;
+        });
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);
@@ -98,7 +101,8 @@ export class HttpService implements OnInit, OnDestroy {
       this.http.get<Hero>('../assets/data/genji.json')
       .subscribe(res => {
         const heroName = res.heroName.toLocaleLowerCase();
-        this.db.object(`/${this.userId}/${heroName}`).set(res);
+        // this.db.object(`${this.userId}/${heroName}`).set(res);
+        this.http.post(`${this.url}/${this.userId}/${heroName}`, res);
         this.currentHero = res;
       } );
 
@@ -106,13 +110,15 @@ export class HttpService implements OnInit, OnDestroy {
   }
 
   getHero(url: string, heroName: string) {
-    heroName = heroName.toLocaleLowerCase();
-    url = `${this.userId}/${heroName}`;
-    if (isDevMode()) {
-      this.hero$ = this.http.get(`../assets/data/${heroName}.json`);
-    } else {
-      this.hero$ = this.db.object(url).valueChanges();
-    }
+    this.hero$ = this.http.get(`${this.url}/E6fN0Y45E6fsZu18i9h5veze7sf2/genji.json`);
+    // return;
+    // heroName = heroName.toLocaleLowerCase();
+    // url = `${this.userId}/${heroName}`;
+    // if (isDevMode()) {
+    //   this.hero$ = this.http.get(`../assets/data/${heroName}.json`);
+    // } else {
+    //   this.hero$ = this.db.object(url).valueChanges();
+    // }
     // this.hero$ = this.db.object(`/123/321`).valueChanges();
     // console.log(this.hero$);
   }

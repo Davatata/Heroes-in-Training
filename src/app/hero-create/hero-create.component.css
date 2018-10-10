@@ -1,7 +1,7 @@
-.example-radio-group {
+/* .example-radio-group {
   display: inline-flex;
   flex-direction: column;
-}
+} */
 
 .example-radio-button {
   margin: 5px;
@@ -18,9 +18,36 @@ button {
 
 .form-container {
   display: grid;
-  justify-content: space-between;
+  padding: 1em;
+  max-width: 850px;
+  margin: auto;
+  /* justify-content: space-between; */
 }
 
 mat-form-field {
   flex: 1;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* grid-template-columns: auto auto auto; */
+  padding: 10px;
+  /* background-color: #354967; */
+}
+
+.grid-item {
+  width: 45%;
+  padding: 20px;
+  font-size: 1em;
+  text-align: center;
+}
+
+.mat-form-field-flex {
+  background-color: white;
+  border-radius: 5px;
 }

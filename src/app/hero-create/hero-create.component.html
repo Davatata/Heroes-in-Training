@@ -1,24 +1,37 @@
 <div class="form-container data-bg">
   <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+    <h2 class="text-center">Character Overview</h2>
+    <div class="grid-container">
 
-    <mat-form-field>
-      <mat-select placeholder="Role">
-        <mat-option *ngFor="let role of roles" [value]="role">
-          {{role}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+      <div class="grid-item">
+        <mat-form-field>
+          <mat-select placeholder="Role" name="role" [(ngModel)]="currentHero.role">
+            <mat-option *ngFor="let role of roles" [value]="role">
+              {{role}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
-    <label for="difficulty">Difficulty</label>
-    <mat-radio-group id="difficulty">
-      <mat-radio-button value="1">Easy</mat-radio-button>
-      <mat-radio-button value="2">Medium</mat-radio-button>
-      <mat-radio-button value="3">Hard</mat-radio-button>
-    </mat-radio-group>
+      <div class="grid-item">
+        <mat-form-field>
+          <mat-select placeholder="Difficulty" name="difficulty" [(ngModel)]="currentHero.difficulty">
+            <mat-option *ngFor="let difficulty of difficulties" [value]="difficulty.value">
+              {{difficulty.text}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
-    <mat-icon class="star">star</mat-icon>
+      <div class="grid-item">
+
+      </div>
+    </div>
+
+
+    <!-- <mat-icon class="star">star</mat-icon>
     <mat-icon class="empty_star">star_border</mat-icon>
-    <button type="submit" mat-raised-button color="" [disabled]="!heroForm.form.valid">Submit</button>
+    <button type="submit" mat-raised-button color="" [disabled]="!heroForm.form.valid">Submit</button> -->
   </form>
 </div>
 
