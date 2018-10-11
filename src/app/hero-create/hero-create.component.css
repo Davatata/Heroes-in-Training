@@ -36,18 +36,41 @@ mat-form-field {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   /* grid-template-columns: auto auto auto; */
-  padding: 10px;
+  padding: 0 10px;
   /* background-color: #354967; */
 }
 
 .grid-item {
-  width: 45%;
-  padding: 20px;
+  padding: 10px;
   font-size: 1em;
   text-align: center;
 }
 
-.mat-form-field-flex {
-  background-color: white;
-  border-radius: 5px;
+.hit-input-item {
+  width: 100%;
+}
+
+#description {
+  /* resize: none;
+	min-height: 100px;
+	padding: 5px;
+	overflow: hidden; */
+	box-sizing: border-box;
+}
+
+#abilityArea {
+  background-color: rgba(19, 42, 77, 0.85);
+  padding: 15px;
+}
+
+.hit-hero-ability {
+  /* margin-top: 22px;
+  padding: 20px 12px 12px 12px; */
+  background-color: rgba(19, 42, 77, 0.2);
+  /* overflow: hidden;
+  position: relative; */
+}
+
+.w-100 {
+  width: 100%;
 }

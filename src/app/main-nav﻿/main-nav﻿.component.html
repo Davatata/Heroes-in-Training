@@ -7,7 +7,7 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)">
-    <mat-toolbar color="primary" style="padding:0px; z-index: 2;">
+    <mat-toolbar color="primary" style="padding:0px; ">
         <button
           type="button"
           aria-label="Toggle sidenav"
@@ -56,7 +56,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar style="z-index: 2 !important;" color="primary">
       <mat-toolbar-row>
         <button
           style="flex:5%"
