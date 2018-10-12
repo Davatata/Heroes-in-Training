@@ -15,6 +15,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
@@ -67,7 +68,8 @@ import { DialogComponent } from './dialog/dialog.component';
     MatInputModule,
     MatDialogModule,
     MatTabsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule
   ],
   entryComponents: [DialogComponent],
   providers: [AngularFireDatabase],

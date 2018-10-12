@@ -2,14 +2,17 @@
   <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
     <h2 class="text-center">Character Overview</h2>
 
+    <!-- Name, Role, Difficulty -->
     <div class="grid-container">
       <div class="grid-item">
-        <mat-form-field class="hit-input-item">
+        <mat-form-field appearance="outline" class="hit-input-item">
+            <mat-label>Hero Name</mat-label>
           <input matInput name="heroName" placeholder="Hero Name" [(ngModel)]="currentHero.heroName">
         </mat-form-field>
       </div>
       <div class="grid-item">
-        <mat-form-field class="hit-input-item">
+        <mat-form-field appearance="outline" class="hit-input-item">
+          <mat-label>Hero Role</mat-label>
           <mat-select placeholder="Role" name="role" [(ngModel)]="currentHero.role">
             <mat-option *ngFor="let role of roles" [value]="role">
               {{role}}
@@ -18,7 +21,8 @@
         </mat-form-field>
       </div>
       <div class="grid-item">
-        <mat-form-field class="hit-input-item">
+        <mat-form-field appearance="outline" class="hit-input-item">
+          <mat-label>Hero Difficulty</mat-label>
           <mat-select placeholder="Difficulty" name="difficulty" [(ngModel)]="currentHero.difficulty">
             <mat-option *ngFor="let difficulty of difficulties" [value]="difficulty.value">
               {{difficulty.text}}
@@ -28,58 +32,99 @@
       </div>
     </div>
 
+    <!-- Description text area -->
     <div class="grid-container">
       <div class="grid-item">
-        <mat-form-field class="hit-input-item">
+        <mat-form-field appearance="outline" class="hit-input-item">
+          <mat-label>Hero Description</mat-label>
           <textarea
             #description
             id="description"
             name="description"
             matInput
-            placeholder="Leave a comment"
+            placeholder="Hero Description"
             [(ngModel)]="currentHero.heroDetailDescription"
             (keyup)="resize()"></textarea>
         </mat-form-field>
       </div>
     </div>
 
-    <div style="width:100%; margin-bottom: 10px;">
-      <button mat-raised-button (click)="addAbility()" color="primary">+ Add hero ability</button>
-      <button mat-raised-button
-              (click)="currentHero.abilities.pop();"
-              color="warn">- Remove ability</button>
+    <h2 class="text-center">Character Abilities</h2>
+
+    <!-- Ability form area -->
+    <div class="grid-container">
+      <div class="grid-item">
+          <mat-form-field appearance="outline" class="hit-input-item">
+              <mat-label>Ability Name</mat-label>
+              <input style="width: 100%; padding-left: 10px; text-align: left;"
+                    matInput name="abilityName"
+                    placeholder="Ability Name"
+                    [(ngModel)]="currentAbility.name">
+            </mat-form-field>
+      </div>
+      <div class="grid-item">
+          <mat-form-field appearance="outline" class="hit-input-item">
+              <mat-label>Ability Icon URL</mat-label>
+              <input style="width: 100%; padding-left: 10px; text-align: left;"
+                    matInput name="abilityIcon"
+                    placeholder="Ability Icon"
+                    [(ngModel)]="currentAbility.icon">
+            </mat-form-field>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-item">
+          <mat-form-field appearance="outline" class="hit-input-item">
+              <mat-label>Ability Description</mat-label>
+              <textarea
+                name="abilityDescription"
+                style="width: 100%; padding-left: 10px; text-align: left;"
+                matInput
+                placeholder="Description"
+                [(ngModel)]="currentAbility.description"></textarea>
+            </mat-form-field>
+      </div>
     </div>
 
-    <mat-grid-list *ngFor="let ability of currentHero.abilities" cols="5" rowHeight="40px" style="margin-bottom:5px;">
-      <mat-grid-tile
-          style="background-color: #969696"
-          [colspan]="1"
-          [rowspan]="3">
-          <img class="hit-ability-icon mat-list-icon" src="{{ability.icon}}" alt="{{ability.name}}">
-      </mat-grid-tile>
-      <mat-grid-tile
-          style="background-color: #e6e6e6; text-align: left;"
-          [colspan]="4"
-          [rowspan]="1">
-          <!-- <h4 style="width: 100%; padding-left: 10px; text-align: left;">{{ability.name}}</h4> -->
-          <input style="width: 100%; padding-left: 10px; text-align: left;"
-                  matInput name="abilityName"
-                  placeholder="Ability Name"
-                  [(ngModel)]="ability.name">
-      </mat-grid-tile>
-      <mat-grid-tile
-          style="background-color: #d4d4d4; text-align: left;"
-          [colspan]="4"
-          [rowspan]="2">
-          <!-- <p  style="width: 100%; padding-left: 10px; text-align: left;">{{ability.description}}</p> -->
-          <textarea
-            name="abilityDescription"
-            style="width: 100%; padding-left: 10px; text-align: left;"
-            matInput
-            placeholder="Description"
-            [(ngModel)]="ability.description"></textarea>
+
+
+
+     <!-- Add Remove buttons -->
+     <div style="width:100%; margin-bottom: 10px;">
+      <button mat-raised-button
+              (click)="addAbility()"
+              color="primary"
+              [disabled]="!currentAbility.name ||
+                          !currentAbility.icon ||
+                          !currentAbility.description">+ Add hero ability</button>
+      <button mat-raised-button
+              (click)="currentHero.abilities.pop();"
+              color="warn"
+              style="float:right;">- Remove ability</button>
+      </div>
+
+    <!-- List of added abilities -->
+    <div class="list-container">
+      <mat-grid-list *ngFor="let ability of currentHero.abilities" cols="5" rowHeight="40px" style="margin-bottom:5px;">
+        <mat-grid-tile
+            style="background-color: #3c3c3c"
+            [colspan]="1"
+            [rowspan]="3">
+            <img class="hit-ability-icon mat-list-icon" src="{{ability.icon}}" alt="{{ability.name}}">
         </mat-grid-tile>
-    </mat-grid-list>
+        <mat-grid-tile style="text-align: left; width:100%;" [colspan]="4" [rowspan]="3">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title><b>{{ability.name}}</b></mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{ability.description}}
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
 
     <!-- <mat-icon class="star">star</mat-icon>
     <mat-icon class="empty_star">star_border</mat-icon>

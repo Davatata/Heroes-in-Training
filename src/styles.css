@@ -16,6 +16,22 @@ body {
 }
 
 
+.hit-home-grid-header {
+  font-family: "Big Noodle Too", impact, sans-serif;
+  font-size: 1.6em;
+  text-align: center;
+  font-style: italic;
+  /* padding: 2em 5px 0 5px; */
+  font-weight: normal;
+  font-variant: normal;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  color: #ffbe6a;
+  word-spacing: 5px;
+  letter-spacing: 2px;
+  text-shadow: 2px 1px 2px black;
+}
+
 /* From: https://playoverwatch.com */
 .hero-detail-role-icon {
   display: inline-block;
@@ -55,8 +71,47 @@ body {
 
 .hit-ability-icon {
   /* background-color: black; */
-  height: 24px;
-  width: 24px;
+  height: 40px;
+  /* width: 24px; */
   /* color: black; */
-  border-radius: 10px;
+  /* border-radius: 10px; */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* grid-template-columns: auto auto auto; */
+  padding: 0 10px;
+  /* background-color: #354967; */
+}
+
+.grid-item {
+  padding: 10px;
+  font-size: 1em;
+  text-align: center;
+}
+
+.hero-ability-icon-bg {
+  position: relative;
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: #002b8066;
+  border: 2px solid rgba(246, 246, 246, 0.4);
+}
+
+img.hero-ability-icon {
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  max-height: 55%;
+  max-width: 150%;
 }

@@ -32,19 +32,7 @@ mat-form-field {
   text-align: center;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  /* grid-template-columns: auto auto auto; */
-  padding: 0 10px;
-  /* background-color: #354967; */
-}
 
-.grid-item {
-  padding: 10px;
-  font-size: 1em;
-  text-align: center;
-}
 
 .hit-input-item {
   width: 100%;
@@ -73,4 +61,10 @@ mat-form-field {
 
 .w-100 {
   width: 100%;
+}
+
+mat-card {
+  height: -webkit-fill-available;
+  box-shadow: none;
+  width: 100%;;
 }

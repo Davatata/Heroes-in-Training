@@ -15,6 +15,12 @@ export class HeroCreateComponent implements OnInit {
   difficulties = [{value: 1, text: 'Easy'}, {value: 2, text: 'Medium'}, {value: 3, text: 'Hard'}];
   heroRole;
   currentHero = <Hero>{};
+  currentAbility = {
+    name: 'PULSE BOMB',
+    icon: 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-bomb/icon-ability.png',
+    // tslint:disable-next-line:max-line-length
+    description: 'Tracer lobs a large bomb that adheres to any surface or unfortunate opponent it lands on. After a brief delay, the bomb explodes, dealing high damage to all enemies within its blast radius.'
+  };
   defaultAbilityURL = 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-pistols/icon-ability.png';
 
   @ViewChild('description') description: ElementRef;
@@ -33,23 +39,15 @@ export class HeroCreateComponent implements OnInit {
   }
 
   addAbility() {
+    this.currentAbility.name = this.currentAbility.name.toUpperCase();
     if (!this.currentHero.abilities) {
-      this.currentHero.abilities = [
-        {
-          name: '',
-          description: '',
-          icon: this.defaultAbilityURL
-        }
-      ];
+      this.currentHero.abilities = [{...this.currentAbility}];
     } else {
-      this.currentHero.abilities.push(
-        {
-          name: '',
-          description: '',
-          icon: this.defaultAbilityURL
-        }
-      );
+      this.currentHero.abilities.push({...this.currentAbility});
     }
+    this.currentAbility.name = '';
+    this.currentAbility.icon = '';
+    this.currentAbility.description = '';
   }
 
   onSubmit() {
