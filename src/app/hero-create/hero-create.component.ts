@@ -21,7 +21,7 @@ export class HeroCreateComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     description: 'Tracer lobs a large bomb that adheres to any surface or unfortunate opponent it lands on. After a brief delay, the bomb explodes, dealing high damage to all enemies within its blast radius.'
   };
-  defaultAbilityURL = 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-pistols/icon-ability.png';
+  defaultAbilityURL = 'https://d1u1mce87gyfbn.cloudfront.net/hero/mccree/ability-flashbang/icon-ability.png';
 
   @ViewChild('description') description: ElementRef;
 
@@ -48,6 +48,10 @@ export class HeroCreateComponent implements OnInit {
     this.currentAbility.name = '';
     this.currentAbility.icon = '';
     this.currentAbility.description = '';
+  }
+
+  removeCard(index: number) {
+    this.currentHero.abilities.splice(index, 1);
   }
 
   onSubmit() {

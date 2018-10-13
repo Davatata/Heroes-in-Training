@@ -70,11 +70,7 @@ body {
 }
 
 .hit-ability-icon {
-  /* background-color: black; */
-  height: 40px;
-  /* width: 24px; */
-  /* color: black; */
-  /* border-radius: 10px; */
+  width: 55%;
 }
 
 .grid-container {

@@ -21,6 +21,7 @@ export class HttpService implements OnInit, OnDestroy {
   userId = '';
   url = 'https://heroes-in-training.firebaseio.com/';
 
+  tracer;
   user$: Observable<firebase.User>;
   hero$;
   // heroList$: AngularFireList<any[]>;
@@ -39,6 +40,7 @@ export class HttpService implements OnInit, OnDestroy {
   ngOnInit() {
     this.hero$ = this.http.get('../assets/data/tracer.json')
       .subscribe(res => {
+        this.tracer = res;
         console.log(res);
       }, err => {
         console.log(err);

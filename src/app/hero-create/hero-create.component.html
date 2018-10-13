@@ -83,34 +83,37 @@
                 placeholder="Description"
                 [(ngModel)]="currentAbility.description"></textarea>
             </mat-form-field>
+            <!-- Add Remove buttons -->
+      <div style="width:100%; margin-bottom: 10px;">
+        <button mat-raised-button
+                style="float:right;"
+                (click)="addAbility()"
+                color="primary"
+                [disabled]="!currentAbility.name ||
+                            !currentAbility.icon ||
+                            !currentAbility.description">+ Add hero ability</button>
+        </div>
       </div>
     </div>
 
 
 
 
-     <!-- Add Remove buttons -->
-     <div style="width:100%; margin-bottom: 10px;">
-      <button mat-raised-button
-              (click)="addAbility()"
-              color="primary"
-              [disabled]="!currentAbility.name ||
-                          !currentAbility.icon ||
-                          !currentAbility.description">+ Add hero ability</button>
-      <button mat-raised-button
-              (click)="currentHero.abilities.pop();"
-              color="warn"
-              style="float:right;">- Remove ability</button>
-      </div>
+
 
     <!-- List of added abilities -->
     <div class="list-container">
-      <mat-grid-list *ngFor="let ability of currentHero.abilities" cols="5" rowHeight="40px" style="margin-bottom:5px;">
+      <!-- <mat-grid-list *ngFor="let ability of currentHero.abilities; let i = index"
+                      cols="5"
+                      rowHeight="60px"
+                      style="margin-bottom:5px;">
         <mat-grid-tile
             style="background-color: #3c3c3c"
             [colspan]="1"
             [rowspan]="3">
-            <img class="hit-ability-icon mat-list-icon" src="{{ability.icon}}" alt="{{ability.name}}">
+            <img class="hit-ability-icon mat-list-icon"
+                 src="{{ability.icon}}"
+                 alt="{{ability.name}}">
         </mat-grid-tile>
         <mat-grid-tile style="text-align: left; width:100%;" [colspan]="4" [rowspan]="3">
           <mat-card>
@@ -121,9 +124,35 @@
               <p>{{ability.description}}
               </p>
             </mat-card-content>
+            <mat-card-actions>
+              <button mat-button color="warn" (click)="removeCard(i)">Remove</button>
+            </mat-card-actions>
           </mat-card>
         </mat-grid-tile>
-      </mat-grid-list>
+      </mat-grid-list> -->
+      <div class="ability-grid-container"
+           *ngFor="let ability of currentHero.abilities; let i = index"
+           style="margin-bottom:5px;">
+        <div class="ability-grid-icon" style="background-color: #3c3c3c">
+          <img class="hit-ability-icon mat-list-icon"
+                src="{{ability.icon}}"
+                alt="{{ability.name}}">
+        </div>
+        <div class="ability-grid-card" style="text-align: left; width:100%;">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title><b>{{ability.name}}</b></mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{ability.description}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button color="warn" (click)="removeCard(i)">Remove</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
     </div>
 
     <!-- <mat-icon class="star">star</mat-icon>
