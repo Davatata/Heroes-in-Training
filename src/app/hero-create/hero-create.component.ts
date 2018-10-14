@@ -1,4 +1,5 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 import { Hero } from '../models/hero.model';
 import { Ability } from '../models/ability.model';
@@ -9,7 +10,7 @@ import { HttpService } from '../http-service.service';
   templateUrl: './hero-create.component.html',
   styleUrls: ['./hero-create.component.css']
 })
-export class HeroCreateComponent implements OnInit {
+export class HeroCreateComponent implements OnInit, OnDestroy {
 
   roles = ['TANK', 'DAMAGE', 'SUPPORT'];
   difficulties = [{value: 1, text: 'Easy'}, {value: 2, text: 'Medium'}, {value: 3, text: 'Hard'}];
@@ -23,18 +24,21 @@ export class HeroCreateComponent implements OnInit {
   };
   defaultAbilityURL = 'https://d1u1mce87gyfbn.cloudfront.net/hero/mccree/ability-flashbang/icon-ability.png';
 
-  @ViewChild('description') description: ElementRef;
+  // @ViewChild('description') description: ElementRef;
 
   constructor(public httpService: HttpService) {}
 
   ngOnInit() {
+    // if (this.httpService.unsavedHero !== null) {
+    //   this.currentHero = this.httpService.unsavedHero;
+    // }
   }
 
-  resize() {
-    if (!this.currentHero.heroDetailDescription) {
-      this.description.nativeElement.style.height = '40px';
+  resize(event) {
+    if (event.target.value === '') {
+      event.target.style.height = '40px';
     } else {
-      this.description.nativeElement.style.height = this.description.nativeElement.scrollHeight + 'px';
+      event.target.style.height = event.target.scrollHeight + 'px';
     }
   }
 
@@ -54,7 +58,18 @@ export class HeroCreateComponent implements OnInit {
     this.currentHero.abilities.splice(index, 1);
   }
 
+  editCard(index: number) {
+    this.currentAbility = this.currentHero.abilities.splice(index, 1)[0];
+  }
+
+  badImage(event) {
+    // event.target.src = `../../assets/imgs/defaultIcon.png`;
+  }
+
   onSubmit() {
+
+  }
+  ngOnDestroy() {
 
   }
 }

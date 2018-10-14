@@ -3,10 +3,11 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatIconRegistry} from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
 
 import { HttpService } from '../http-service.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main-nav﻿',
@@ -22,7 +23,12 @@ export class MainNavComponent {
 
   constructor(private breakpointObserver: BreakpointObserver,
               public httpService: HttpService,
-              public dialog: MatDialog) {}
+              public dialog: MatDialog,
+              private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer) {
+                this.matIconRegistry.addSvgIcon(`ow`,
+                  this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/svgs/ow.svg`));
+              }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {

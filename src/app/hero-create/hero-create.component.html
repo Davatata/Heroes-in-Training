@@ -6,14 +6,25 @@
     <div class="grid-container">
       <div class="grid-item">
         <mat-form-field appearance="outline" class="hit-input-item">
-            <mat-label>Hero Name</mat-label>
-          <input matInput name="heroName" placeholder="Hero Name" [(ngModel)]="currentHero.heroName">
+          <mat-label>Hero Name</mat-label>
+          <input matInput name="heroName"
+                placeholder="Hero Name"
+                [(ngModel)]="currentHero.heroName"
+                minlength="3"
+                required
+                #heroName="ngModel">
         </mat-form-field>
+        <mat-error [style.display]="(heroName.valid || heroName.pristine) ? 'none' : 'block'">
+          Name is required
+        </mat-error>
       </div>
       <div class="grid-item">
         <mat-form-field appearance="outline" class="hit-input-item">
           <mat-label>Hero Role</mat-label>
-          <mat-select placeholder="Role" name="role" [(ngModel)]="currentHero.role">
+          <mat-select placeholder="Role"
+                      name="role"
+                      [(ngModel)]="currentHero.role"
+                      required>
             <mat-option *ngFor="let role of roles" [value]="role">
               {{role}}
             </mat-option>
@@ -23,8 +34,11 @@
       <div class="grid-item">
         <mat-form-field appearance="outline" class="hit-input-item">
           <mat-label>Hero Difficulty</mat-label>
-          <mat-select placeholder="Difficulty" name="difficulty" [(ngModel)]="currentHero.difficulty">
-            <mat-option *ngFor="let difficulty of difficulties" [value]="difficulty.value">
+          <mat-select placeholder="Difficulty"
+                      name="difficulty"
+                      [(ngModel)]="currentHero.difficulty"
+                      required>
+            <mat-option *ngFor="let difficulty of difficulties" [value]="difficulty.value" >
               {{difficulty.text}}
             </mat-option>
           </mat-select>
@@ -44,14 +58,90 @@
             matInput
             placeholder="Hero Description"
             [(ngModel)]="currentHero.heroDetailDescription"
-            (keyup)="resize()"></textarea>
+            (keyup)="resize($event)"
+            minlength="3"
+            required></textarea>
         </mat-form-field>
       </div>
     </div>
 
-    <h2 class="text-center">Character Abilities</h2>
+    <!-- character story area -->
+    <h2 class="text-center">Character Story</h2>
+    <div class="grid-container">
+      <div class="grid-item">
+        <mat-form-field appearance="outline" class="hit-input-item">
+            <mat-label>Real Name</mat-label>
+          <input matInput name="realName"
+                placeholder="Real Name"
+                [(ngModel)]="currentHero.realName"
+                minlength="3"
+                required>
+        </mat-form-field>
+      </div>
+      <div class="grid-item">
+        <mat-form-field appearance="outline" class="hit-input-item">
+            <mat-label>Occupation</mat-label>
+          <input matInput name="occupation"
+                placeholder="Occupation"
+                [(ngModel)]="currentHero.occupation"
+                minlength="3"
+                required>
+        </mat-form-field>
+      </div>
+      <div class="grid-item">
+        <mat-form-field appearance="outline" class="hit-input-item">
+            <mat-label>Affiliation</mat-label>
+          <input matInput name="affiliation"
+                placeholder="Affiliation"
+                [(ngModel)]="currentHero.affiliation"
+                minlength="3"
+                required>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-item">
+        <mat-form-field appearance="outline" class="hit-input-item">
+            <mat-label>Base of Operations</mat-label>
+          <input matInput name="baseOfOperations"
+                 placeholder="Base of Operations"
+                 [(ngModel)]="currentHero.baseOfOperations"
+                 minlength="3"
+                 required>
+        </mat-form-field>
+      </div>
+      <div class="grid-item">
+        <mat-form-field appearance="outline" class="hit-input-item">
+            <mat-label>Hero Quote</mat-label>
+          <input matInput name="heroQuote"
+                placeholder="Hero Quote"
+                [(ngModel)]="currentHero.heroQuote"
+                minlength="3"
+                required>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-item">
+        <mat-form-field appearance="outline" class="hit-input-item">
+          <mat-label>Hero Backstory</mat-label>
+          <textarea
+            #backstory
+            id="backstory"
+            name="backstory"
+            matInput
+            placeholder="Hero Backstory"
+            [(ngModel)]="currentHero.heroBackstory"
+            (keyup)="resize($event)"
+            minlength="3"
+            required></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
 
     <!-- Ability form area -->
+    <h2 class="text-center">Character Abilities</h2>
     <div class="grid-container">
       <div class="grid-item">
           <mat-form-field appearance="outline" class="hit-input-item">
@@ -66,8 +156,10 @@
           <mat-form-field appearance="outline" class="hit-input-item">
               <mat-label>Ability Icon URL</mat-label>
               <input style="width: 100%; padding-left: 10px; text-align: left;"
+                    type="url"
                     matInput name="abilityIcon"
-                    placeholder="Ability Icon"
+                    placeholder="https://example.com"
+                    pattern="https://.*"
                     [(ngModel)]="currentAbility.icon">
             </mat-form-field>
       </div>
@@ -102,62 +194,59 @@
 
 
     <!-- List of added abilities -->
-    <div class="list-container">
-      <!-- <mat-grid-list *ngFor="let ability of currentHero.abilities; let i = index"
-                      cols="5"
-                      rowHeight="60px"
-                      style="margin-bottom:5px;">
-        <mat-grid-tile
-            style="background-color: #3c3c3c"
-            [colspan]="1"
-            [rowspan]="3">
-            <img class="hit-ability-icon mat-list-icon"
-                 src="{{ability.icon}}"
-                 alt="{{ability.name}}">
-        </mat-grid-tile>
-        <mat-grid-tile style="text-align: left; width:100%;" [colspan]="4" [rowspan]="3">
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title><b>{{ability.name}}</b></mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <p>{{ability.description}}
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button color="warn" (click)="removeCard(i)">Remove</button>
-            </mat-card-actions>
-          </mat-card>
-        </mat-grid-tile>
-      </mat-grid-list> -->
-      <div class="ability-grid-container"
-           *ngFor="let ability of currentHero.abilities; let i = index"
-           style="margin-bottom:5px;">
-        <div class="ability-grid-icon" style="background-color: #3c3c3c">
-          <img class="hit-ability-icon mat-list-icon"
-                src="{{ability.icon}}"
-                alt="{{ability.name}}">
-        </div>
-        <div class="ability-grid-card" style="text-align: left; width:100%;">
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title><b>{{ability.name}}</b></mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <p>{{ability.description}}
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button color="warn" (click)="removeCard(i)">Remove</button>
-            </mat-card-actions>
-          </mat-card>
-        </div>
+    <div class="ability-grid-container"
+          *ngFor="let ability of currentHero.abilities; let i = index"
+          style="margin-bottom:5px;">
+      <div class="ability-grid-icon" style="background-color: #3c3c3c">
+        <img class="hit-ability-icon mat-list-icon"
+              src="{{ability.icon}}"
+              alt="{{ability.name}}"
+              (error)="badImage($event)">
+      </div>
+      <div class="ability-grid-card" style="text-align: left; width:100%;">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title><b>{{ability.name}}</b></mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ability.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="warn" (click)="removeCard(i)">Remove</button>
+            <button mat-button color="primary"
+                    [disabled]="currentAbility.name !== '' ||
+                                currentAbility.icon !== '' ||
+                                currentAbility.description !== '' "
+                    (click)="editCard(i)">Edit</button>
+          </mat-card-actions>
+        </mat-card>
       </div>
     </div>
 
-    <!-- <mat-icon class="star">star</mat-icon>
-    <mat-icon class="empty_star">star_border</mat-icon>
-    <button type="submit" mat-raised-button color="" [disabled]="!heroForm.form.valid">Submit</button> -->
+    <!-- <mat-icon class="star">star</mat-icon> -->
+    <!-- <mat-icon class="empty_star">star_border</mat-icon> -->
+    <div class="grid-container">
+      <div class="grid-item">
+        <mat-error
+          [style.display]=
+            "(!currentHero.abilities ||
+              currentHero.abilities.length === 0) ? 'block' : 'none'">
+              Hero needs an ability
+        </mat-error>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-item">
+        <button type="submit"
+        mat-raised-button
+        style="float:right;"
+        [disabled]="!heroForm.form.valid ||
+                    !currentHero.abilities ||
+                    currentHero.abilities.length === 0">Save Hero</button>
+      </div>
+    </div>
+
   </form>
 </div>
 

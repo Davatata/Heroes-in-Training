@@ -19,6 +19,7 @@
         width: -webkit-fill-available;
         text-align: center;
         letter-spacing: 10px;">HIT</span>
+
     </mat-toolbar>
     <mat-nav-list *ngIf="httpService.user$ | async" style="padding: 0;">
       <a [routerLink]="['/hero-create']"
