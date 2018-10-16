@@ -2,12 +2,23 @@
   <p>
     hero-details works!
   </p>
-
-  <input matInput type="text" [(ngModel)]="heroName" name="heroName" >
+  <mat-form-field appearance="outline" class="hit-input-item">
+    <input matInput [(ngModel)]="heroName" name="heroName" >
+  </mat-form-field>
 
   <!-- <input matInput type="text" name="heroName" id="heroName"> -->
   <button mat-raised-button color="primary" (click)="getHero()">Get Hero</button>
   <button mat-raised-button color="primary" (click)="addHero()">Save Hero</button>
+  <!-- <mat-form-field appearance="outline" class="hit-input-item">
+    <mat-label>Hero</mat-label>
+    <mat-select placeholder="Hero"
+                name="hero"
+                [(ngModel)]="currentHero">
+      <mat-option *ngFor="let hero of httpService.heroList$ | async" [value]="hero.heroName">
+        {{hero.heroName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> -->
 
   <div *ngIf="httpService.hero$ | async as hero">
     <mat-tab-group mat-stretch-tabs class="hit-stretched-tabs">

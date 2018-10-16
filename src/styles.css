@@ -71,6 +71,7 @@ body {
 
 .hit-ability-icon {
   width: 55%;
+  height: auto;
 }
 
 .grid-container {

@@ -11,6 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class HeroDetailsComponent implements OnInit {
   heroName = '';
+  currentHero;
   constructor(public httpService: HttpService,
               private matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer) {
@@ -30,9 +31,9 @@ export class HeroDetailsComponent implements OnInit {
   }
 
   getHero() {
-    this.httpService.getHero('', this.heroName);
+    this.httpService.getHero(this.heroName);
   }
   addHero() {
-    this.httpService.addHero();
+    // this.httpService.addHero({});
   }
 }

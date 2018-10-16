@@ -80,6 +80,7 @@ mat-card {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 .hit-icon-border {
   border: solid 1px gray;
@@ -88,4 +89,14 @@ mat-card {
 
 .mat-card-header-text {
   margin: 0 !important;
+}
+
+@media(max-width:500px) {
+  .ability-grid-container {
+    grid-template-columns: 1fr;
+  }
+  .hit-ability-icon {
+    height: 55%;
+    width: auto;
+  }
 }

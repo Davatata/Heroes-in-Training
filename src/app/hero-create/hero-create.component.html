@@ -20,6 +20,23 @@
       </div>
       <div class="grid-item">
         <mat-form-field appearance="outline" class="hit-input-item">
+          <mat-label>Hero Age</mat-label>
+          <input matInput name="heroAge"
+                type="number"
+                placeholder="Hero Age"
+                [(ngModel)]="currentHero.age"
+                minimum="0"
+                required
+                #heroAge="ngModel">
+        </mat-form-field>
+        <mat-error [style.display]="(heroAge.value > 0) ? 'none' : 'block'">
+          Age is required
+        </mat-error>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-item">
+        <mat-form-field appearance="outline" class="hit-input-item">
           <mat-label>Hero Role</mat-label>
           <mat-select placeholder="Role"
                       name="role"
@@ -158,7 +175,7 @@
               <input style="width: 100%; padding-left: 10px; text-align: left;"
                     type="url"
                     matInput name="abilityIcon"
-                    placeholder="https://example.com"
+                    placeholder="https://example.com/imgs/icon.png"
                     pattern="https://.*"
                     [(ngModel)]="currentAbility.icon">
             </mat-form-field>
@@ -241,6 +258,7 @@
         <button type="submit"
         mat-raised-button
         style="float:right;"
+        (click)="saveHero()"
         [disabled]="!heroForm.form.valid ||
                     !currentHero.abilities ||
                     currentHero.abilities.length === 0">Save Hero</button>
