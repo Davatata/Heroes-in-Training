@@ -1,0 +1,31 @@
+#hit-footer {
+  padding: 0;
+  background-color: #101010;
+  color: white;
+  min-height: 200px;
+}
+
+.footer-item {
+  font-family: "Big Noodle Too", impact, sans-serif;
+  font-size: 2em;
+  text-align: center;
+  font-style: italic;
+  padding: 2em 5px 0 5px;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  color: white;
+}
+
+.footer-grid-container {
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+  /* grid-template-columns: auto auto auto; */
+  padding: 0 10px;
+  /* background-color: #354967; */
+}
+
+.icon-bg {
+  background-color: #96a7c9;
+}

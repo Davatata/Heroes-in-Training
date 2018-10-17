@@ -22,6 +22,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTwitter, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './main-nav﻿/main-nav﻿.component';
@@ -35,6 +38,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DialogComponent } from './dialog/dialog.component';
+
+library.add(faTwitter, faGithub, faLinkedin);
 
 @NgModule({
   declarations: [
@@ -57,6 +62,7 @@ import { DialogComponent } from './dialog/dialog.component';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,

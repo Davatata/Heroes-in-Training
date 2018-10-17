@@ -16,30 +16,60 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
   roles = ['TANK', 'DAMAGE', 'SUPPORT'];
   difficulties = [{value: 1, text: 'Easy'}, {value: 2, text: 'Medium'}, {value: 3, text: 'Hard'}];
   heroRole;
+  // currentHero = <Hero>{
+  //   abilities: [
+  //     {
+  //       'name': 'PULSE PISTOLS',
+  //       'description': 'Tracer rapid-fires both of her pistols.',
+  //       'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-pistols/icon-ability.png'
+  //     },
+  //     {
+  //       'name': 'BLINK',
+  //       'description': 'Tracer zips horizontally through space in the direction she’s moving...',
+  //       'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-blink/icon-ability.png'
+  //     },
+  //     {
+  //       'name': 'RECALL',
+  //       'description': 'Tracer bounds backward in time, returning her health, ammo and position...',
+  //       'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-recall/icon-ability.png'
+  //     },
+  //     {
+  //       'name': 'PULSE BOMB',
+  //       'description': 'Tracer lobs a large bomb that adheres to any surface or unfortunate opponent...',
+  //       'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-bomb/icon-ability.png'
+  //     }
+  //   ]
+  // };
+
   currentHero = <Hero>{
-    abilities: [
+    abilities :  [
       {
-        'name': 'PULSE PISTOLS',
-        'description': 'Tracer rapid-fires both of her pistols.',
-        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-pistols/icon-ability.png'
+        'name': 'SHURIKEN',
+        // tslint:disable-next-line:max-line-length
+        'description': 'Genji looses three deadly throwing stars in quick succession. Alternatively, he can throw three shuriken in a wider spread.',
+        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/genji/ability-shuriken/icon-ability.png'
       },
       {
-        'name': 'BLINK',
-        'description': 'Tracer zips horizontally through space in the direction she’s moving...',
-        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-blink/icon-ability.png'
+        'name': 'DEFLECT',
+        // tslint:disable-next-line:max-line-length
+        'description': 'With lightning-quick swipes of his sword, Genji reflects an oncoming projectile and sends it rebounding towards his opponent.',
+        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/genji/ability-deflect/icon-ability.png'
       },
       {
-        'name': 'RECALL',
-        'description': 'Tracer bounds backward in time, returning her health, ammo and position...',
-        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-recall/icon-ability.png'
+        'name': 'SWIFT STRIKE',
+        // tslint:disable-next-line:max-line-length
+        'description': 'Genji darts forward, slashing with his katana and passing through foes in his path. If Genji eliminates a target, he can instantly use this ability again.',
+        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/genji/ability-swift-strike/icon-ability.png'
       },
       {
-        'name': 'PULSE BOMB',
-        'description': 'Tracer lobs a large bomb that adheres to any surface or unfortunate opponent...',
-        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-bomb/icon-ability.png'
+        'name': 'DRAGONBLADE',
+        // tslint:disable-next-line:max-line-length
+        'description': 'Genji brandishes his katana for a brief period of time. Until he sheathes his sword, Genji can deliver killing strikes to any targets within his reach.',
+        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/genji/ability-dragonblade/icon-ability.png'
       }
     ]
   };
+
   currentAbility = {
     name: 'PULSE BOMB',
     icon: 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-bomb/icon-ability.png',

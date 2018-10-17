@@ -14,24 +14,24 @@
                 required
                 #heroName="ngModel">
         </mat-form-field>
-        <mat-error [style.display]="(heroName.valid || heroName.pristine) ? 'none' : 'block'">
+        <!-- <mat-error [style.display]="(heroName.valid || heroName.pristine) ? 'none' : 'block'">
           Name is required
-        </mat-error>
+        </mat-error> -->
       </div>
       <div class="grid-item">
         <mat-form-field appearance="outline" class="hit-input-item">
           <mat-label>Hero Age</mat-label>
           <input matInput name="heroAge"
                 type="number"
-                placeholder="Hero Age"
+                placeholder="0"
                 [(ngModel)]="currentHero.age"
                 minimum="0"
                 required
                 #heroAge="ngModel">
         </mat-form-field>
-        <mat-error [style.display]="(heroAge.value > 0) ? 'none' : 'block'">
+        <!-- <mat-error [style.display]="(heroAge.value > 0 && heroAge.touched) ? 'none' : 'block'">
           Age is required
-        </mat-error>
+        </mat-error> -->
       </div>
     </div>
     <div class="grid-container">
