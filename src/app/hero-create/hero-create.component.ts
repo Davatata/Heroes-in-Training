@@ -42,33 +42,42 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
   // };
 
   currentHero = <Hero>{
-    abilities :  [
+    'design': 'https://d1u5p3l4wpay3k.cloudfront.net/overwatch_gamepedia/8/81/Tracer-portrait.png',
+    'role': 'DAMAGE',
+    'difficulty': 2,
+    'heroDetailDescription': 'Toting twin pulse pistols, energy-based time bombs, and rapid-fire banter.',
+    'age': 26,
+    'realName': 'Lena Oxton',
+    'heroName': 'Tracer',
+    'occupation': 'Adventurer',
+    'baseOfOperations': 'London, England',
+    'affiliation': 'Overwatch (formerly)',
+    'heroQuote': '"CHEERS, LOVE! THE CAVALRY’S HERE!"',
+    'heroBackstory': 'Lena Oxton (call sign: "Tracer") was the youngest person ever inducted into Overwatch\'s...',
+    'abilities': [
       {
-        'name': 'SHURIKEN',
-        // tslint:disable-next-line:max-line-length
-        'description': 'Genji looses three deadly throwing stars in quick succession. Alternatively, he can throw three shuriken in a wider spread.',
-        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/genji/ability-shuriken/icon-ability.png'
+        'name': 'PULSE PISTOLS',
+        'description': 'Tracer rapid-fires both of her pistols.',
+        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-pistols/icon-ability.png'
       },
       {
-        'name': 'DEFLECT',
-        // tslint:disable-next-line:max-line-length
-        'description': 'With lightning-quick swipes of his sword, Genji reflects an oncoming projectile and sends it rebounding towards his opponent.',
-        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/genji/ability-deflect/icon-ability.png'
+        'name': 'BLINK',
+        'description': 'Tracer zips horizontally through space in the direction she’s moving, and reappears...',
+        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-blink/icon-ability.png'
       },
       {
-        'name': 'SWIFT STRIKE',
-        // tslint:disable-next-line:max-line-length
-        'description': 'Genji darts forward, slashing with his katana and passing through foes in his path. If Genji eliminates a target, he can instantly use this ability again.',
-        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/genji/ability-swift-strike/icon-ability.png'
+        'name': 'RECALL',
+        'description': 'Tracer bounds backward in time, returning her health, ammo and position on the map to...',
+        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-recall/icon-ability.png'
       },
       {
-        'name': 'DRAGONBLADE',
-        // tslint:disable-next-line:max-line-length
-        'description': 'Genji brandishes his katana for a brief period of time. Until he sheathes his sword, Genji can deliver killing strikes to any targets within his reach.',
-        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/genji/ability-dragonblade/icon-ability.png'
+        'name': 'PULSE BOMB',
+        'description': 'Tracer lobs a large bomb that adheres to any surface or unfortunate opponent it lands on.',
+        'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-bomb/icon-ability.png'
       }
     ]
   };
+
 
   currentAbility = {
     name: 'PULSE BOMB',

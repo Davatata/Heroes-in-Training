@@ -32,6 +32,11 @@
         mat-list-item
         (click)="drawer.toggle()"
         class="hit-nav-button">HERO DETAILS</a>
+      <a [routerLink]="['/gallery']"
+        routerLinkActive="router-link-active"
+        mat-list-item
+        (click)="drawer.toggle()"
+        class="hit-nav-button">HERO GALLERY</a>
       <a
         mat-list-item
         (click)="drawer.toggle()"
@@ -108,6 +113,11 @@
             mat-list-item
             (click)="drawer.toggle()"
             class="hit-main-nav-button">HERO DETAILS</a>
+            <a [routerLink]="['/gallery']"
+            routerLinkActive="router-link-active"
+            mat-list-item
+            (click)="drawer.toggle()"
+            class="hit-main-nav-button">HERO GALLERY</a>
           <a
             mat-list-item
             (click)="drawer.toggle()"

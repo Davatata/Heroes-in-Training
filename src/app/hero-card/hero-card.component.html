@@ -1,7 +1,4 @@
-<a target="_blank"
- [href]="hero.link"
- style="text-decoration:none">
-
+<a style="text-decoration: none; cursor: pointer;"  (click)="httpService.getHero(hero.link)">
   <mat-card class="hit-display-card">
     <mat-card-header>
       <!-- <div mat-card-avatar class="hit-card-image"></div> -->
@@ -18,5 +15,4 @@
       <button mat-button>VIEW</button>
     </mat-card-actions> -->
   </mat-card>
-
 </a>

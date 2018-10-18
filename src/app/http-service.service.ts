@@ -26,6 +26,7 @@ export class HttpService implements OnInit, OnDestroy {
   hero$;
   heroList$: AngularFireList<any>;
   yourHeroes$: AngularFireList<any>;
+  heroesObservable: Observable<any>;
 
   heroName = 'genji';
   tempHero;
@@ -39,25 +40,17 @@ export class HttpService implements OnInit, OnDestroy {
               public firebaseAuth: AngularFireAuth) {
                 this.user$ = firebaseAuth.user;
                 this.heroList$ = db.list('heroes');
-                // if (firebaseAuth.auth.currentUser) {
-                //   this.yourHeroes$ = db.list(firebaseAuth.auth.currentUser.uid);
-                // }
-                // const listObservable = this.heroList$.snapshotChanges();
-                // listObservable.subscribe();
+                this.heroesObservable = this.heroList$.snapshotChanges().pipe(
+                  map(changes =>
+                    changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+                  )
+                );
+                this.user$.subscribe(res => {
+                  this.yourHeroes$ = db.list(`${firebaseAuth.auth.currentUser.uid}`);
+                });
               }
 
   ngOnInit() {
-    // this.hero$ = this.http.get('../assets/data/tracer.json')
-    //   .subscribe(res => {
-    //     this.tracer = res;
-    //     console.log(res);
-    //   }, err => {
-    //     console.log(err);
-    //   });
-    // this.hero$ = this.db.object<Hero>(`/heroes/${this.heroName}`).valueChanges();
-    // this.tempHero = this.http.get('../assets/data/genji.json');
-    // this.heroList$ = this.db.list('/heroes');
-    // console.log(this.heroList$[0]);
 
     console.log('current hero: ', this.hero$);
     console.log('current tempHero: ', this.tempHero);
@@ -110,37 +103,26 @@ export class HttpService implements OnInit, OnDestroy {
   }
 
   addHero(hero: Hero) {
-    // if (!this.currentHero) {
-    //   this.http.get<Hero>('../assets/data/genji.json')
-    //   .subscribe(res => {
-    //     const heroName = res.heroName.toLocaleLowerCase();
-    //     // this.db.object(`${this.userId}/${heroName}`).set(res);
-    //     this.http.post(`${this.url}/${this.userId}/${heroName}`, res);
-    //     this.currentHero = res;
-    //   } );
-    // } else {
-    // this.http.post(`${this.url}/${this.firebaseAuth.auth.currentUser.uid}/${hero.heroName}.json`, hero);
-    // const heroRef = {
-    //   heroName: hero.heroName,
-    //   link: `${this.url}/${this.userId}/${}`
-    // };
-    // this.heroList$.push({: );
+    // if (!this.yourHeroes$) {
+    //   this.yourHeroes$ = this.db.list(`${this.firebaseAuth.auth.currentUser.uid}`);
+    // }
     this.yourHeroes$.push(hero).then(res => {
       console.log(res);
-      const userId = res.path.pieces[0];
-      const heroId = res.path.pieces[1];
+      const userId = res.path.pieces_[0];
+      const heroId = res.path.pieces_[1];
       this.heroList$.set(heroId, {
         'heroId': heroId,
         'heroName': hero.heroName,
         'link': `${userId}/${heroId}`,
-        'design': hero.design
+        'design': hero.design,
+        'heroDetailDescription': hero.heroDetailDescription
       });
     });
-    // }
   }
 
-  getHero(url: string) {
-    this.hero$ = this.http.get(`${url}.json`);
+  getHero(heroUrl: string) {
+    this.hero$ = this.http.get(`${this.url}/${heroUrl}.json`);
+    this.router.navigate(['/hero-details']);
     // return;
     // heroName = heroName.toLocaleLowerCase();
     // url = `${this.userId}/${heroName}`;

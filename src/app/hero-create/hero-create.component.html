@@ -8,7 +8,7 @@
         <mat-form-field appearance="outline" class="hit-input-item">
           <mat-label>Hero Name</mat-label>
           <input matInput name="heroName"
-                placeholder="Hero Name"
+                placeholder="Heroic name"
                 [(ngModel)]="currentHero.heroName"
                 minlength="3"
                 required
@@ -73,7 +73,7 @@
             id="description"
             name="description"
             matInput
-            placeholder="Hero Description"
+            placeholder="Description of your hero"
             [(ngModel)]="currentHero.heroDetailDescription"
             (keyup)="resize($event)"
             minlength="3"
@@ -89,7 +89,8 @@
           <mat-label>Hero Design</mat-label>
           <input matInput
                 name="heroDesign"
-                placeholder="Hero Design"
+                placeholder="https://example.com/hero.png"
+                pattern="https://.*"
                 [(ngModel)]="currentHero.design"
                 minlength="3"
                 required
@@ -105,7 +106,7 @@
         <mat-form-field appearance="outline" class="hit-input-item">
             <mat-label>Real Name</mat-label>
           <input matInput name="realName"
-                placeholder="Real Name"
+                placeholder="Hero's real name"
                 [(ngModel)]="currentHero.realName"
                 minlength="3"
                 required>
@@ -115,7 +116,7 @@
         <mat-form-field appearance="outline" class="hit-input-item">
             <mat-label>Occupation</mat-label>
           <input matInput name="occupation"
-                placeholder="Occupation"
+                placeholder="Hero's occupation"
                 [(ngModel)]="currentHero.occupation"
                 minlength="3"
                 required>
@@ -205,7 +206,7 @@
                 name="abilityDescription"
                 style="width: 100%; padding-left: 10px; text-align: left;"
                 matInput
-                placeholder="Description"
+                placeholder="Ability Description"
                 [(ngModel)]="currentAbility.description"></textarea>
             </mat-form-field>
             <!-- Add Remove buttons -->

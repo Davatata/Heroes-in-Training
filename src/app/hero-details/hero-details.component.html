@@ -8,7 +8,7 @@
 
   <!-- <input matInput type="text" name="heroName" id="heroName"> -->
   <button mat-raised-button color="primary" (click)="getHero()">Get Hero</button>
-  <button mat-raised-button color="primary" (click)="addHero()">Save Hero</button>
+  <!-- <button mat-raised-button color="primary" (click)="addHero()">Save Hero</button> -->
   <!-- <mat-form-field appearance="outline" class="hit-input-item">
     <mat-label>Hero</mat-label>
     <mat-select placeholder="Hero"
@@ -21,6 +21,7 @@
   </mat-form-field> -->
 
   <div *ngIf="httpService.hero$ | async as hero">
+    <img [src]="hero.design" style="width: 100px;" alt="hero.design">
     <mat-tab-group mat-stretch-tabs class="hit-stretched-tabs">
       <mat-tab label="Overview">
         <p>Role: <mat-icon mat-list-icon svgIcon="{{hero.role}}"></mat-icon></p>
@@ -29,7 +30,6 @@
         <h2>Abilities</h2>
         <mat-list role="list" class="ability-bg">
           <mat-list-item style="color:white;" *ngFor="let ability of hero.abilities">
-            <!-- <mat-icon mat-list-icon s="{{ability.icon}}"></mat-icon> -->
             <div>
               <img class="hit-ability-icon mat-list-icon" src="{{ability.icon}}" alt="{{ability.name}}">
             </div>
@@ -52,8 +52,6 @@
         </mat-list>
       </mat-tab>
     </mat-tab-group>
-
   </div>
-
 
 </div>
