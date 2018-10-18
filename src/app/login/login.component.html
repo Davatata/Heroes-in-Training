@@ -6,18 +6,32 @@
     Login
   </button>
 </div> -->
-<h2 style="text-align: center;">Log In</h2>
-<form *ngIf="!(httpService.user$ | async)" class="example-form">
-  <mat-form-field class="example-full-width" appearance="outline">
-    <mat-label>Email</mat-label>
-    <input matInput type="email" [(ngModel)]="email" name="email" >
-  </mat-form-field>
+<div style="min-height: calc(80vh - 100px); padding-top: 20%;">
 
-  <mat-form-field class="example-full-width" appearance="outline">
-    <mat-label>Password</mat-label>
-    <input matInput type="password" [(ngModel)]="password" name="password">
-  </mat-form-field>
-  <button class="authButton" mat-raised-button (click)="login()" [disabled]="!email || !password">
-    Login
-  </button>
-</form>
+  <h2 style="text-align: center;">Log In</h2>
+  <form *ngIf="!(httpService.user$ | async)" class="example-form" #loginForm="ngForm">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email"
+            [(ngModel)]="email"
+            name="email"
+            pattern=""
+            required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      required>
+    </mat-form-field>
+    <button class="authButton" mat-raised-button
+            (click)="login()"
+            [disabled]="!email || !password || !loginForm.valid">
+      Login
+    </button>
+  </form>
+
+</div>

@@ -64,11 +64,8 @@ mat-form-field {
 }
 
 mat-card {
-  /* height: -webkit-fill-available; */
   box-shadow: none !important;
-  /* width: 100%; */
-  /* padding: 10px 10px 0 10px; */
-  border-right: 1px solid black;
+  border: 1px solid #e0e0e0;
 }
 
 .ability-grid-container {
@@ -99,4 +96,8 @@ mat-card {
     height: 55%;
     width: auto;
   }
+}
+
+button.mat-raised-button.submit:valid {
+  background-color: lightgreen;
 }

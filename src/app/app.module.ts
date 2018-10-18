@@ -38,6 +38,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { HeroCardComponent } from './hero-card/hero-card.component';
 
 library.add(faTwitter, faGithub, faLinkedin);
 
@@ -52,7 +53,8 @@ library.add(faTwitter, faGithub, faLinkedin);
     HomepageComponent,
     FooterComponent,
     PageNotFoundComponent,
-    DialogComponent
+    DialogComponent,
+    HeroCardComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

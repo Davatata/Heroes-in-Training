@@ -82,6 +82,22 @@
       </div>
     </div>
 
+    <!-- Hero design image -->
+    <div class="grid-container">
+      <div class="grid-item">
+        <mat-form-field appearance="outline" class="hit-input-item">
+          <mat-label>Hero Design</mat-label>
+          <input matInput
+                name="heroDesign"
+                placeholder="Hero Design"
+                [(ngModel)]="currentHero.design"
+                minlength="3"
+                required
+                #heroDesign="ngModel">
+        </mat-form-field>
+      </div>
+    </div>
+
     <!-- character story area -->
     <h2 class="text-center">Character Story</h2>
     <div class="grid-container">
@@ -200,7 +216,7 @@
                 color="primary"
                 [disabled]="!currentAbility.name ||
                             !currentAbility.icon ||
-                            !currentAbility.description">+ Add hero ability</button>
+                            !currentAbility.description">+ Add Hero Ability</button>
         </div>
       </div>
     </div>
@@ -256,6 +272,7 @@
     <div class="grid-container">
       <div class="grid-item">
         <button type="submit"
+        class="submit"
         mat-raised-button
         style="float:right;"
         (click)="saveHero()"

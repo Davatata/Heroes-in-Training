@@ -7,7 +7,7 @@
 
 .footer-item {
   font-family: "Big Noodle Too", impact, sans-serif;
-  font-size: 2em;
+  font-size: 1.3em;
   text-align: center;
   font-style: italic;
   padding: 2em 5px 0 5px;
@@ -15,7 +15,7 @@
   font-variant: normal;
   line-height: normal;
   letter-spacing: 0.8px;
-  color: white;
+  color: #d8d8d8;
 }
 
 .footer-grid-container {
@@ -28,4 +28,11 @@
 
 .icon-bg {
   background-color: #96a7c9;
+}
+
+#footer-author {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  color: darkgray;
 }

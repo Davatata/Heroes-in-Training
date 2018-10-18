@@ -25,7 +25,7 @@ export class HttpService implements OnInit, OnDestroy {
   user$: Observable<firebase.User>;
   hero$;
   heroList$: AngularFireList<any>;
-  yourHeroes$: AngularFireList<any[]>;
+  yourHeroes$: AngularFireList<any>;
 
   heroName = 'genji';
   tempHero;
@@ -77,6 +77,7 @@ export class HttpService implements OnInit, OnDestroy {
         // this.userId = this.firebaseAuth.auth['O'];
         this.firebaseAuth.authState.subscribe(data => {
           this.userId = data.uid;
+          this.yourHeroes$ = this.db.list(`${data.uid}`);
         });
       })
       .catch(err => {
@@ -93,6 +94,7 @@ export class HttpService implements OnInit, OnDestroy {
         this.router.navigate(['/home']);
         this.firebaseAuth.authState.subscribe(data => {
           this.userId = data.uid;
+          this.yourHeroes$ = this.db.list(`${data.uid}`);
         });
       })
       .catch(err => {
@@ -118,7 +120,22 @@ export class HttpService implements OnInit, OnDestroy {
     //   } );
     // } else {
     // this.http.post(`${this.url}/${this.firebaseAuth.auth.currentUser.uid}/${hero.heroName}.json`, hero);
-    this.heroList$.push(hero);
+    // const heroRef = {
+    //   heroName: hero.heroName,
+    //   link: `${this.url}/${this.userId}/${}`
+    // };
+    // this.heroList$.push({: );
+    this.yourHeroes$.push(hero).then(res => {
+      console.log(res);
+      const userId = res.path.pieces[0];
+      const heroId = res.path.pieces[1];
+      this.heroList$.set(heroId, {
+        'heroId': heroId,
+        'heroName': hero.heroName,
+        'link': `${userId}/${heroId}`,
+        'design': hero.design
+      });
+    });
     // }
   }
 

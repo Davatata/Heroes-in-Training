@@ -1,0 +1,22 @@
+<a target="_blank"
+ [href]="hero.link"
+ style="text-decoration:none">
+
+  <mat-card class="hit-display-card">
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="hit-card-image"></div> -->
+      <mat-card-title>{{hero.heroName}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image
+    style="background-color:lightgray" [src]="hero.design" [alt]="hero.heroName">
+    <mat-card-content>
+      <p>
+        {{hero.heroDetailDescription}}
+      </p>
+    </mat-card-content>
+    <!-- <mat-card-actions>
+      <button mat-button>VIEW</button>
+    </mat-card-actions> -->
+  </mat-card>
+
+</a>

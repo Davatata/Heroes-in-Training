@@ -1,4 +1,5 @@
 export interface Hero {
+  design: string;
   role: 'TANK' | 'DAMAGE' | 'HEALER';
   difficulty: 1 | 2 | 3;
   heroDetailDescription: string;
