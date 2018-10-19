@@ -96,6 +96,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
     // if (this.httpService.unsavedHero !== null) {
     //   this.currentHero = this.httpService.unsavedHero;
     // }
+    this.currentHero = <Hero>{};
   }
 
   resize(event) {
