@@ -20,14 +20,6 @@
   background-color: #2f3543;
 }
 
-/* .hit-navbar-title {
-  margin: auto;
-  font-family: "FuturaNo2D", "century gothic", arial, sans-serif;
-  font-size: 1.5em;
-  font-weight: bold;
-  font-style: italic;
-} */
-
 .mat-icon-button {
   color: #f9ab4f;
   font-weight: bold;
@@ -36,12 +28,6 @@
 .hidden {
   display: none;
 }
-
-/* @media (min-width: 768px) {
-  .sidenav {
-    display: none;
-  }
-} */
 
 .hit-nav-button {
   border-top: 1px solid #313d56;

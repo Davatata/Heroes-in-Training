@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+// import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 import { Hero } from '../models/hero.model';
 import { Ability } from '../models/ability.model';
@@ -16,30 +16,6 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
   roles = ['TANK', 'DAMAGE', 'SUPPORT'];
   difficulties = [{value: 1, text: 'Easy'}, {value: 2, text: 'Medium'}, {value: 3, text: 'Hard'}];
   heroRole;
-  // currentHero = <Hero>{
-  //   abilities: [
-  //     {
-  //       'name': 'PULSE PISTOLS',
-  //       'description': 'Tracer rapid-fires both of her pistols.',
-  //       'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-pistols/icon-ability.png'
-  //     },
-  //     {
-  //       'name': 'BLINK',
-  //       'description': 'Tracer zips horizontally through space in the direction she’s moving...',
-  //       'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-blink/icon-ability.png'
-  //     },
-  //     {
-  //       'name': 'RECALL',
-  //       'description': 'Tracer bounds backward in time, returning her health, ammo and position...',
-  //       'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-recall/icon-ability.png'
-  //     },
-  //     {
-  //       'name': 'PULSE BOMB',
-  //       'description': 'Tracer lobs a large bomb that adheres to any surface or unfortunate opponent...',
-  //       'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-bomb/icon-ability.png'
-  //     }
-  //   ]
-  // };
 
   currentHero = <Hero>{
     'design': 'https://d1u5p3l4wpay3k.cloudfront.net/overwatch_gamepedia/8/81/Tracer-portrait.png',
@@ -97,6 +73,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
     //   this.currentHero = this.httpService.unsavedHero;
     // }
     this.currentHero = <Hero>{};
+    this.currentAbility = <Ability>{};
   }
 
   resize(event) {
