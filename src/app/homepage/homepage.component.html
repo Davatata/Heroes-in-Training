@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="min-height: 530px; max-height: 1000px;">
   <!-- <h1 *ngIf="httpService.user$ | async">Welcome {{ (httpService.user$ | async)?.email }}!</h1>
   <h1 *ngIf="!(httpService.user$ | async)" style="text-align: center;">Not logged in.</h1> -->
     <div class="row">
@@ -6,33 +6,60 @@
     </div>
     <div class="row">
       <div class="">
-        <div class="hero-pose-image"></div>
+        <div class="hero-pose-image hero-image-tracer"></div>
       </div>
     </div>
 </div>
 
-<div class="row">
-  <div class="grid-container">
-    <div class="grid-item">
-        <h2 class="hit-home-grid-header">BLINK INTO ACTION</h2>
-        <div class="hero-ability-icon-bg">
-          <img src="https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-blink/icon-ability.png"
-               class="hero-ability-icon">
-        </div>
-    </div>
-    <div class="grid-item">
-      <h2 class="hit-home-grid-header">BLAST THE ENEMY</h2>
+<!-- <div class="grid-container">
+  <div class="grid-item">
+      <h2 class="hit-home-grid-header">BLINK INTO ACTION</h2>
       <div class="hero-ability-icon-bg">
-        <img src="https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-pistols/icon-ability.png"
+        <img src="https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-blink/icon-ability.png"
+              alt=""
               class="hero-ability-icon">
       </div>
+  </div>
+  <div class="grid-item">
+    <h2 class="hit-home-grid-header">BLAST THE ENEMY</h2>
+    <div class="hero-ability-icon-bg">
+      <img src="https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-pistols/icon-ability.png"
+            alt=""
+            class="hero-ability-icon">
     </div>
-    <div class="grid-item">
-      <h2 class="hit-home-grid-header">GO THROUGH TIME</h2>
-      <div class="hero-ability-icon-bg">
-        <img src="https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-recall/icon-ability.png"
-              class="hero-ability-icon">
-      </div>
+  </div>
+  <div class="grid-item">
+    <h2 class="hit-home-grid-header">GO THROUGH TIME</h2>
+    <div class="hero-ability-icon-bg">
+      <img src="https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-recall/icon-ability.png"
+            alt=""
+            class="hero-ability-icon">
+    </div>
+  </div>
+</div> -->
+
+<div class="home-grid-container" style="padding: 0 !important;">
+  <div class="grid-item" style="align-self:center;">
+    <div class="information">
+      Save your dashing hero designs and share them with the world.
+    </div>
+  </div>
+  <div class="grid-item" style="background-color:white;">
+    <div class="hero-art">
+      <div class="hero-pose-image hero-image-genji"></div>
+    </div>
+  </div>
+</div>
+
+<div class="home-grid-container" style="padding: 0 !important;">
+  <div class="grid-item" style="background-color:white;">
+    <div class="hero-art">
+      <div class="hero-pose-image hero-image-mercy"></div>
+    </div>
+  </div>
+  <div class="grid-item" style="align-self:center;">
+    <div class="information">
+      Fill out the hero creation form and your hero will fly to the public gallery.
     </div>
   </div>
 </div>

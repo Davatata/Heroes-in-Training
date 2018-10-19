@@ -7,7 +7,7 @@
 
 .hit-header {
   font-family: "Big Noodle Too", impact, sans-serif;
-  font-size: x-large;
+  font-size: 1.5em;
   text-align: center;
   font-style: italic;
   padding: 2em 5px 0 5px;
@@ -27,11 +27,19 @@
   }
 }
 
-.hero-pose-image {
-  /* background-image: url(https://d1u1mce87gyfbn.cloudfront.net/hero/genji/full-portrait.png); */
+.hero-image-tracer {
   background-image: url(https://d1u5p3l4wpay3k.cloudfront.net/overwatch_gamepedia/8/81/Tracer-portrait.png);
+}
+.hero-image-genji {
+  background-image: url(https://d1u1mce87gyfbn.cloudfront.net/media/artwork/genji-concept.jpg);
+}
+.hero-image-mercy {
+  background-image: url(https://d1u1mce87gyfbn.cloudfront.net/media/artwork/mercy-concept.jpg);
+}
+
+.hero-pose-image {
   display: block;
-  height: 70vh;
+  height: 60vh;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
@@ -46,4 +54,16 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.information {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 30px 15px;
+  font-family: roboto;
+}
+
+.home-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
 }

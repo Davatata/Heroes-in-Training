@@ -30,6 +30,9 @@
   background-color: #96a7c9;
 }
 
+.icon-bg:hover {
+  background-color: #f9ab4f;
+}
 #footer-author {
   font-family: sans-serif;
   font-weight: bold;
