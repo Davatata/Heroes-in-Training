@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpService } from '../http-service.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -13,6 +13,13 @@ export class HeroDetailsComponent implements OnInit {
   heroName = '';
   currentHero;
   bgColor = 'white';
+  innerWidth: any;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
+  }
+
   constructor(public httpService: HttpService,
               private matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer) {
@@ -29,6 +36,7 @@ export class HeroDetailsComponent implements OnInit {
               }
 
   ngOnInit() {
+      this.innerWidth = window.innerWidth;
   }
 
   getHero() {

@@ -1,4 +1,5 @@
 .mat-list-item {
+  height: auto !important;
   margin-bottom: 10px;
   color: white;
 }
@@ -6,11 +7,18 @@
 .container {
     padding: 30px;
     display: grid;
+    grid-gap: 5px;
     grid-template-columns: 1fr 1fr;
+    background-size: cover;
     background-image: url(https://d3hmvhl7ru3t12.cloudfront.net/img/ow-fractal-bg-560a8b12481e653dd68127bfe7ab850c0ffd8b0ed6b591e329140a72f91b5f03f601d36ff54af87c62eac7cb743b58de7917f4c381c03b7ff92d22ffcec97ec2.jpg);
 }
-#bio_list > mat-list-item > div {
-  align-items: top;
+
+@media screen and (max-width: 900px)  {
+  .container {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 1fr;
+  }
 }
 
 .hit-stretched-tabs {
@@ -34,3 +42,26 @@
   color: orange;
 }
 
+/* from playoverwatch */
+.hero-bio-quote {
+  font-family: fantasy;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: normal;
+  color: #00c3ff;
+  letter-spacing: 0.5px;
+}
+
+.blue-font {
+  margin: 10px 0;
+  color: #00c3ff;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.role {
+  font-size: 2em;
+  margin: 0;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-style: italic;
+}

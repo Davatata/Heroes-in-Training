@@ -45,9 +45,9 @@ export class HttpService implements OnInit, OnDestroy {
                     changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
                   )
                 );
-                this.user$.subscribe(res => {
-                  this.yourHeroes$ = db.list(`${firebaseAuth.auth.currentUser.uid}`);
-                });
+                // this.user$.subscribe(res => {
+                //   this.yourHeroes$ = db.list(`${firebaseAuth.auth.currentUser.uid}`);
+                // });
               }
 
   ngOnInit() {

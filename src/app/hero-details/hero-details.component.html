@@ -4,10 +4,11 @@
                   [backgroundColor]="bgColor">
     <mat-tab label="Overview" class="hit-tab-label">
       <div class="tab-body">
-        <p>Role: <mat-icon mat-list-icon svgIcon="{{hero.role}}"></mat-icon></p>
-        <p>Difficulty: {{ hero.difficulty }}</p>
+        <p class="blue-font">Role:</p>
+        <p class="role">{{hero.role}} <mat-icon mat-list-icon svgIcon="{{hero.role}}"></mat-icon></p>
+        <p class="blue-font">Difficulty: {{ hero.difficulty }}</p>
         <p>Description:{{ hero.heroDetailDescription }}</p>
-        <h2>Abilities</h2>
+        <h2 class="blue-font">Abilities</h2>
         <mat-list role="list" class="ability-bg">
           <mat-list-item style="color:white;" *ngFor="let ability of hero.abilities">
             <div>
@@ -22,15 +23,17 @@
       </div>
     </mat-tab>
     <mat-tab label="Story">
-      <h2>Biography</h2>
-      <mat-list id="bio_list">
-        <mat-list-item>Realname: {{hero.realName}}, Age: {{hero.age}}</mat-list-item>
-        <mat-list-item>Occupation: {{hero.occupation}}</mat-list-item>
-        <mat-list-item>Base of operations: {{hero.baseOfOperations}}</mat-list-item>
-        <mat-list-item>Affiliation: {{hero.affiliation}}</mat-list-item>
-        <mat-list-item>{{hero.heroQuote}}</mat-list-item>
-        <mat-list-item>{{hero.heroBackstory}}</mat-list-item>
-      </mat-list>
+      <div class="tab-body">
+        <h2 class="blue-font">Biography</h2>
+        <mat-list id="bio_list">
+          <mat-list-item>Realname: {{hero.realName}}, Age: {{hero.age}}</mat-list-item>
+          <mat-list-item>Occupation: {{hero.occupation}}</mat-list-item>
+          <mat-list-item>Base of operations: {{hero.baseOfOperations}}</mat-list-item>
+          <mat-list-item>Affiliation: {{hero.affiliation}}</mat-list-item>
+          <mat-list-item class="hero-bio-quote">{{hero.heroQuote}}</mat-list-item>
+          <mat-list-item>{{hero.heroBackstory}}</mat-list-item>
+        </mat-list>
+      </div>
     </mat-tab>
   </mat-tab-group>
   <div>
