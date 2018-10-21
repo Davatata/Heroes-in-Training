@@ -1,11 +1,36 @@
-
 .mat-list-item {
   margin-bottom: 10px;
+  color: white;
 }
+
 .container {
-  max-width: 860px;
-  margin: auto;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-image: url(https://d3hmvhl7ru3t12.cloudfront.net/img/ow-fractal-bg-560a8b12481e653dd68127bfe7ab850c0ffd8b0ed6b591e329140a72f91b5f03f601d36ff54af87c62eac7cb743b58de7917f4c381c03b7ff92d22ffcec97ec2.jpg);
 }
 #bio_list > mat-list-item > div {
   align-items: top;
 }
+
+.hit-stretched-tabs {
+  background-color: #132a4dd9;
+  overflow: hidden !important;
+  color: white;
+}
+.mat-line {
+  white-space: unset !important;
+}
+
+.mat-tab-body-wrapper {
+  padding: 12px;
+}
+
+.mat-tab-header {
+  background-color: white !important;
+}
+
+.hit-tab-label {
+  color: orange;
+}
+

@@ -7,9 +7,10 @@
     <img mat-card-image
     style="background-color:lightgray" [src]="hero.design" [alt]="hero.heroName">
     <mat-card-content>
-      <p>
-        {{hero.heroDetailDescription}}
-      </p>
+      <p *ngIf="hero.heroDetailDescription.length < 100">
+        {{hero.heroDetailDescription}}</p>
+      <p *ngIf="hero.heroDetailDescription.length >= 100">
+        {{hero.heroDetailDescription.split(' ').slice(0,20).join(' ')}}...</p>
     </mat-card-content>
     <!-- <mat-card-actions>
       <button mat-button>VIEW</button>

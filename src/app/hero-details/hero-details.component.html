@@ -1,26 +1,9 @@
-<div class="container">
-  <!-- <mat-form-field appearance="outline" class="hit-input-item">
-    <input matInput [(ngModel)]="heroName" name="heroName" >
-  </mat-form-field> -->
-
-  <!-- <input matInput type="text" name="heroName" id="heroName"> -->
-  <!-- <button mat-raised-button color="primary" (click)="getHero()">Get Hero</button> -->
-  <!-- <button mat-raised-button color="primary" (click)="addHero()">Save Hero</button> -->
-  <!-- <mat-form-field appearance="outline" class="hit-input-item">
-    <mat-label>Hero</mat-label>
-    <mat-select placeholder="Hero"
-                name="hero"
-                [(ngModel)]="currentHero">
-      <mat-option *ngFor="let hero of httpService.heroList$ | async" [value]="hero.heroName">
-        {{hero.heroName}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field> -->
-
-  <div *ngIf="httpService.hero$ | async as hero">
-    <img [src]="hero.design" style="width: 100px;" alt="hero.design">
-    <mat-tab-group mat-stretch-tabs class="hit-stretched-tabs">
-      <mat-tab label="Overview">
+<div class="container" *ngIf="httpService.hero$ | async as hero">
+  <!-- <img [src]="hero.design" style="width: 100%; align-self: start;" alt="hero.design"> -->
+  <mat-tab-group  mat-stretch-tabs class="hit-stretched-tabs"
+                  [backgroundColor]="bgColor">
+    <mat-tab label="Overview" class="hit-tab-label">
+      <div class="tab-body">
         <p>Role: <mat-icon mat-list-icon svgIcon="{{hero.role}}"></mat-icon></p>
         <p>Difficulty: {{ hero.difficulty }}</p>
         <p>Description:{{ hero.heroDetailDescription }}</p>
@@ -36,19 +19,22 @@
             </div>
           </mat-list-item>
         </mat-list>
-      </mat-tab>
-      <mat-tab label="Story">
-        <h2>Biography</h2>
-        <mat-list id="bio_list">
-          <mat-list-item>Realname: {{hero.realName}}, Age: {{hero.age}}</mat-list-item>
-          <mat-list-item>Occupation: {{hero.occupation}}</mat-list-item>
-          <mat-list-item>Base of operations: {{hero.baseOfOperations}}</mat-list-item>
-          <mat-list-item>Affiliation: {{hero.affiliation}}</mat-list-item>
-          <mat-list-item>{{hero.heroQuote}}</mat-list-item>
-          <mat-list-item>{{hero.heroDetailDescription}}</mat-list-item>
-        </mat-list>
-      </mat-tab>
-    </mat-tab-group>
+      </div>
+    </mat-tab>
+    <mat-tab label="Story">
+      <h2>Biography</h2>
+      <mat-list id="bio_list">
+        <mat-list-item>Realname: {{hero.realName}}, Age: {{hero.age}}</mat-list-item>
+        <mat-list-item>Occupation: {{hero.occupation}}</mat-list-item>
+        <mat-list-item>Base of operations: {{hero.baseOfOperations}}</mat-list-item>
+        <mat-list-item>Affiliation: {{hero.affiliation}}</mat-list-item>
+        <mat-list-item>{{hero.heroQuote}}</mat-list-item>
+        <mat-list-item>{{hero.heroBackstory}}</mat-list-item>
+      </mat-list>
+    </mat-tab>
+  </mat-tab-group>
+  <div>
+    <img [src]="hero.design" style="width: 100%; align-self: start;" alt="hero.design">
   </div>
-
 </div>
+

@@ -9,16 +9,16 @@
     [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary" style="padding:0px; ">
         <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()">
+            type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            (click)="drawer.toggle()">
           <mat-icon aria-label="Side nav close icon">close</mat-icon>
         </button>
         <span style="padding: 0px 25px 0 0;
-        width: -webkit-fill-available;
-        text-align: center;
-        letter-spacing: 10px;">HIT</span>
+                      width: -webkit-fill-available;
+                      text-align: center;
+                      letter-spacing: 10px;">HIT</span>
 
     </mat-toolbar>
     <mat-nav-list *ngIf="httpService.user$ | async" style="padding: 0;">

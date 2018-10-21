@@ -12,6 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class HeroDetailsComponent implements OnInit {
   heroName = '';
   currentHero;
+  bgColor = 'white';
   constructor(public httpService: HttpService,
               private matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer) {
