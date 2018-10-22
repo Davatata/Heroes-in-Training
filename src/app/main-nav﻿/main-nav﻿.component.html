@@ -31,7 +31,7 @@
         routerLinkActive="router-link-active"
         mat-list-item
         (click)="drawer.toggle()"
-        class="hit-nav-button">HERO DETAILS</a>
+        class="hit-nav-button" *ngIf="httpService.hero$ | async ">HERO DETAILS</a>
       <a [routerLink]="['/gallery']"
         routerLinkActive="router-link-active"
         mat-list-item
@@ -112,7 +112,7 @@
             routerLinkActive="router-link-active"
             mat-list-item
             (click)="drawer.toggle()"
-            class="hit-main-nav-button">HERO DETAILS</a>
+            class="hit-main-nav-button" *ngIf="httpService.hero$ | async ">HERO DETAILS</a>
             <a [routerLink]="['/gallery']"
             routerLinkActive="router-link-active"
             mat-list-item
