@@ -24,6 +24,12 @@
     grid-gap: 5px;
     grid-template-columns: 1fr;
   }
+  .grid-detail-container {
+    grid-template-columns: 1fr !important;
+  }
+  .grid-detail-item {
+    text-align: left !important;
+  }
 }
 
 @media screen and (min-width: 900px) {
@@ -59,16 +65,6 @@
   color: orange;
 }
 
-/* from playoverwatch */
-.hero-bio-quote {
-  font-family: fantasy;
-  font-size: 1.5rem;
-  font-style: italic;
-  font-weight: normal;
-  color: #00c3ff;
-  letter-spacing: 0.5px;
-}
-
 .blue-font {
   margin: 10px 0;
   color: #00c3ff;
@@ -83,18 +79,26 @@
   font-style: italic;
 }
 
- /* from playoverwatch */
-.heroDescription {
-  border-left: 6px solid #00c3ff;
-  padding-left: 18px;
-  margin-left: 6px;
-  margin-top: 18px;
-  line-height: 1.6;
+.upper {
+  text-transform: uppercase;
 }
 
-.bgImage {
-  background-size: cover;
-  background-image: url(https://d3hmvhl7ru3t12.cloudfront.net/img/ow-fractal-bg-560a8b12481e653dd68127bfe7ab850c0ffd8b0ed6b591e329140a72f91b5f03f601d36ff54af87c62eac7cb743b58de7917f4c381c03b7ff92d22ffcec97ec2.jpg);
+.grid-detail-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.grid-detail-item {
+  padding: 10px;
+  font-size: 1em;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
 }
 
  /* from playoverwatch */
@@ -116,4 +120,39 @@
   letter-spacing: 0.5px;
   text-transform: uppercase;
   margin: 10px 0;
+}
+
+
+.star {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-image: url('../../assets/imgs/star.png');
+  background-size: cover;
+}
+
+.star.m-empty {
+  background-position: 0 -32px;
+}
+
+.heroDescription {
+  border-left: 6px solid #00c3ff;
+  padding-left: 18px;
+  margin-left: 6px;
+  margin-top: 18px;
+  line-height: 1.6;
+}
+
+.bgImage {
+  background-size: cover;
+  background-image: url(https://d3hmvhl7ru3t12.cloudfront.net/img/ow-fractal-bg-560a8b12481e653dd68127bfe7ab850c0ffd8b0ed6b591e329140a72f91b5f03f601d36ff54af87c62eac7cb743b58de7917f4c381c03b7ff92d22ffcec97ec2.jpg);
+}
+
+.hero-bio-quote {
+  font-family: fantasy;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: normal;
+  color: #00c3ff;
+  letter-spacing: 0.5px;
 }
