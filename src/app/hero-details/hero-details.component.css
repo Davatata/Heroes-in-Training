@@ -9,15 +9,29 @@
     display: grid;
     grid-gap: 5px;
     grid-template-columns: 1fr 1fr;
-    background-size: cover;
-    background-image: url(https://d3hmvhl7ru3t12.cloudfront.net/img/ow-fractal-bg-560a8b12481e653dd68127bfe7ab850c0ffd8b0ed6b591e329140a72f91b5f03f601d36ff54af87c62eac7cb743b58de7917f4c381c03b7ff92d22ffcec97ec2.jpg);
 }
 
 @media screen and (max-width: 900px)  {
+  .large-hero-image {
+    display: none;
+  }
+  .mobile-hero-image {
+    display: block;
+  }
   .container {
+    padding: 30px 0;
     display: grid;
     grid-gap: 5px;
     grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .large-hero-image {
+    display: block;
+  }
+  .mobile-hero-image {
+    display: none;
   }
 }
 
@@ -64,4 +78,38 @@
   margin: 0;
   font-family: Roboto,"Helvetica Neue",sans-serif;
   font-style: italic;
+}
+
+ /* from playoverwatch */
+.heroDescription {
+  border-left: 6px solid #00c3ff;
+  padding-left: 18px;
+  margin-left: 6px;
+  margin-top: 18px;
+  line-height: 1.6;
+}
+
+.bgImage {
+  background-size: cover;
+  background-image: url(https://d3hmvhl7ru3t12.cloudfront.net/img/ow-fractal-bg-560a8b12481e653dd68127bfe7ab850c0ffd8b0ed6b591e329140a72f91b5f03f601d36ff54af87c62eac7cb743b58de7917f4c381c03b7ff92d22ffcec97ec2.jpg);
+}
+
+ /* from playoverwatch */
+.heroTopName {
+  position: relative;
+  z-index: 0;
+  text-align: center;
+  color: #F6F6F6;
+  background: -webkit-linear-gradient(#F6F6F6 50%, rgba(246, 246, 246, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Big Noodle Too", impact, sans-serif;
+  font-size: 3.5rem;
+  font-style: italic;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 10px 0;
 }

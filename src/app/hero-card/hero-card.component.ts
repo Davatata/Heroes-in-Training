@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Hero } from '../models/hero.model';
 import { HttpService } from '../http-service.service';
 
 @Component({

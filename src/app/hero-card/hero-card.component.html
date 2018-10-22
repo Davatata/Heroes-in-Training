@@ -1,4 +1,5 @@
-<a style="text-decoration: none; cursor: pointer;"  (click)="httpService.getHero(hero.link)">
+<a style="text-decoration: none; cursor: pointer;"
+   (click)="httpService.getHero(hero.userId + '/' + hero.heroId)">
   <mat-card class="hit-display-card">
     <mat-card-header>
       <!-- <div mat-card-avatar class="hit-card-image"></div> -->

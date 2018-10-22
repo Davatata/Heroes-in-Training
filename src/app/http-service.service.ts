@@ -45,9 +45,9 @@ export class HttpService implements OnInit, OnDestroy {
                     changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
                   )
                 );
-                // this.user$.subscribe(res => {
-                //   this.yourHeroes$ = db.list(`${firebaseAuth.auth.currentUser.uid}`);
-                // });
+                this.user$.subscribe(res => {
+                  this.yourHeroes$ = db.list(`${firebaseAuth.auth.currentUser.uid}`);
+                });
               }
 
   ngOnInit() {
@@ -113,7 +113,8 @@ export class HttpService implements OnInit, OnDestroy {
       this.heroList$.set(heroId, {
         'heroId': heroId,
         'heroName': hero.heroName,
-        'link': `${userId}/${heroId}`,
+        'userId': userId,
+        // 'link': `${userId}/${heroId}`,
         'design': hero.design,
         'heroDetailDescription': hero.heroDetailDescription
       });
