@@ -37,14 +37,6 @@
   background-image: url(https://d1u1mce87gyfbn.cloudfront.net/media/artwork/mercy-concept.jpg);
 }
 
-.hero-pose-image {
-  display: block;
-  height: 60vh;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
-}
-
 .hero-pose-name {
   position: relative;
   z-index: 0;

@@ -107,7 +107,7 @@ export class HttpService implements OnInit, OnDestroy {
     //   this.yourHeroes$ = this.db.list(`${this.firebaseAuth.auth.currentUser.uid}`);
     // }
     this.yourHeroes$.push(hero).then(res => {
-      console.log(res);
+      // console.log(res);
       const userId = res.path.pieces_[0];
       const heroId = res.path.pieces_[1];
       this.heroList$.set(heroId, {

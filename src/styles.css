@@ -129,3 +129,11 @@ img.hero-ability-icon {
   overflow: -webkit-paged-y;
   padding: 15px;
 }
+
+.hero-pose-image {
+  display: block;
+  height: 60vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
