@@ -46,7 +46,8 @@
       </mat-tab>
     </mat-tab-group>
     <div class="large-hero-image">
-      <img [src]="hero.design" style="width: 100%; align-self: start;" alt="hero.design">
+      <!-- <img [src]="hero.design" style="width: 100%; align-self: start;" alt="hero.design"> -->
+      <div class="hero-pose-image" [style.backgroundImage]="'url(' + hero.design + ')'"></div>
     </div>
   </div>
 </div>

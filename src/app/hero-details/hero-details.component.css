@@ -33,6 +33,9 @@
   .mobile-hero-image {
     display: none;
   }
+  .hero-pose-image {
+    height: 90vh;
+  }
 }
 
 .hit-stretched-tabs {
