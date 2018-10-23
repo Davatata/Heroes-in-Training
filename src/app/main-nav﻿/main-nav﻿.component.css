@@ -55,3 +55,11 @@
 .logout-button {
   width: 100%;
 }
+
+.mat-toolbar-multiple-rows {
+  min-height: 54px !important;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 54px !important;
+}

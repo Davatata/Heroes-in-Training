@@ -8,6 +8,9 @@
 # environments
 /src/environments
 
+# firebase folder
+/.firebase
+
 # dependencies
 /node_modules
 
