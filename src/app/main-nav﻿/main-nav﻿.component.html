@@ -59,6 +59,11 @@
          mat-list-item
          (click)="drawer.toggle()"
          class="hit-nav-button">SIGN UP</a>
+      <a [routerLink]="['/gallery']"
+         routerLinkActive="router-link-active"
+         mat-list-item
+         (click)="drawer.toggle()"
+         class="hit-nav-button">HERO GALLERY</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -101,6 +106,11 @@
               mat-list-item
               (click)="drawer.toggle()"
               class="hit-main-nav-button">SIGN UP</a>
+            <a [routerLink]="['/gallery']"
+              routerLinkActive="router-link-active"
+              mat-list-item
+              (click)="drawer.toggle()"
+              class="hit-main-nav-button">HERO GALLERY</a>
           </mat-nav-list>
           <mat-nav-list *ngIf="httpService.user$ | async" style="display: inline-flex; padding: 0 15px;">
             <a [routerLink]="['/hero-create']"

@@ -6,13 +6,17 @@
   </div>
   <div class="container">
     <div class="mobile-hero-image">
-      <!-- <img [src]="hero.design" style="width: 100%; align-self: start;" alt="hero.design"> -->
       <div class="hero-pose-image" [style.backgroundImage]="'url(' + hero.design + ')'"></div>
     </div>
     <mat-tab-group  mat-stretch-tabs class="hit-stretched-tabs"
                     [backgroundColor]="bgColor">
       <mat-tab label="Overview" class="hit-tab-label">
         <div class="tab-body">
+
+        <!-- edit button -->
+        <!-- <div class="button-row" *ngIf="httpService.firebaseAuth.auth.currentUser.uid || true">
+          <button (click)="editHero()" mat-raised-button>Edit Hero</button>
+        </div> -->
 
           <div class="grid-detail-container">
             <div class="grid-detail-item text-left">

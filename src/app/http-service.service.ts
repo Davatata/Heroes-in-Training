@@ -1,10 +1,10 @@
-import { Injectable, OnInit, OnDestroy, isDevMode } from '@angular/core';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 
-import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
@@ -125,16 +125,6 @@ export class HttpService implements OnInit, OnDestroy {
   getHero(heroUrl: string) {
     this.hero$ = this.http.get(`${this.url}/${heroUrl}.json`);
     this.router.navigate(['/hero-details']);
-    // return;
-    // heroName = heroName.toLocaleLowerCase();
-    // url = `${this.userId}/${heroName}`;
-    // if (isDevMode()) {
-    //   this.hero$ = this.http.get(`../assets/data/${heroName}.json`);
-    // } else {
-    //   this.hero$ = this.db.object(url).valueChanges();
-    // }
-    // this.hero$ = this.db.object(`/123/321`).valueChanges();
-    // console.log(this.hero$);
   }
 
   updateHero(newValues: Object) {

@@ -6,18 +6,20 @@
     Signup
   </button>
 </div> -->
-<h2 style="text-align: center;">Sign Up</h2>
-<form *ngIf="!(httpService.user$ | async)" class="example-form">
-  <mat-form-field class="example-full-width" appearance="outline">
-    <mat-label>Email</mat-label>
-    <input matInput type="email" [(ngModel)]="email" name="email" >
-  </mat-form-field>
+<div style="min-height: calc(80vh - 100px); padding-top: 50px;">
+  <h2 style="text-align: center;">Sign Up</h2>
+  <form *ngIf="!(httpService.user$ | async)" class="example-form">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="email" name="email" required>
+    </mat-form-field>
 
-  <mat-form-field class="example-full-width" appearance="outline">
-    <mat-label>Password</mat-label>
-    <input matInput type="password" [(ngModel)]="password" name="password">
-  </mat-form-field>
-  <button class="authButton" mat-raised-button (click)="signup()" [disabled]="!email || !password">
-    Signup
-  </button>
-</form>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" [(ngModel)]="password" name="password" required>
+    </mat-form-field>
+    <button class="authButton" mat-raised-button (click)="signup()" [disabled]="!email || !password">
+      Signup
+    </button>
+  </form>
+</div>

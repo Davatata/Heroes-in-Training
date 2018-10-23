@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpService } from '../http-service.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class HeroDetailsComponent implements OnInit {
   }
 
   constructor(public httpService: HttpService,
+              private router: Router,
               private matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer) {
                 this.matIconRegistry.addSvgIcon(
@@ -44,5 +46,10 @@ export class HeroDetailsComponent implements OnInit {
   }
   addHero() {
     // this.httpService.addHero({});
+  }
+
+  editHero() {
+    this.router.navigate(['/hero-create']);
+    console.log('edit hero');
   }
 }
