@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 // import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 import { Hero } from '../models/hero.model';
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class HeroCreateComponent implements OnInit, OnDestroy {
 
+  @ViewChild('abilityArea') heroAbility;
   roles = ['TANK', 'DAMAGE', 'SUPPORT'];
   difficulties = [{value: 1, text: 'Easy'}, {value: 2, text: 'Medium'}, {value: 3, text: 'Hard'}];
   heroRole;
@@ -84,13 +85,21 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
     }
   }
 
+  trim(event) {
+    event.target.innerHtml = event.target.innerHtml.trim();
+  }
+
   addAbility() {
-    this.currentAbility.name = this.currentAbility.name.toUpperCase();
+    this.currentAbility.name = this.currentAbility.name.trim().toUpperCase();
+    this.currentAbility.description = this.currentAbility.description.trim();
+    this.currentAbility.icon = this.currentAbility.icon.trim();
+
     if (!this.currentHero.abilities) {
       this.currentHero.abilities = [{...this.currentAbility}];
     } else {
       this.currentHero.abilities.push({...this.currentAbility});
     }
+
     this.currentAbility.name = '';
     this.currentAbility.icon = '';
     this.currentAbility.description = '';

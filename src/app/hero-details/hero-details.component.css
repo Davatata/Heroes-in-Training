@@ -53,6 +53,10 @@
   white-space: unset !important;
 }
 
+.pre-wrap {
+  white-space: pre-wrap;
+}
+
 .mat-tab-body-wrapper {
   padding: 12px;
 }

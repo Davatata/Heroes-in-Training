@@ -118,6 +118,7 @@ export class HttpService implements OnInit, OnDestroy {
         'design': hero.design,
         'heroDetailDescription': hero.heroDetailDescription
       });
+      this.getHero(userId + '/' + heroId);
     });
   }
 

@@ -38,11 +38,7 @@ mat-form-field {
   width: 100%;
 }
 
-#description, #backstory {
-  /* resize: none;
-	min-height: 100px;
-	padding: 5px;
-	overflow: hidden; */
+#description, #backstory, #abilityDescription {
 	box-sizing: border-box;
 }
 

@@ -11,6 +11,7 @@
                 placeholder="Heroic name"
                 [(ngModel)]="currentHero.heroName"
                 minlength="3"
+                maxlength="100"
                 required
                 #heroName="ngModel">
         </mat-form-field>
@@ -26,6 +27,7 @@
                 placeholder="0"
                 [(ngModel)]="currentHero.age"
                 minimum="0"
+                max="100000"
                 required
                 #heroAge="ngModel">
         </mat-form-field>
@@ -73,10 +75,11 @@
             id="description"
             name="description"
             matInput
-            placeholder="Description of your hero"
+            placeholder="Description of your hero. (500 characters max)"
             [(ngModel)]="currentHero.heroDetailDescription"
             (keyup)="resize($event)"
             minlength="3"
+            maxlength="500"
             required></textarea>
         </mat-form-field>
       </div>
@@ -88,11 +91,13 @@
         <mat-form-field appearance="outline" class="hit-input-item">
           <mat-label>Hero Design</mat-label>
           <input matInput
+                type="url"
                 name="heroDesign"
-                placeholder="https://example.com/hero.png"
+                placeholder="Link to hosted image. Ex. https://example.com/hero.png"
                 pattern="https://.*"
                 [(ngModel)]="currentHero.design"
                 minlength="3"
+                maxlength="200"
                 required
                 #heroDesign="ngModel">
         </mat-form-field>
@@ -109,6 +114,7 @@
                 placeholder="Hero's real name"
                 [(ngModel)]="currentHero.realName"
                 minlength="3"
+                maxlength="100"
                 required>
         </mat-form-field>
       </div>
@@ -119,6 +125,7 @@
                 placeholder="Hero's occupation"
                 [(ngModel)]="currentHero.occupation"
                 minlength="3"
+                maxlength="100"
                 required>
         </mat-form-field>
       </div>
@@ -129,6 +136,7 @@
                 placeholder="Affiliation"
                 [(ngModel)]="currentHero.affiliation"
                 minlength="3"
+                maxlength="100"
                 required>
         </mat-form-field>
       </div>
@@ -141,6 +149,7 @@
                  placeholder="Base of Operations"
                  [(ngModel)]="currentHero.baseOfOperations"
                  minlength="3"
+                 maxlength="100"
                  required>
         </mat-form-field>
       </div>
@@ -151,6 +160,7 @@
                 placeholder="Hero Quote"
                 [(ngModel)]="currentHero.heroQuote"
                 minlength="3"
+                maxlength="200"
                 required>
         </mat-form-field>
       </div>
@@ -168,6 +178,7 @@
             [(ngModel)]="currentHero.heroBackstory"
             (keyup)="resize($event)"
             minlength="3"
+            maxlength="3000"
             required></textarea>
         </mat-form-field>
       </div>
@@ -183,6 +194,7 @@
               <input style="width: 100%; padding-left: 10px; text-align: left;"
                     matInput name="abilityName"
                     placeholder="Ability Name"
+                    maxlength="100"
                     [(ngModel)]="currentAbility.name">
             </mat-form-field>
       </div>
@@ -194,6 +206,7 @@
                     matInput name="abilityIcon"
                     placeholder="https://example.com/imgs/icon.png"
                     pattern="https://.*"
+                    maxlength="200"
                     [(ngModel)]="currentAbility.icon">
             </mat-form-field>
       </div>
@@ -203,10 +216,13 @@
           <mat-form-field appearance="outline" class="hit-input-item">
               <mat-label>Ability Description</mat-label>
               <textarea
+                id="abilityDescription"
                 name="abilityDescription"
                 style="width: 100%; padding-left: 10px; text-align: left;"
                 matInput
+                (keyup)="resize($event)"
                 placeholder="Ability Description"
+                maxlength="500"
                 [(ngModel)]="currentAbility.description"></textarea>
             </mat-form-field>
             <!-- Add Remove buttons -->
