@@ -198,6 +198,23 @@
     height: 55%;
     width: auto;
   }
+  .ability-grid-icon {
+    width: -webkit-fill-available;
+    height: 60px;
+    margin: 0 auto;
+  }
+  .mat-card-header-text {
+    margin: 0 auto !important;
+  }
+  .ability-description {
+    text-align: center;
+  }
+  .mat-card {
+    background-color: rgba(19, 42, 77, 0.1) !important;
+  }
+  .ability-name {
+    font-size: 1.6em !important;
+  }
 }
 
 .mat-card {
@@ -208,4 +225,14 @@
 
 .no-margin {
   margin: 0 !important;
+}
+
+.ability-description {
+  line-height: 1.6;
+  font-size: 1.1em;
+}
+
+.ability-name {
+  text-transform: uppercase;
+  font-size: 1.3em;
 }
