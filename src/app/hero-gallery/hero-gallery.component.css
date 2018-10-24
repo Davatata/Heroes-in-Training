@@ -3,7 +3,7 @@ mat-card {
 }
 
 .gallery-grid-container {
-  min-height: 700px;
+  /* min-height: 700px; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   padding: 0 10px;

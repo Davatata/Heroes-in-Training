@@ -2,13 +2,15 @@ import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { map } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { Hero } from './models/hero.model';
+
+const CACHE_KEY = 'httpRepoCache';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,7 @@ export class HttpService implements OnInit, OnDestroy {
     );
 
   userId = '';
-  url = 'https://heroes-in-training.firebaseio.com/';
+  url = 'https://heroes-in-training.firebaseio.com';
   tracer;
   user$: Observable<firebase.User>;
   hero$;
@@ -40,11 +42,21 @@ export class HttpService implements OnInit, OnDestroy {
               public firebaseAuth: AngularFireAuth) {
                 this.user$ = firebaseAuth.user;
                 this.heroList$ = db.list('heroes');
+
                 this.heroesObservable = this.heroList$.snapshotChanges().pipe(
                   map(changes =>
                     changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
                   )
                 );
+
+                this.heroesObservable.subscribe(next => {
+                  localStorage[CACHE_KEY] = JSON.stringify(next);
+                });
+
+                this.heroesObservable = this.heroesObservable.pipe(
+                  startWith(JSON.parse(localStorage[CACHE_KEY] || '[]'))
+                );
+
                 this.user$.subscribe(res => {
                   this.yourHeroes$ = db.list(`${firebaseAuth.auth.currentUser.uid}`);
                 });
@@ -124,6 +136,7 @@ export class HttpService implements OnInit, OnDestroy {
 
   getHero(heroUrl: string) {
     this.hero$ = this.http.get(`${this.url}/${heroUrl}.json`);
+    console.log('getting hero');
     this.router.navigate(['/hero-details']);
   }
 

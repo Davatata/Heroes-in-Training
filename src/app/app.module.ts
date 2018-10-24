@@ -40,6 +40,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DialogComponent } from './dialog/dialog.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { HeroGalleryComponent } from './hero-gallery/hero-gallery.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 library.add(faTwitter, faGithub, faLinkedin);
 
@@ -56,7 +57,8 @@ library.add(faTwitter, faGithub, faLinkedin);
     PageNotFoundComponent,
     DialogComponent,
     HeroCardComponent,
-    HeroGalleryComponent
+    HeroGalleryComponent,
+    SpinnerComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

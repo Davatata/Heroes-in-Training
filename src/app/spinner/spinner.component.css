@@ -1,0 +1,29 @@
+.logo {
+  height: 100px;
+  width: 100px;
+  margin: auto;
+  display: block;
+  position: relative;
+  animation-name: rotateImage;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.spinner-container {
+  margin: 30vh auto !important;
+}
+
+@keyframes rotateImage {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

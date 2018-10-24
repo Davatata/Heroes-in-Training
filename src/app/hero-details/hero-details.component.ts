@@ -38,7 +38,9 @@ export class HeroDetailsComponent implements OnInit {
               }
 
   ngOnInit() {
-      this.innerWidth = window.innerWidth;
+    console.log('Scrolling to top');
+    window.scrollTo(0, 0);
+    this.innerWidth = window.innerWidth;
   }
 
   getHero() {

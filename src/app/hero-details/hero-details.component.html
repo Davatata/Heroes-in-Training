@@ -1,4 +1,7 @@
-<div class="bgImage" *ngIf="httpService.hero$ | async as hero">
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>
+<div class="bgImage" *ngIf="httpService.hero$ | async as hero; else loading">
   <div class="grid-container">
     <div class="grid-item">
       <h1 class="heroTopName">{{hero.heroName}}</h1>
@@ -67,4 +70,3 @@
     </div>
   </div>
 </div>
-
