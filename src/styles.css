@@ -70,8 +70,17 @@ body {
 }
 
 .hit-ability-icon {
-  width: 55%;
+  /* max-width: 70px; */
+  width: 100%;
   height: auto;
+}
+
+@media screen and (min-width: 500px) {
+  .hit-ability-icon {
+    max-width: 70px;
+    /* width: 100%; */
+    height: auto;
+  }
 }
 
 .grid-container {
@@ -136,4 +145,8 @@ img.hero-ability-icon {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top;
+}
+
+.mat-card-header-text:first-child {
+  margin: 0 !important;
 }

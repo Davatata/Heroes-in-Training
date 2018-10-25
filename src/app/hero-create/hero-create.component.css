@@ -73,7 +73,7 @@ mat-card {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 30px 10px;
 }
 .hit-icon-border {
   border: solid 1px gray;
@@ -90,7 +90,7 @@ mat-card {
   }
   .hit-ability-icon {
     height: 55%;
-    width: auto;
+    max-width: 70px;
   }
 }
 
