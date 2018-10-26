@@ -4,8 +4,12 @@ A site where users can upload their Overwatch character designs to share with th
 
 When creating an Overwatch character, uploading png images with transparent backgrounds look best. Shown below.
 
-Without transparent background
-<img src="./src/assets/data/hit-badpng.png" style="width:300px;">
+<div>
+  <h2>Without transparent background</h2>
+  <img src="./src/assets/data/hit-badpng.png" width="500px;">
+</div>
 
-With transparent background
-<img src="./src/assets/data/hit-goodpng.png" style="width:300px;">
+<div>
+  <h2>With transparent background</h2>
+  <img src="./src/assets/data/hit-goodpng.png" width="500px;">
+</div>
