@@ -12,6 +12,7 @@ export interface Hero {
   heroQuote: string;
   heroBackstory: string;
   abilities: Ability[];
+  art: string[];
 }
 
 export interface Ability {

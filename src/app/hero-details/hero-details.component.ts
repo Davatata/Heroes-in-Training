@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener} from '@angular/core';
 import { HttpService } from '../http-service.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -43,9 +43,9 @@ export class HeroDetailsComponent implements OnInit {
               }
 
   ngOnInit() {
-    console.log('Scrolling to top');
-    window.scrollTo(0, 0);
-    this.innerWidth = window.innerWidth;
+    // console.log('Scrolling to top');
+    // window.scrollTo(0, 0);
+    // this.innerWidth = window.innerWidth;
 
     this.userParam = this.route.snapshot.paramMap.get('u');
     this.heroParam = this.route.snapshot.paramMap.get('h');

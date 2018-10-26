@@ -144,6 +144,7 @@ export class HttpService implements OnInit, OnDestroy {
     this.hero$ = this.http.get(`${this.url}/${heroUrl}.json`);
     // console.log('getting hero');
     this.router.navigate(['/hero-details', params]);
+    window.scrollTo(0, 0);
   }
 
   updateHero(newValues: Object) {

@@ -5,10 +5,10 @@
 }
 
 .container {
-    padding: 30px;
-    display: grid;
-    grid-gap: 5px;
-    grid-template-columns: 1fr 1fr;
+  padding: 0 30px 30px;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr;
 }
 
 @media screen and (max-width: 900px)  {
@@ -252,3 +252,25 @@
   width: 60px;
   height: 60px;
 } */
+
+/* From playoverwatch */
+.additional-art-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 0 10px;
+  background: white;
+  font-family: "Big Noodle Too", impact, sans-serif;
+  font-size: 1rem;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.art-img {
+  display: block;
+  height: 200px;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}

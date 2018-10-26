@@ -14,4 +14,5 @@ export class AppComponent implements OnDestroy {
   ngOnDestroy() {
     this.httpService.logout();
   }
+
 }
