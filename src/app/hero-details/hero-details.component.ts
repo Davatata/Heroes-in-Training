@@ -49,15 +49,17 @@ export class HeroDetailsComponent implements OnInit {
 
     this.userParam = this.route.snapshot.paramMap.get('u');
     this.heroParam = this.route.snapshot.paramMap.get('h');
+    const localU = localStorage['hit-u'];
+    const localH = localStorage['hit-h'];
 
     if (this.httpService.hero$) {
       console.log('hero not null');
     } else if (this.userParam && this.heroParam) {
       this.httpService.getHero(this.userParam, this.heroParam);
       console.log('getting hero from url params');
-    } else if (localStorage['hit-u'] && localStorage['hit-h']) {
+    } else if (localU && localH) {
       console.log('getting hero from localstorage');
-      this.httpService.getHero(localStorage['hit-u'], localStorage['hit-h']);
+      this.httpService.getHero(localU, localH);
     }
   }
 

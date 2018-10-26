@@ -43,6 +43,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { HeroGalleryComponent } from './hero-gallery/hero-gallery.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import {SlideshowModule} from 'ng-simple-slideshow';
 
 library.add(faTwitter, faGithub, faLinkedin);
 
@@ -87,6 +88,7 @@ library.add(faTwitter, faGithub, faLinkedin);
     MatCardModule,
     MatTooltipModule,
     MatButtonToggleModule,
+    SlideshowModule,
   ],
   entryComponents: [DialogComponent],
   providers: [AngularFireDatabase],

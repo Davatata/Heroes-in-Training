@@ -87,10 +87,21 @@
         <h1 class="hit-header">Additional Art</h1>
       </div>
     </div>
-    <div class="additional-art-container">
-      <div *ngFor="let artItem of hero.art | keyvalue" class="grid-item">
+    <div class="additional-art-container" style="margin: 2em 0">
+      <!-- <div *ngFor="let artItem of hero.art | keyvalue" class="grid-item">
         <div class="art-img" [style.backgroundImage]="'url(' + artItem.value + ')'"></div>
-      </div>
+      </div> -->
+        <slideshow [height]="'70vh'"
+            [minHeight]="'200px'"
+            [autoPlay]="false"
+            [showArrows]="true"
+            [imageUrls]="hero.art"
+            [backgroundSize]="'contain'"
+            [backgroundPosition]="'center'"
+            [showDots]="true"
+            [dotColor]="'#dedede'"
+            [autoPlayWaitForLazyLoad]="false">
+        </slideshow>
     </div>
   </div>
 </div>

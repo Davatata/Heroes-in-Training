@@ -29,6 +29,7 @@ export class HttpService implements OnInit, OnDestroy {
   heroList$: AngularFireList<any>;
   yourHeroes$: AngularFireList<any>;
   heroesObservable: Observable<any>;
+  params = {};
 
   heroName = 'genji';
   tempHero;
@@ -135,7 +136,7 @@ export class HttpService implements OnInit, OnDestroy {
 
   getHero(userId: string, heroId: string) {
     const heroUrl = userId + '/' + heroId;
-    const params = {
+    this.params = {
       'h': heroId,
       'u': userId
     };
@@ -143,7 +144,7 @@ export class HttpService implements OnInit, OnDestroy {
     localStorage['hit-u'] = userId;
     this.hero$ = this.http.get(`${this.url}/${heroUrl}.json`);
     // console.log('getting hero');
-    this.router.navigate(['/hero-details', params]);
+    this.router.navigate(['/hero-details', this.params]);
     window.scrollTo(0, 0);
   }
 

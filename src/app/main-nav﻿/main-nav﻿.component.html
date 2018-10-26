@@ -28,6 +28,7 @@
         (click)="drawer.toggle()"
         class="hit-nav-button">CREATE A HERO</a>
       <a [routerLink]="['/hero-details']"
+        [queryParams]="httpService.params"
         routerLinkActive="router-link-active"
         mat-list-item
         (click)="drawer.toggle()"
@@ -119,6 +120,7 @@
             (click)="drawer.toggle()"
             class="hit-main-nav-button">CREATE A HERO</a>
             <a [routerLink]="['/hero-details']"
+            [queryParams]="httpService.params"
             routerLinkActive="router-link-active"
             mat-list-item
             (click)="drawer.toggle()"
