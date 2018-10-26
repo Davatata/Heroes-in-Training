@@ -1,4 +1,20 @@
 <div class="gallery-grid-container">
+  <!-- <div class="grid-item">
+      <mat-button-toggle-group>
+          <mat-button-toggle value="all">
+            All
+          </mat-button-toggle>
+          <mat-button-toggle value="damage">
+            Damage
+          </mat-button-toggle>
+          <mat-button-toggle value="support">
+            Support
+          </mat-button-toggle>
+          <mat-button-toggle value="tank">
+            Tank
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+  </div> -->
   <div class="grid-item"  *ngFor="let hero of httpService.heroesObservable | async" >
     <app-hero-card [hero]="hero"></app-hero-card>
   </div>

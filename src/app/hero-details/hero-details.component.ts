@@ -2,7 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpService } from '../http-service.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute  } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -15,6 +16,8 @@ export class HeroDetailsComponent implements OnInit {
   currentHero;
   bgColor = 'white';
   innerWidth: any;
+  userParam;
+  heroParam;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -23,8 +26,10 @@ export class HeroDetailsComponent implements OnInit {
 
   constructor(public httpService: HttpService,
               private router: Router,
+              private route: ActivatedRoute,
               private matIconRegistry: MatIconRegistry,
-              private domSanitizer: DomSanitizer) {
+              private domSanitizer: DomSanitizer,
+              private location: Location) {
                 this.matIconRegistry.addSvgIcon(
                   `SUPPORT`,
                   this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/svgs/support.svg`)
@@ -41,10 +46,23 @@ export class HeroDetailsComponent implements OnInit {
     console.log('Scrolling to top');
     window.scrollTo(0, 0);
     this.innerWidth = window.innerWidth;
+
+    this.userParam = this.route.snapshot.paramMap.get('u');
+    this.heroParam = this.route.snapshot.paramMap.get('h');
+
+    if (this.httpService.hero$) {
+      console.log('hero not null');
+    } else if (this.userParam && this.heroParam) {
+      this.httpService.getHero(this.userParam, this.heroParam);
+      console.log('getting hero from url params');
+    } else if (localStorage['hit-u'] && localStorage['hit-h']) {
+      console.log('getting hero from localstorage');
+      this.httpService.getHero(localStorage['hit-u'], localStorage['hit-h']);
+    }
   }
 
   getHero() {
-    this.httpService.getHero(this.heroName);
+    // this.httpService.getHero(this.heroName);
   }
   addHero() {
     // this.httpService.addHero({});

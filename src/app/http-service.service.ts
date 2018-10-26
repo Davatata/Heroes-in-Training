@@ -25,7 +25,7 @@ export class HttpService implements OnInit, OnDestroy {
   url = 'https://heroes-in-training.firebaseio.com';
   tracer;
   user$: Observable<firebase.User>;
-  hero$;
+  hero$: Observable<any>;
   heroList$: AngularFireList<any>;
   yourHeroes$: AngularFireList<any>;
   heroesObservable: Observable<any>;
@@ -63,9 +63,8 @@ export class HttpService implements OnInit, OnDestroy {
               }
 
   ngOnInit() {
-
-    console.log('current hero: ', this.hero$);
-    console.log('current tempHero: ', this.tempHero);
+    // console.log('current hero: ', this.hero$);
+    // console.log('current tempHero: ', this.tempHero);
   }
 
   ngOnDestroy() {
@@ -130,14 +129,21 @@ export class HttpService implements OnInit, OnDestroy {
         'design': hero.design,
         'heroDetailDescription': hero.heroDetailDescription
       });
-      this.getHero(userId + '/' + heroId);
+      this.getHero(userId, heroId);
     });
   }
 
-  getHero(heroUrl: string) {
+  getHero(userId: string, heroId: string) {
+    const heroUrl = userId + '/' + heroId;
+    const params = {
+      'h': heroId,
+      'u': userId
+    };
+    localStorage['hit-h'] = heroId;
+    localStorage['hit-u'] = userId;
     this.hero$ = this.http.get(`${this.url}/${heroUrl}.json`);
-    console.log('getting hero');
-    this.router.navigate(['/hero-details']);
+    // console.log('getting hero');
+    this.router.navigate(['/hero-details', params]);
   }
 
   updateHero(newValues: Object) {

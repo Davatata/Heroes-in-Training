@@ -17,6 +17,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
@@ -83,7 +85,8 @@ library.add(faTwitter, faGithub, faLinkedin);
     MatTabsModule,
     MatGridListModule,
     MatCardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatButtonToggleModule,
   ],
   entryComponents: [DialogComponent],
   providers: [AngularFireDatabase],
