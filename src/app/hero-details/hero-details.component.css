@@ -265,18 +265,3 @@
   text-transform: uppercase;
   letter-spacing: 0.8px;
 }
-
-.art-img {
-  display: block;
-  height: 200px;
-  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top;
-}
-
-.art-img:hover {
-  transform: scale(1.05);
-  transition: all 0.3s;
-  cursor: pointer;
-}

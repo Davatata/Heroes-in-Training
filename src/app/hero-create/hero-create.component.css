@@ -92,6 +92,9 @@ mat-card {
     height: 55%;
     max-width: 70px;
   }
+  .design-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  }
 }
 
 button.mat-raised-button.submit:valid {
@@ -105,4 +108,14 @@ button.mat-raised-button.submit:valid {
 
 .hero-design-display-bg {
   background-image: url('../../assets/imgs/ow-bg.jpg');
+}
+
+.design-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+  padding: 0 10px;
+}
+
+.artwork-img {
+  background-size: contain !important;
 }
