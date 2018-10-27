@@ -99,8 +99,30 @@
                 minlength="3"
                 maxlength="200"
                 required
+                (focus)="checkImage = false;"
                 #heroDesign="ngModel">
         </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Hero design display -->
+    <div class="grid-container">
+      <div class="grid-item">
+        <mat-slide-toggle
+          class="example-margin"
+          [color]="'primary'"
+          (change)="checkImage=!checkImage"
+          [checked]="checkImage"
+          [disabled]="!currentHero.design">
+          Toggle Design
+        </mat-slide-toggle>
+      </div>
+    </div>
+    <div class="grid-container hero-design-display-bg" *ngIf="currentHero.design && checkImage">
+      <div class="grid-item">
+        <img class="hero-design-display"
+             [src]="currentHero.design"
+             [alt]="currentHero.heroName">
       </div>
     </div>
 
@@ -274,8 +296,7 @@
       </div>
     </div>
 
-    <!-- <mat-icon class="star">star</mat-icon> -->
-    <!-- <mat-icon class="empty_star">star_border</mat-icon> -->
+    <!-- Abilities error -->
     <div class="grid-container">
       <div class="grid-item">
         <mat-error
@@ -286,6 +307,16 @@
         </mat-error>
       </div>
     </div>
+
+    <!-- Additional Artwork -->
+    <h2 class="text-center">Additional Artwork</h2>
+    <div class="grid-container">
+      <div class="grid-item">
+
+      </div>
+    </div>
+
+    <!-- Submission -->
     <div class="grid-container">
       <div class="grid-item">
         <button type="submit"

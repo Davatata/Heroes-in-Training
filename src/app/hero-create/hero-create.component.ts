@@ -17,6 +17,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
   roles = ['TANK', 'DAMAGE', 'SUPPORT'];
   difficulties = [{value: 1, text: 'Easy'}, {value: 2, text: 'Medium'}, {value: 3, text: 'Hard'}];
   heroRole;
+  checkImage = false;
 
   currentHero = <Hero>{
     'design': 'https://d1u5p3l4wpay3k.cloudfront.net/overwatch_gamepedia/8/81/Tracer-portrait.png',

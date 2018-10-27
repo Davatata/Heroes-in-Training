@@ -97,3 +97,12 @@ mat-card {
 button.mat-raised-button.submit:valid {
   background-color: lightgreen;
 }
+
+.hero-design-display {
+  max-height: 600px;
+  max-width: -webkit-fill-available;
+}
+
+.hero-design-display-bg {
+  background-image: url('../../assets/imgs/ow-bg.jpg');
+}

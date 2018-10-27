@@ -18,6 +18,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -89,6 +91,7 @@ library.add(faTwitter, faGithub, faLinkedin);
     MatTooltipModule,
     MatButtonToggleModule,
     SlideshowModule,
+    MatSlideToggleModule,
   ],
   entryComponents: [DialogComponent],
   providers: [AngularFireDatabase],
