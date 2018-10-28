@@ -65,8 +65,6 @@ export class HttpService implements OnInit, OnDestroy {
               }
 
   ngOnInit() {
-    // console.log('current hero: ', this.hero$);
-    // console.log('current tempHero: ', this.tempHero);
   }
 
   ngOnDestroy() {
@@ -116,11 +114,7 @@ export class HttpService implements OnInit, OnDestroy {
   }
 
   addHero(hero: Hero) {
-    // if (!this.yourHeroes$) {
-    //   this.yourHeroes$ = this.db.list(`${this.firebaseAuth.auth.currentUser.uid}`);
-    // }
     this.yourHeroes$.push(hero).then(res => {
-      // console.log(res);
       const userId = res.path.pieces_[0];
       const heroId = res.path.pieces_[1];
       this.heroList$.set(heroId, {
