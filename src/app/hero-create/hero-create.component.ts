@@ -20,6 +20,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
   checkImage = false;
   currentArtwork = '';
   checkArt = false;
+  changeMade = false;
 
   currentHero = <Hero>{};
   // currentHero = <Hero>{
