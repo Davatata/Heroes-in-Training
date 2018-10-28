@@ -75,6 +75,14 @@ mat-card {
   align-items: center;
   padding: 30px 10px;
 }
+
+.art-grid-container {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 0 10px;
+}
+
 .hit-icon-border {
   border: solid 1px gray;
   border-radius: 50%;
@@ -92,7 +100,7 @@ mat-card {
     height: 55%;
     max-width: 70px;
   }
-  .design-grid-container {
+  .design-grid-container, .art-grid-container {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
   }
 }
@@ -108,6 +116,11 @@ button.mat-raised-button.submit:valid {
 
 .hero-design-display-bg {
   background-image: url('../../assets/imgs/ow-bg.jpg');
+}
+
+.hero-art-display-bg {
+  margin: 0 auto;
+  max-width: 400px;
 }
 
 .design-grid-container {

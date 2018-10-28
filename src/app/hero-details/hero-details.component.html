@@ -18,13 +18,14 @@
           <div class="tab-body">
 
           <!-- edit button -->
-          <!-- <div class="button-row" *ngIf="httpService.firebaseAuth.auth.currentUser.uid || true">
+          <div class="button-row"
+               *ngIf="httpService.firebaseAuth.auth?.currentUser?.uid === httpService.params['u']">
             <button (click)="editHero()" mat-raised-button>Edit Hero</button>
-          </div> -->
+          </div>
 
             <div class="grid-detail-container">
               <div class="grid-detail-item text-left">
-                  <p class="blue-font upper">Role:</p>
+                  <p class="blue-font upper">Role</p>
                   <p class="role upper">{{hero.role}} <mat-icon mat-list-icon svgIcon="{{hero.role}}"></mat-icon></p>
               </div>
               <div class="grid-detail-item text-right">
@@ -70,7 +71,7 @@
               <mat-list-item>Base of operations: {{hero.baseOfOperations}}</mat-list-item>
               <mat-list-item>Affiliation: {{hero.affiliation}}</mat-list-item>
               <mat-list-item class="hero-bio-quote">{{hero.heroQuote}}</mat-list-item>
-              <mat-list-item class="pre-wrap">{{hero.heroBackstory}}</mat-list-item>
+              <mat-list-item class="pre-wrap backstory">{{hero.heroBackstory}}</mat-list-item>
             </mat-list>
           </div>
         </mat-tab>

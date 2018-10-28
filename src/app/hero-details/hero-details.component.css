@@ -265,3 +265,9 @@
   text-transform: uppercase;
   letter-spacing: 0.8px;
 }
+
+.backstory {
+  background-color: rgba(19, 42, 77, 0.5);
+  padding: 20px 8px;
+  line-height: 1.6;
+}

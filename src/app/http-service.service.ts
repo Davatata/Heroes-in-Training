@@ -30,6 +30,7 @@ export class HttpService implements OnInit, OnDestroy {
   yourHeroes$: AngularFireList<any>;
   heroesObservable: Observable<any>;
   params = {};
+  editMode = false;
 
   heroName = 'genji';
   tempHero;
@@ -126,15 +127,16 @@ export class HttpService implements OnInit, OnDestroy {
         'heroId': heroId,
         'heroName': hero.heroName,
         'userId': userId,
-        // 'link': `${userId}/${heroId}`,
         'design': hero.design,
         'heroDetailDescription': hero.heroDetailDescription
       });
+      this.editMode = false;
       this.getHero(userId, heroId);
     });
   }
 
   getHero(userId: string, heroId: string) {
+    this.editMode = false;
     const heroUrl = userId + '/' + heroId;
     this.params = {
       'h': heroId,
@@ -144,17 +146,30 @@ export class HttpService implements OnInit, OnDestroy {
     localStorage['hit-u'] = userId;
     this.hero$ = this.http.get(`${this.url}/${heroUrl}.json`);
     // console.log('getting hero');
-    this.router.navigate(['/hero-details', this.params]);
+    this.router.navigate(['/hero-details'], { queryParams: this.params });
     window.scrollTo(0, 0);
   }
 
-  updateHero(newValues: Object) {
-    this.db.object(`/heroes/genji`).update(newValues)
-      .then(res => {
-        console.log('Update success.');
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  editHero() {
+    this.editMode = true;
+    this.router.navigate(['/hero-create']);
+  }
+
+  isCreator() {
+    return this.firebaseAuth.auth.currentUser.uid === this.params['u'];
+  }
+
+  updateHero(hero: Hero) {
+    const heroId = this.params['h'];
+    const userId = this.params['u'];
+    this.yourHeroes$.set(heroId, hero);
+    this.heroList$.set(heroId, {
+      'heroId': heroId,
+      'heroName': hero.heroName,
+      'userId': userId,
+      'design': hero.design,
+      'heroDetailDescription': hero.heroDetailDescription
+    });
+    this.router.navigate(['/hero-details']);
   }
 }

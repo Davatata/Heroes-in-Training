@@ -68,7 +68,8 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar style="z-index: 2 !important;" color="primary">
+    <!-- The slideshow has z-index of 100 on mobile -->
+    <mat-toolbar style="z-index: 101 !important;" color="primary">
       <mat-toolbar-row>
         <button
           style="flex:5%"

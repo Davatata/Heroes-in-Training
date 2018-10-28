@@ -71,7 +71,6 @@ export class HeroDetailsComponent implements OnInit {
   }
 
   editHero() {
-    this.router.navigate(['/hero-create']);
-    console.log('edit hero');
+    this.httpService.editHero();
   }
 }

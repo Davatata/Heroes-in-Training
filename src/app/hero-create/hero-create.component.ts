@@ -19,6 +19,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
   heroRole;
   checkImage = false;
   currentArtwork = '';
+  checkArt = false;
 
   currentHero = <Hero>{
     'design': 'https://d1u5p3l4wpay3k.cloudfront.net/overwatch_gamepedia/8/81/Tracer-portrait.png',
@@ -78,6 +79,16 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
     // }
     this.currentHero = <Hero>{};
     this.currentAbility = <Ability>{};
+
+    if (this.httpService.hero$ && this.httpService.editMode) {
+      this.httpService.hero$.subscribe(res => {
+        // console.log('logging hero$');
+        // console.table(res);
+        if (this.httpService.isCreator()) {
+          this.currentHero = res;
+        }
+      });
+    }
   }
 
   resize(event) {
@@ -133,8 +144,17 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
     this.currentArtwork = '';
   }
 
-  removeArtwork() {
+  removeArt(index) {
+    this.currentHero.art.splice(index, 1);
+  }
 
+  editArt(index) {
+    this.currentArtwork = this.currentHero.art.splice(index, 1)[0];
+    this.checkArt = true;
+  }
+
+  updateHero() {
+    this.httpService.updateHero({...this.currentHero});
   }
 
   onSubmit() {

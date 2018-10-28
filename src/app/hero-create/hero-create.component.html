@@ -26,7 +26,7 @@
                 type="number"
                 placeholder="0"
                 [(ngModel)]="currentHero.age"
-                minimum="0"
+                min="0"
                 max="100000"
                 required
                 #heroAge="ngModel">
@@ -75,11 +75,11 @@
             id="description"
             name="description"
             matInput
-            placeholder="Description of your hero. (500 characters max)"
+            placeholder="Description of your hero. (1000 characters max)"
             [(ngModel)]="currentHero.heroDetailDescription"
             (keyup)="resize($event)"
             minlength="3"
-            maxlength="500"
+            maxlength="1000"
             required></textarea>
         </mat-form-field>
       </div>
@@ -309,11 +309,11 @@
     </div>
 
     <!-- Additional Artwork -->
-    <!-- <h2 class="text-center">Additional Artwork</h2>
+    <h2 class="text-center">Additional Artwork</h2>
     <div class="grid-container">
       <div class="grid-item">
           <mat-form-field appearance="outline" class="hit-input-item">
-            <mat-label>Hero Art</mat-label>
+            <mat-label>Hero Art URL</mat-label>
             <input matInput
                   type="url"
                   name="heroArt"
@@ -321,11 +321,14 @@
                   pattern="https://.*"
                   minlength="3"
                   maxlength="200"
+                  (focus)="checkArt = false"
                   [(ngModel)]="currentArtwork"
                   #heroArt="ngModel">
           </mat-form-field>
       </div>
     </div>
+
+    <!-- Add art to currentHero.art array -->
     <div class="grid-container">
       <div class="grid-item">
         <button mat-raised-button
@@ -335,15 +338,56 @@
               [disabled]="!currentArtwork">+ Add Artwork</button>
       </div>
     </div>
-    <div class="design-grid-container">
-      <div *ngFor="let artItem of currentHero.art | keyvalue" class="grid-item">
-        <div class="art-img artwork-img" [style.backgroundImage]="'url(' + artItem.value + ')'"></div>
+
+    <!-- Hero art display -->
+    <div class="grid-container">
+      <div class="grid-item">
+        <mat-slide-toggle
+          class="example-margin"
+          [color]="'primary'"
+          (change)="checkArt=!checkArt"
+          [checked]="checkArt"
+          [disabled]="!currentArtwork">
+          Toggle Design
+        </mat-slide-toggle>
       </div>
-    </div> -->
+    </div>
+    <div class="grid-container hero-art-display-bg" *ngIf="currentArtwork != '' && checkArt">
+      <div class="grid-item">
+        <img class="hero-design-display"
+             [src]="currentArtwork"
+             [alt]="currentHero.heroName">
+      </div>
+    </div>
+
+    <!-- Art gallery display -->
+    <div *ngIf="currentHero.art?.length">
+      <h2 class="text-center">Your Gallery</h2>
+      <div class="art-grid-container">
+        <!-- <div *ngFor="let artItem of currentHero.art | keyvalue" class="grid-item">
+          <div class="art-img artwork-img" [style.backgroundImage]="'url(' + artItem.value + ')'"></div>
+        </div> -->
+        <div *ngFor="let artItem of currentHero.art | keyvalue; let i = index"
+             style="text-align: left; width:100%;">
+          <mat-card>
+            <img mat-card-image
+                style="background-color:lightgray"
+                [src]="artItem.value"
+                [alt]="currentHero.heroName">
+            <mat-card-actions>
+              <button mat-button color="warn" (click)="removeArt(i)">Remove</button>
+              <button mat-button color="primary"
+                      [disabled]="currentArtwork !== '' "
+                      (click)="editArt(i)">Edit</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
 
     <!-- Submission -->
     <div class="grid-container">
-      <div class="grid-item">
+      <div *ngIf="!httpService.editMode" class="grid-item">
         <button type="submit"
         class="submit"
         mat-raised-button
@@ -352,6 +396,16 @@
         [disabled]="!heroForm.form.valid ||
                     !currentHero.abilities ||
                     currentHero.abilities.length === 0">Save Hero</button>
+      </div>
+      <div *ngIf="httpService.editMode" class="grid-item">
+        <button type="submit"
+        class="submit"
+        mat-raised-button
+        style="float:right;"
+        (click)="updateHero()"
+        [disabled]="!heroForm.form.valid ||
+                    !currentHero.abilities ||
+                    currentHero.abilities.length === 0">Update Hero</button>
       </div>
     </div>
 
