@@ -72,7 +72,11 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.currentHero = <Hero>{};
-    this.currentAbility = <Ability>{};
+    this.currentAbility = <Ability>{
+      'name': '',
+      'description': '',
+      'icon': ''
+    };
 
     if (this.httpService.hero$ && this.httpService.editMode) {
       this.httpService.hero$.subscribe(res => {
@@ -96,6 +100,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
   }
 
   addAbility() {
+    this.changeMadeIfEdit();
     this.currentAbility.name = this.currentAbility.name.trim().toUpperCase();
     this.currentAbility.description = this.currentAbility.description.trim();
     this.currentAbility.icon = this.currentAbility.icon.trim();
@@ -112,6 +117,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
   }
 
   removeCard(index: number) {
+    this.changeMadeIfEdit();
     this.currentHero.abilities.splice(index, 1);
   }
 
@@ -129,6 +135,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
   }
 
   addArtwork() {
+    this.changeMadeIfEdit();
     if (!this.currentHero.art) {
       this.currentHero.art = [];
     }
@@ -137,6 +144,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
   }
 
   removeArt(index) {
+    this.changeMadeIfEdit();
     this.currentHero.art.splice(index, 1);
   }
 
@@ -153,6 +161,12 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
 
   }
   ngOnDestroy() {
+    this.httpService.editMode = false;
+  }
 
+  changeMadeIfEdit() {
+    if (this.httpService.editMode) {
+      this.changeMade = true;
+    }
   }
 }

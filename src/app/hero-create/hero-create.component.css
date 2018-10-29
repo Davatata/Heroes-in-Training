@@ -105,7 +105,7 @@ mat-card {
   }
 }
 
-button.mat-raised-button.submit:valid {
+.submit {
   background-color: lightgreen;
 }
 

@@ -48,7 +48,8 @@ export class HttpService implements OnInit, OnDestroy {
                 this.heroesObservable = this.heroList$.snapshotChanges().pipe(
                   map(changes =>
                     changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-                  )
+                  ),
+                  map(arr => arr.reverse())
                 );
 
                 this.heroesObservable.subscribe(next => {
@@ -60,7 +61,9 @@ export class HttpService implements OnInit, OnDestroy {
                 );
 
                 this.user$.subscribe(res => {
-                  this.yourHeroes$ = db.list(`${firebaseAuth.auth.currentUser.uid}`);
+                  if (firebaseAuth.auth.currentUser) {
+                    this.yourHeroes$ = db.list(`${firebaseAuth.auth.currentUser.uid}`);
+                  }
                 });
               }
 
@@ -156,14 +159,15 @@ export class HttpService implements OnInit, OnDestroy {
   updateHero(hero: Hero) {
     const heroId = this.params['h'];
     const userId = this.params['u'];
-    this.yourHeroes$.set(heroId, hero);
-    this.heroList$.set(heroId, {
+    this.yourHeroes$.update(heroId, hero);
+    this.heroList$.update(heroId, {
       'heroId': heroId,
       'heroName': hero.heroName,
       'userId': userId,
       'design': hero.design,
       'heroDetailDescription': hero.heroDetailDescription
     });
+    this.editMode = false;
     this.router.navigate(['/hero-details']);
   }
 }
