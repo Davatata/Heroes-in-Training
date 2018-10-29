@@ -31,7 +31,7 @@
     text-align: left !important;
   }
   .heroTopName {
-    font-size: 2rem !important;
+    font-size: 2em !important;
   }
 }
 
@@ -120,7 +120,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Big Noodle Too", impact, sans-serif;
-  font-size: 2.5rem;
+  font-size: 2.5em;
   font-style: italic;
   font-weight: normal;
   font-variant: normal;
@@ -158,7 +158,7 @@
 
 .hero-bio-quote {
   font-family: "Big Noodle Too", impact, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   font-style: italic;
   font-weight: normal;
   color: #00c3ff;
@@ -260,7 +260,7 @@
   padding: 0 10px;
   background: white;
   font-family: "Big Noodle Too", impact, sans-serif;
-  font-size: 1rem;
+  font-size: 1em;
   font-style: italic;
   text-transform: uppercase;
   letter-spacing: 0.8px;
