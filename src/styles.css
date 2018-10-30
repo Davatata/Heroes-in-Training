@@ -134,6 +134,13 @@ img.hero-ability-icon {
   opacity: 1 !important;
 }
 
+.mat-tab-label-content {
+  font-size: 1.4em !important;
+  text-transform: uppercase !important;
+  font-weight: bold !important;
+  font-family: "FuturaNo2D", "century gothic", arial, sans-serif !important;
+}
+
 .tab-body{
   overflow: -webkit-paged-y;
   padding: 15px;

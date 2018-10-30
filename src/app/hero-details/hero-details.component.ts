@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener} from '@angular/core';
+import { Component, OnInit, HostListener, AfterViewInit} from '@angular/core';
 import { HttpService } from '../http-service.service';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
   templateUrl: './hero-details.component.html',
   styleUrls: ['./hero-details.component.css']
 })
-export class HeroDetailsComponent implements OnInit {
+export class HeroDetailsComponent implements OnInit, AfterViewInit {
   heroName = '';
   currentHero;
   bgColor = 'white';
@@ -43,10 +43,6 @@ export class HeroDetailsComponent implements OnInit {
               }
 
   ngOnInit() {
-    // console.log('Scrolling to top');
-    // window.scrollTo(0, 0);
-    // this.innerWidth = window.innerWidth;
-
     this.userParam = this.route.snapshot.paramMap.get('u');
     this.heroParam = this.route.snapshot.paramMap.get('h');
     const localU = localStorage['hit-u'];
@@ -61,6 +57,12 @@ export class HeroDetailsComponent implements OnInit {
       console.log('getting hero from localstorage');
       this.httpService.getHero(localU, localH);
     }
+  }
+
+  ngAfterViewInit() {
+    console.log('Scrolling to top');
+    window.scroll(0, 0);
+    this.innerWidth = window.innerWidth;
   }
 
   getHero() {
