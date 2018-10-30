@@ -38,6 +38,18 @@ mat-form-field {
   width: 100%;
 }
 
+#backstory {
+  min-height: 300px;
+}
+
+#description {
+  min-height: 200px;
+}
+
+#abilityDescription {
+  min-height: 100px;
+}
+
 #description, #backstory, #abilityDescription {
 	box-sizing: border-box;
 }

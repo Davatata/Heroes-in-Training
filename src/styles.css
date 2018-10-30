@@ -165,3 +165,7 @@ img.hero-ability-icon {
   transition: all 0.3s;
   cursor: pointer;
 }
+
+.no-box-shadow {
+  box-shadow: none !important;
+}

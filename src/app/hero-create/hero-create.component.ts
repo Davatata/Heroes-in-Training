@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 // import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 import { Hero } from '../models/hero.model';
@@ -6,14 +6,20 @@ import { Ability } from '../models/ability.model';
 import { HttpService } from '../http-service.service';
 import { Router } from '@angular/router';
 
+import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-hero-create',
   templateUrl: './hero-create.component.html',
   styleUrls: ['./hero-create.component.css']
 })
-export class HeroCreateComponent implements OnInit, OnDestroy {
+export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  @ViewChild('abilityArea') heroAbility;
+  faArrowUp = faArrowUp;
+  faArrowDown = faArrowDown;
+
+  // @ViewChild('abilityArea') heroAbility;
+
   roles = ['TANK', 'DAMAGE', 'SUPPORT'];
   difficulties = [{value: 1, text: 'Easy'}, {value: 2, text: 'Medium'}, {value: 3, text: 'Hard'}];
   heroRole;
@@ -23,49 +29,11 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
   changeMade = false;
 
   currentHero = <Hero>{};
-  // currentHero = <Hero>{
-  //   'design': 'https://d1u5p3l4wpay3k.cloudfront.net/overwatch_gamepedia/8/81/Tracer-portrait.png',
-  //   'role': 'DAMAGE',
-  //   'difficulty': 2,
-  //   'heroDetailDescription': 'Toting twin pulse pistols, energy-based time bombs, and rapid-fire banter.',
-  //   'age': 26,
-  //   'realName': 'Lena Oxton',
-  //   'heroName': 'Tracer',
-  //   'occupation': 'Adventurer',
-  //   'baseOfOperations': 'London, England',
-  //   'affiliation': 'Overwatch (formerly)',
-  //   'heroQuote': '"CHEERS, LOVE! THE CAVALRY’S HERE!"',
-  //   'heroBackstory': 'Lena Oxton (call sign: "Tracer") was the youngest person ever inducted into Overwatch\'s...',
-  //   'abilities': [
-  //     {
-  //       'name': 'PULSE PISTOLS',
-  //       'description': 'Tracer rapid-fires both of her pistols.',
-  //       'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-pistols/icon-ability.png'
-  //     },
-  //     {
-  //       'name': 'BLINK',
-  //       'description': 'Tracer zips horizontally through space in the direction she’s moving, and reappears...',
-  //       'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-blink/icon-ability.png'
-  //     },
-  //     {
-  //       'name': 'RECALL',
-  //       'description': 'Tracer bounds backward in time, returning her health, ammo and position on the map to...',
-  //       'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-recall/icon-ability.png'
-  //     },
-  //     {
-  //       'name': 'PULSE BOMB',
-  //       'description': 'Tracer lobs a large bomb that adheres to any surface or unfortunate opponent it lands on.',
-  //       'icon': 'https://d1u1mce87gyfbn.cloudfront.net/hero/tracer/ability-pulse-bomb/icon-ability.png'
-  //     }
-  //   ],
-  //   'art': []
-  // };
-
-
   currentAbility = <Ability>{};
-  defaultAbilityURL = 'https://d1u1mce87gyfbn.cloudfront.net/hero/mccree/ability-flashbang/icon-ability.png';
+  // defaultAbilityURL = 'https://d1u1mce87gyfbn.cloudfront.net/hero/mccree/ability-flashbang/icon-ability.png';
 
-  // @ViewChild('description') description: ElementRef;
+  @ViewChild('description') description: ElementRef;
+  @ViewChild('backstory') backstory: ElementRef;
 
   constructor(public httpService: HttpService,
               private router: Router) {}
@@ -85,6 +53,13 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
         }
       });
     }
+  }
+
+  ngAfterViewInit() {
+    this.description.nativeElement.style.height =
+    this.description.nativeElement.style.scrollHeight + 'px';
+    this.backstory.nativeElement.style.height =
+    this.backstory.nativeElement.style.scrollHeight + 'px';
   }
 
   resize(event) {
@@ -168,5 +143,21 @@ export class HeroCreateComponent implements OnInit, OnDestroy {
     if (this.httpService.editMode) {
       this.changeMade = true;
     }
+  }
+
+  moveAbilityUp(i) {
+    const newPos = (i === 0 ? this.currentHero.abilities.length - 1 : i - 1);
+    this.moveHeroAbility(i, newPos);
+  }
+
+  moveAbilityDown(i) {
+    const newPos = (i === this.currentHero.abilities.length - 1 ? 0 : i + 1);
+    this.moveHeroAbility(i, newPos);
+  }
+
+  moveHeroAbility(i, newPos) {
+    const ability = this.currentHero.abilities.splice(i, 1);
+    this.currentHero.abilities.splice(newPos, 0, ability[0]);
+    this.changeMade = true;
   }
 }

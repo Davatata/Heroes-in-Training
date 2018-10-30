@@ -79,7 +79,7 @@
             id="description"
             name="description"
             matInput
-            placeholder="Description of your hero. (1000 characters max)"
+            placeholder="(1000 characters max)"
             [(ngModel)]="currentHero.heroDetailDescription"
             (keyup)="resize($event)"
             minlength="3"
@@ -120,7 +120,7 @@
           (change)="checkImage=!checkImage"
           [checked]="checkImage"
           [disabled]="!currentHero.design">
-          Toggle Design
+          Toggle Current Design
         </mat-slide-toggle>
       </div>
     </div>
@@ -207,7 +207,7 @@
             id="backstory"
             name="backstory"
             matInput
-            placeholder="Hero Backstory"
+            placeholder="(3000 characters max)"
             [(ngModel)]="currentHero.heroBackstory"
             (keyup)="resize($event)"
             minlength="3"
@@ -257,7 +257,7 @@
                 style="width: 100%; padding-left: 10px; text-align: left;"
                 matInput
                 (keyup)="resize($event)"
-                placeholder="Ability Description"
+                placeholder="(500 characters max)"
                 maxlength="500"
                 (change)="changeMade = true"
                 [(ngModel)]="currentAbility.description"></textarea>
@@ -310,6 +310,24 @@
                                 currentAbility.icon !== '' ||
                                 currentAbility.description !== '' "
                     (click)="editCard(i)">Edit</button>
+            <div *ngIf="currentHero.abilities.length > 1" style="float:right">
+              <button mat-mini-fab color=""
+                      type="button"
+                      class="icon-bg no-box-shadow"
+                      aria-label="twitter"
+                      style="margin:0 10px;"
+                      (click)="moveAbilityUp(i)">
+                <fa-icon [icon]="faArrowUp"></fa-icon>
+              </button>
+              <button mat-mini-fab color=""
+                      type="button"
+                      class="icon-bg no-box-shadow"
+                      aria-label="twitter"
+                      style="margin:0 10px;"
+                      (click)="moveAbilityDown(i)">
+                <fa-icon [icon]="faArrowDown"></fa-icon>
+              </button>
+            </div>
           </mat-card-actions>
         </mat-card>
       </div>
@@ -328,7 +346,7 @@
     </div>
 
     <!-- Additional Artwork -->
-    <h2 class="text-center">Additional Artwork</h2>
+    <h2 class="text-center">Art Gallery</h2>
     <div class="grid-container">
       <div class="grid-item">
           <mat-form-field appearance="outline" class="hit-input-item">
@@ -370,7 +388,7 @@
           (change)="checkArt=!checkArt"
           [checked]="checkArt"
           [disabled]="!currentArtwork">
-          Toggle Design
+          Toggle Current Design
         </mat-slide-toggle>
       </div>
     </div>
@@ -384,7 +402,7 @@
 
     <!-- Art gallery display -->
     <div *ngIf="currentHero.art?.length">
-      <h2 class="text-center">Your Gallery</h2>
+      <!-- <h2 class="text-center">Your Gallery</h2> -->
       <div class="art-grid-container">
         <!-- <div *ngFor="let artItem of currentHero.art | keyvalue" class="grid-item">
           <div class="art-img artwork-img" [style.backgroundImage]="'url(' + artItem.value + ')'"></div>
