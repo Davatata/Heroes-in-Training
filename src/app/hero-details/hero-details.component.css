@@ -35,7 +35,7 @@
   }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 901px) {
   .large-hero-image {
     display: block;
   }
@@ -156,6 +156,7 @@
   background-image: url(https://d3hmvhl7ru3t12.cloudfront.net/img/ow-fractal-bg-560a8b12481e653dd68127bfe7ab850c0ffd8b0ed6b591e329140a72f91b5f03f601d36ff54af87c62eac7cb743b58de7917f4c381c03b7ff92d22ffcec97ec2.jpg);
 }
 
+
 .hero-bio-quote {
   font-family: "Big Noodle Too", impact, sans-serif;
   font-size: 1.5em;
@@ -163,6 +164,7 @@
   font-weight: normal;
   color: #00c3ff;
   letter-spacing: 0.5px;
+  padding: 15px 0;
 }
 
 .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
