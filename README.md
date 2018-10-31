@@ -2,7 +2,7 @@
 
 A site where users can upload their Overwatch character designs to share with the world.
 
-When creating an Overwatch character, uploading png images with transparent backgrounds look best. Shown below.
+When creating an Overwatch character, uploading png images with transparent backgrounds looks best. Shown below.
 
 <div>
   <h2>Without transparent background</h2>
