@@ -114,7 +114,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
     if (!this.currentHero.art) {
       this.currentHero.art = [];
     }
-    this.currentHero.art.push(this.currentArtwork);
+    this.currentHero.art.push(this.currentArtwork.trim());
     this.currentArtwork = '';
   }
 
@@ -129,6 +129,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   updateHero() {
+    this.cleanUpText();
     this.httpService.updateHero({...this.currentHero});
   }
 
@@ -159,5 +160,18 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
     const ability = this.currentHero.abilities.splice(i, 1);
     this.currentHero.abilities.splice(newPos, 0, ability[0]);
     this.changeMade = true;
+  }
+
+  cleanUpText() {
+    const hero = this.currentHero;
+    hero.design = hero.design.trim();
+    hero.heroDetailDescription = hero.heroDetailDescription.trim();
+    hero.realName = hero.realName.trim();
+    hero.heroName = hero.heroName.trim();
+    hero.occupation = hero.occupation.trim();
+    hero.baseOfOperations = hero.baseOfOperations.trim();
+    hero.affiliation = hero.affiliation.trim();
+    hero.heroQuote = hero.heroQuote.trim().replace(/\"/g, '');
+    hero.heroBackstory = hero.heroBackstory.trim();
   }
 }

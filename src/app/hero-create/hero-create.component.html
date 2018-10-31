@@ -366,19 +366,6 @@
       </div>
     </div>
 
-    <!-- Add art to currentHero.art array -->
-    <div class="grid-container">
-      <div class="grid-item">
-        <button mat-raised-button
-              style="float:right;"
-              (click)="addArtwork()"
-              color="primary"
-              type="button"
-              [disabled]="!currentArtwork ||
-                          heroArt.invalid">+ Add Artwork</button>
-      </div>
-    </div>
-
     <!-- Hero art display -->
     <div class="grid-container">
       <div class="grid-item">
@@ -400,9 +387,22 @@
       </div>
     </div>
 
+    <!-- Add art to currentHero.art array -->
+    <div class="grid-container">
+      <div class="grid-item">
+        <button mat-raised-button
+              style="float:right;"
+              (click)="addArtwork()"
+              color="primary"
+              type="button"
+              [disabled]="!currentArtwork ||
+                          heroArt.invalid">+ Add Artwork</button>
+      </div>
+    </div>
+
     <!-- Art gallery display -->
     <div *ngIf="currentHero.art?.length">
-      <!-- <h2 class="text-center">Your Gallery</h2> -->
+      <h2 class="text-center">Current Gallery</h2>
       <div class="art-grid-container">
         <!-- <div *ngFor="let artItem of currentHero.art | keyvalue" class="grid-item">
           <div class="art-img artwork-img" [style.backgroundImage]="'url(' + artItem.value + ')'"></div>

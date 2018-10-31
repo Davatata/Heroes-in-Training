@@ -176,3 +176,8 @@ img.hero-ability-icon {
 .no-box-shadow {
   box-shadow: none !important;
 }
+
+.arrow {
+  border-top: 2px solid #939393 !important;
+  border-left: 2px solid #939393 !important;
+}

@@ -6,12 +6,12 @@
 }
 
 .hit-header {
-  font-family: "Big Noodle Too", impact, sans-serif;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
   font-size: 1.5em;
   text-align: center;
   font-style: italic;
   padding: 2em 5px 0 5px;
-  font-weight: normal;
+  font-weight: bold;
   font-variant: normal;
   line-height: normal;
   letter-spacing: 0.8px;

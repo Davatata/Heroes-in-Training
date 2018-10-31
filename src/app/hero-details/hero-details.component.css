@@ -260,8 +260,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   padding: 0 10px;
-  background: white;
-  font-family: "Big Noodle Too", impact, sans-serif;
+  background: #F6F6F6;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
   font-size: 1em;
   font-style: italic;
   text-transform: uppercase;
@@ -272,4 +272,8 @@
   background-color: rgba(19, 42, 77, 0.5);
   padding: 20px 8px;
   line-height: 1.6;
+}
+
+.edit-button-row {
+  text-align: center;
 }
