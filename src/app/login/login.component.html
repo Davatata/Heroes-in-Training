@@ -12,7 +12,8 @@
   <form *ngIf="!(httpService.user$ | async)" class="example-form" #loginForm="ngForm">
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput type="email"
+      <input matInput
+            type="email"
             [(ngModel)]="email"
             name="email"
             pattern=""
@@ -22,11 +23,14 @@
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Password</mat-label>
       <input matInput
-      type="password"
-      [(ngModel)]="password"
-      name="password"
-      required>
+              type="password"
+              [(ngModel)]="password"
+              name="password"
+              required>
     </mat-form-field>
+    <a [routerLink]="['/signup']"
+         routerLinkActive="router-link-active"
+         class="hit-nav-button credential-link">Haven't signed up? Go here. </a>
     <button class="authButton" mat-raised-button
             (click)="login()"
             [disabled]="!email || !password || !loginForm.valid">
