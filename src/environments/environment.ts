@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   firebase: {
+    // asdfasf
     apiKey: 'AIzaSyAbKo5bHoJpGZB-AjsvYvnhlhg5HHRlWhc',
     authDomain: 'heroes-in-training.firebaseapp.com',
     databaseURL: 'https://heroes-in-training.firebaseio.com',
