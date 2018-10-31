@@ -1,5 +1,5 @@
 <div class="form-container data-bg">
-  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+  <form (ngSubmit)="updateHero()" #heroForm="ngForm">
     <h2 class="text-center">Character Overview</h2>
 
     <!-- Name, Role, Difficulty -->
@@ -445,7 +445,6 @@
         class="submit"
         mat-raised-button
         style="float:right;"
-        (click)="updateHero()"
         [disabled]="!heroForm.form.valid ||
                     !changeMade ||
                     !currentHero.abilities ||

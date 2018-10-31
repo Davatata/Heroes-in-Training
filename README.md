@@ -13,3 +13,8 @@ When creating an Overwatch character, uploading png images with transparent back
   <h2>With transparent background</h2>
   <img src="./src/assets/data/hit-goodpng.png" width="500px;">
 </div>
+
+<div>
+  <h2>Gallery Example</h2>
+  <img src="./src/assets/data/hit-gallery.png" width="500px;">
+</div>

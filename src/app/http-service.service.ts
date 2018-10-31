@@ -83,8 +83,10 @@ export class HttpService implements OnInit, OnDestroy {
         this.router.navigate(['/home']);
         // this.userId = this.firebaseAuth.auth['O'];
         this.firebaseAuth.authState.subscribe(data => {
-          this.userId = data.uid;
-          this.yourHeroes$ = this.db.list(`${data.uid}`);
+          if (data && data.uid) {
+            this.userId = data.uid;
+            this.yourHeroes$ = this.db.list(`${data.uid}`);
+          }
         });
       })
       .catch(err => {
@@ -100,8 +102,10 @@ export class HttpService implements OnInit, OnDestroy {
         console.log('Nice, logged in!');
         this.router.navigate(['/home']);
         this.firebaseAuth.authState.subscribe(data => {
-          this.userId = data.uid;
-          this.yourHeroes$ = this.db.list(`${data.uid}`);
+          if (data && data.uid) {
+            this.userId = data.uid;
+            this.yourHeroes$ = this.db.list(`${data.uid}`);
+          }
         });
       })
       .catch(err => {

@@ -1,15 +1,9 @@
-<!-- <div *ngIf="!(httpService.user | async)">
-  <input type="text" [(ngModel)]="email" placeholder="email">
-  <input type="password" [(ngModel)]="password" placeholder="password">
-
-  <button (click)="login()" [disabled]="!email || !password">
-    Login
-  </button>
-</div> -->
 <div style="min-height: calc(80vh - 100px); padding-top: 50px;">
-
   <h2 style="text-align: center;">Log In</h2>
-  <form *ngIf="!(httpService.user$ | async)" class="example-form" #loginForm="ngForm">
+  <form *ngIf="!(httpService.user$ | async)"
+        class="example-form"
+        #loginForm="ngForm"
+        (ngSubmit)="login(); loginForm.reset()">
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput
@@ -26,16 +20,19 @@
               type="password"
               [(ngModel)]="password"
               name="password"
+              minlength="6"
               required>
     </mat-form-field>
+    <div class="credential-link">
     <a [routerLink]="['/signup']"
          routerLinkActive="router-link-active"
-         class="hit-nav-button credential-link">Haven't signed up? Go here. </a>
-    <button class="authButton" mat-raised-button
-            (click)="login()"
-            [disabled]="!email || !password || !loginForm.valid">
+         class="hit-nav-button">Haven't signed up? Go here. </a>
+    </div>
+    <button class="authButton"
+            mat-raised-button
+            type="submit"
+            [disabled]="!email || !password || !loginForm.form.valid">
       Login
     </button>
   </form>
-
 </div>

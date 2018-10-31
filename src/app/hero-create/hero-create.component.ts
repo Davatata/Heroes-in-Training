@@ -133,9 +133,6 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
     this.httpService.updateHero({...this.currentHero});
   }
 
-  onSubmit() {
-
-  }
   ngOnDestroy() {
     this.httpService.editMode = false;
   }
