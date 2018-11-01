@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
@@ -9,6 +9,8 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class DialogComponent implements OnInit {
 
+  @ViewChild('slide') slideshow: any;
+
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {}
@@ -18,6 +20,11 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.data) {
+      console.log(this.data);
+      // this.slideshow.goToSlide(this.data.index);
+      // this.slideshow.goToSlide(3);
+    }
   }
 
 }

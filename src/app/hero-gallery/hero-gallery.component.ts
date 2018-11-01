@@ -8,6 +8,7 @@ import { HttpService } from '../http-service.service';
 })
 export class HeroGalleryComponent implements OnInit {
 
+  role = 'A';
   constructor(public httpService: HttpService) { }
 
   ngOnInit() {

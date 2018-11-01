@@ -1,5 +1,5 @@
 <div class="form-container data-bg">
-  <form (ngSubmit)="updateHero()" #heroForm="ngForm">
+  <form  #heroForm="ngForm">
     <h2 class="text-center">Character Overview</h2>
 
     <!-- Name, Role, Difficulty -->
@@ -238,6 +238,7 @@
               <mat-label>Ability Icon URL</mat-label>
               <input style="width: 100%; padding-left: 10px; text-align: left;"
                     type="url"
+                    #abilityURL
                     matInput name="abilityIcon"
                     placeholder="https://example.com/imgs/icon.png"
                     pattern="https://.*"
@@ -445,6 +446,7 @@
         class="submit"
         mat-raised-button
         style="float:right;"
+        (click)="updateHero()"
         [disabled]="!heroForm.form.valid ||
                     !changeMade ||
                     !currentHero.abilities ||

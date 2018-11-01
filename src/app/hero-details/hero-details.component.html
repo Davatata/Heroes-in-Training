@@ -88,10 +88,23 @@
         <h1 class="hit-header">Art Gallery</h1>
       </div>
     </div>
-    <div class="additional-art-container" style="margin: 0 0 2em 0">
-      <!-- <div *ngFor="let artItem of hero.art | keyvalue" class="grid-item">
-        <div class="art-img" [style.backgroundImage]="'url(' + artItem.value + ')'"></div>
-      </div> -->
+    <div class="additional-art-container">
+      <div class="grid-item">
+        <section>
+          <mat-slide-toggle
+              (change)="grid = !grid;">
+            Grid
+          </mat-slide-toggle>
+        </section>
+      </div>
+    </div>
+
+    <div *ngIf="grid" class="gallery-art-container" style="margin: 0 0 2em 0">
+      <div *ngFor="let artItem of hero.art | keyvalue" class="grid-item">
+        <div (click)="openDialog(artItem.value)" class="art-img" [style.backgroundImage]="'url(' + artItem.value + ')'"></div>
+      </div>
+    </div>
+    <div *ngIf="!grid" class="gallery-art-container" style="margin: 0 0 2em 0">
         <slideshow [height]="'70vh'"
             [minHeight]="'300px'"
             [autoPlay]="false"
@@ -104,6 +117,7 @@
             [autoPlayWaitForLazyLoad]="false">
         </slideshow>
     </div>
+
   </div>
 
   <!-- <div class="grid-container">

@@ -129,9 +129,11 @@ export class HttpService implements OnInit, OnDestroy {
         'heroName': hero.heroName,
         'userId': userId,
         'design': hero.design,
+        'role' : hero.role[0].toUpperCase(),
         'heroDetailDescription': hero.heroDetailDescription
       });
       this.editMode = false;
+      this.clearUnsavedHero();
       this.getHero(userId, heroId);
     });
   }
@@ -169,9 +171,16 @@ export class HttpService implements OnInit, OnDestroy {
       'heroName': hero.heroName,
       'userId': userId,
       'design': hero.design,
+      'role' : hero.role[0].toUpperCase(),
       'heroDetailDescription': hero.heroDetailDescription
     });
     this.editMode = false;
+    this.clearUnsavedHero();
     this.router.navigate(['/hero-details']);
+  }
+
+  clearUnsavedHero() {
+    this.unsavedHero = null;
+    localStorage.removeItem('unsavedHero');
   }
 }

@@ -268,6 +268,11 @@
   letter-spacing: 0.8px;
 }
 
+.gallery-art-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
 .backstory {
   background-color: rgba(19, 42, 77, 0.5);
   padding: 20px 8px;

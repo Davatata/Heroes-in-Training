@@ -1,21 +1,30 @@
-<div class="gallery-grid-container">
-  <!-- <div class="grid-item">
-      <mat-button-toggle-group>
-          <mat-button-toggle value="all">
-            All
-          </mat-button-toggle>
-          <mat-button-toggle value="damage">
-            Damage
-          </mat-button-toggle>
-          <mat-button-toggle value="support">
-            Support
-          </mat-button-toggle>
-          <mat-button-toggle value="tank">
-            Tank
-          </mat-button-toggle>
-        </mat-button-toggle-group>
-  </div> -->
-  <div class="grid-item"  *ngFor="let hero of httpService.heroesObservable | async" >
-    <app-hero-card [hero]="hero"></app-hero-card>
+<div class="hit-container">
+  <div class="filter-buttons">
+    <mat-button-toggle-group [(ngModel)]="role" style="background-color:white;">
+      <mat-button-toggle value="A">
+        All
+      </mat-button-toggle>
+      <mat-button-toggle value="D">
+        Damage
+      </mat-button-toggle>
+      <mat-button-toggle value="S">
+        Support
+      </mat-button-toggle>
+      <mat-button-toggle value="T">
+        Tank
+      </mat-button-toggle>
+    </mat-button-toggle-group>
   </div>
+
+  <div class="gallery-grid-container">
+    <ng-container *ngFor="let hero of httpService.heroesObservable | async" >
+      <div class="grid-item" *ngIf="role === 'A' || hero.role === role">
+        <app-hero-card  [hero]="hero"></app-hero-card>
+      </div>
+    </ng-container>
+    <!-- <div class="grid-item"  *ngFor="let hero of httpService.heroesObservable | async" >
+      <app-hero-card *ngIf="role === 'A' || hero.role === role" [hero]="hero"></app-hero-card>
+    </div> -->
+  </div>
+
 </div>

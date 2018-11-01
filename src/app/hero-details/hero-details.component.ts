@@ -1,9 +1,11 @@
 import { Component, OnInit, HostListener, AfterViewInit} from '@angular/core';
 import { HttpService } from '../http-service.service';
-import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, ActivatedRoute  } from '@angular/router';
 import { Location } from '@angular/common';
+import {MatDialog, MatIconRegistry} from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
+
 
 
 @Component({
@@ -18,6 +20,7 @@ export class HeroDetailsComponent implements OnInit, AfterViewInit {
   innerWidth: any;
   userParam;
   heroParam;
+  grid = false;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -25,6 +28,7 @@ export class HeroDetailsComponent implements OnInit, AfterViewInit {
   }
 
   constructor(public httpService: HttpService,
+              public dialog: MatDialog,
               private router: Router,
               private route: ActivatedRoute,
               private matIconRegistry: MatIconRegistry,
@@ -74,5 +78,19 @@ export class HeroDetailsComponent implements OnInit, AfterViewInit {
 
   editHero() {
     this.httpService.editHero();
+  }
+
+  openDialog(url): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '100vw',
+      data: url
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if (result) {
+        console.log('clicked ok');
+      }
+    });
   }
 }

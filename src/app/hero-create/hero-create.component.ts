@@ -46,6 +46,17 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
       'icon': ''
     };
 
+    if (this.httpService.unsavedHero) {
+      this.currentHero = {...this.httpService.unsavedHero};
+      console.table(this.currentHero);
+    } else if (localStorage['unsavedHero']) {
+      this.currentHero = <Hero>JSON.parse(localStorage['unsavedHero']);
+    } else {
+      this.currentHero = <Hero>{};
+    }
+
+    this.httpService.clearUnsavedHero();
+
     if (this.httpService.hero$ && this.httpService.editMode) {
       this.httpService.hero$.subscribe(res => {
         if (this.httpService.isCreator()) {
@@ -105,7 +116,10 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   saveHero() {
+    this.cleanUpText();
     this.httpService.addHero({...this.currentHero});
+    this.httpService.clearUnsavedHero();
+    this.changeMade = false;
     this.router.navigate(['/hero-details']);
   }
 
@@ -130,11 +144,9 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
 
   updateHero() {
     this.cleanUpText();
+    this.httpService.clearUnsavedHero();
+    this.changeMade = false;
     this.httpService.updateHero({...this.currentHero});
-  }
-
-  ngOnDestroy() {
-    this.httpService.editMode = false;
   }
 
   changeMadeIfEdit() {
@@ -169,6 +181,15 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
     hero.baseOfOperations = hero.baseOfOperations.trim();
     hero.affiliation = hero.affiliation.trim();
     hero.heroQuote = hero.heroQuote.trim().replace(/\"/g, '');
+    console.log('new quote', hero.heroQuote);
     hero.heroBackstory = hero.heroBackstory.trim();
+  }
+
+  ngOnDestroy() {
+    if (this.changeMade) {
+      this.httpService.unsavedHero = {...this.currentHero};
+      localStorage['unsavedHero'] = JSON.stringify(this.currentHero);
+    }
+    this.httpService.editMode = false;
   }
 }

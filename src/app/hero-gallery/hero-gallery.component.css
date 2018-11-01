@@ -6,6 +6,16 @@ mat-card {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   padding: 0 10px;
+}
+
+.hit-container {
+  min-height: 500px;
   background-size: cover;
   background-image: url('../../assets/imgs/ow-bg.jpg');
+}
+
+.filter-buttons {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
 }
