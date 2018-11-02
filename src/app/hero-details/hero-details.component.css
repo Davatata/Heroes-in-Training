@@ -190,7 +190,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px 10px;
+  padding: 3em 10px;
 }
 
 @media(max-width:500px) {
@@ -199,7 +199,7 @@
   }
   .hit-ability-icon {
     /* max-width: 70px; */
-    max-width: 20%;
+    max-width: 25%;
   }
   .ability-grid-icon {
     width: -webkit-fill-available;

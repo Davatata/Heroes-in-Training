@@ -5,8 +5,7 @@
       <!-- <div mat-card-avatar class="hit-card-image"></div> -->
       <mat-card-title>{{hero.heroName}}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image
-    style="background-color:#e9e9e9" [src]="hero.design" [alt]="hero.heroName">
+    <img mat-card-image class="hero-card-image" [src]="hero.design" [alt]="hero.heroName">
     <mat-card-content>
       <p *ngIf="hero.heroDetailDescription.length < 100">
         {{hero.heroDetailDescription}}</p>
