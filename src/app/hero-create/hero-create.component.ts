@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 // import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 import { Hero } from '../models/hero.model';
@@ -35,6 +35,11 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('description') description: ElementRef;
   @ViewChild('backstory') backstory: ElementRef;
 
+  @HostListener('window:beforeunload', [ '$event' ])
+  beforeUnloadHander(event) {
+    this.storeHero();
+  }
+
   constructor(public httpService: HttpService,
               private router: Router) {}
 
@@ -55,7 +60,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
       this.currentHero = <Hero>{};
     }
 
-    this.httpService.clearUnsavedHero();
+    // this.httpService.clearUnsavedHero();
 
     if (this.httpService.hero$ && this.httpService.editMode) {
       this.httpService.hero$.subscribe(res => {
@@ -185,10 +190,15 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
     hero.heroBackstory = hero.heroBackstory.trim();
   }
 
+  storeHero() {
+    this.httpService.unsavedHero = {...this.currentHero};
+    localStorage['unsavedHero'] = JSON.stringify(this.currentHero);
+  }
+
   ngOnDestroy() {
     if (this.changeMade) {
-      this.httpService.unsavedHero = {...this.currentHero};
-      localStorage['unsavedHero'] = JSON.stringify(this.currentHero);
+      console.log('saving hero in storage');
+      this.storeHero();
     }
     this.httpService.editMode = false;
   }

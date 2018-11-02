@@ -10,7 +10,7 @@
           <input matInput name="heroName"
                 placeholder="Heroic name"
                 [(ngModel)]="currentHero.heroName"
-                minlength="3"
+                minlength="1"
                 maxlength="100"
                 required
                 (change)="changeMade = true"
@@ -119,7 +119,7 @@
           [color]="'primary'"
           (change)="checkImage=!checkImage"
           [checked]="checkImage"
-          [disabled]="!currentHero.design">
+          [disabled]="!currentHero.design || heroDesign.invalid">
           Toggle Current Design
         </mat-slide-toggle>
       </div>
@@ -141,7 +141,7 @@
           <input matInput name="realName"
                 placeholder="Hero's real name"
                 [(ngModel)]="currentHero.realName"
-                minlength="3"
+                minlength="1"
                 maxlength="100"
                 (change)="changeMade = true"
                 required>
@@ -375,7 +375,7 @@
           [color]="'primary'"
           (change)="checkArt=!checkArt"
           [checked]="checkArt"
-          [disabled]="!currentArtwork">
+          [disabled]="!currentArtwork || heroArt.invalid">
           Toggle Current Design
         </mat-slide-toggle>
       </div>

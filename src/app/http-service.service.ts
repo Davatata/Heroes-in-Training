@@ -35,7 +35,7 @@ export class HttpService implements OnInit, OnDestroy {
   heroName = 'genji';
   tempHero;
   currentHero: Hero;
-  unsavedHero: Hero;
+  unsavedHero: Hero = null;
   // user.uid => hold unique id
   constructor(private breakpointObserver: BreakpointObserver,
               private http: HttpClient,

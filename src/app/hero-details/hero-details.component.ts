@@ -82,7 +82,7 @@ export class HeroDetailsComponent implements OnInit, AfterViewInit {
 
   openDialog(url): void {
     const dialogRef = this.dialog.open(DialogComponent, {
-      width: '100vw',
+      width: '1000px',
       data: url
     });
 
