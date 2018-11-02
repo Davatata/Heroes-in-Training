@@ -26,7 +26,7 @@
       <a [routerLink]="['/hero-create']"
         routerLinkActive="router-link-active"
         mat-list-item
-        (click)="drawer.toggle()"
+        (click)="httpService.clearUnsavedHero(); drawer.toggle()"
         class="hit-nav-button">CREATE A HERO</a>
       <a [routerLink]="['/hero-details']"
         [queryParams]="httpService.params"
@@ -38,7 +38,7 @@
         routerLinkActive="router-link-active"
         mat-list-item
         (click)="drawer.toggle()"
-        class="hit-nav-button">HERO GALLERY</a>
+        class="hit-nav-button">GALLERY</a>
       <a
         mat-list-item
         (click)="drawer.toggle()"
@@ -65,7 +65,7 @@
          routerLinkActive="router-link-active"
          mat-list-item
          (click)="drawer.toggle()"
-         class="hit-nav-button">HERO GALLERY</a>
+         class="hit-nav-button">GALLERY</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -113,13 +113,13 @@
               routerLinkActive="router-link-active"
               mat-list-item
               (click)="drawer.toggle()"
-              class="hit-main-nav-button">HERO GALLERY</a>
+              class="hit-main-nav-button">GALLERY</a>
           </mat-nav-list>
           <mat-nav-list *ngIf="httpService.user$ | async" style="display: inline-flex; padding: 0 15px;">
             <a [routerLink]="['/hero-create']"
             routerLinkActive="router-link-active"
             mat-list-item
-            (click)="drawer.toggle()"
+            (click)="httpService.clearUnsavedHero(); drawer.toggle()"
             class="hit-main-nav-button">CREATE A HERO</a>
             <a [routerLink]="['/hero-details']"
             [queryParams]="httpService.params"
@@ -131,7 +131,7 @@
             routerLinkActive="router-link-active"
             mat-list-item
             (click)="drawer.toggle()"
-            class="hit-main-nav-button">HERO GALLERY</a>
+            class="hit-main-nav-button">GALLERY</a>
           <a
             mat-list-item
             (click)="drawer.toggle()"

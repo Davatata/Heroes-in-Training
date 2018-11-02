@@ -188,3 +188,8 @@ img.hero-ability-icon {
   text-align: center;
   float: right;
 }
+
+.mat-error {
+  text-transform: uppercase;
+  font-family: sans-serif;
+}

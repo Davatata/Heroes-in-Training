@@ -22,7 +22,6 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
 
   roles = ['TANK', 'DAMAGE', 'SUPPORT'];
   difficulties = [{value: 1, text: 'Easy'}, {value: 2, text: 'Medium'}, {value: 3, text: 'Hard'}];
-  heroRole;
   checkImage = false;
   currentArtwork = '';
   checkArt = false;
