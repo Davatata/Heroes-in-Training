@@ -1,10 +1,13 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit, HostListener } from '@angular/core';
+ import { NgForm } from '@angular/forms';
 // import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 import { Hero } from '../models/hero.model';
 import { Ability } from '../models/ability.model';
 import { HttpService } from '../http-service.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
 
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -33,6 +36,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild('description') description: ElementRef;
   @ViewChild('backstory') backstory: ElementRef;
+  @ViewChild('heroForm') heroForm: NgForm;
 
   @HostListener('window:beforeunload', [ '$event' ])
   beforeUnloadHander(event) {
@@ -40,10 +44,11 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   constructor(public httpService: HttpService,
+              public dialog: MatDialog,
               private router: Router) {}
 
   ngOnInit() {
-    this.currentHero = <Hero>{};
+    this.clearCurrentHero();
     this.currentAbility = <Ability>{
       'name': '',
       'description': '',
@@ -52,11 +57,13 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
 
     if (this.httpService.unsavedHero) {
       this.currentHero = {...this.httpService.unsavedHero};
+      this.changeMade = true;
       console.table(this.currentHero);
     } else if (localStorage['unsavedHero']) {
       this.currentHero = <Hero>JSON.parse(localStorage['unsavedHero']);
+      this.changeMade = true;
     } else {
-      this.currentHero = <Hero>{};
+      this.clearCurrentHero();
     }
 
     // this.httpService.clearUnsavedHero();
@@ -192,6 +199,26 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
   storeHero() {
     this.httpService.unsavedHero = {...this.currentHero};
     localStorage['unsavedHero'] = JSON.stringify(this.currentHero);
+  }
+
+  clearForm() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '350px',
+      data: {'reset': true}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Clearing form', result);
+        this.clearCurrentHero();
+        this.heroForm.reset();
+        this.changeMade = false;
+      }
+    });
+  }
+
+  clearCurrentHero() {
+    this.currentHero = <Hero>{};
   }
 
   ngOnDestroy() {

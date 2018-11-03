@@ -193,3 +193,10 @@ img.hero-ability-icon {
   text-transform: uppercase;
   font-family: sans-serif;
 }
+
+.hero-bio-icon {
+  width: 24px;
+  height: 24px;
+  fill: #00c3ff;
+  float: left;
+}

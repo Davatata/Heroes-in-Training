@@ -43,6 +43,18 @@ export class HeroDetailsComponent implements OnInit, AfterViewInit {
                 ).addSvgIcon(
                   `TANK`,
                   this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/svgs/tank.svg`)
+                ).addSvgIcon(
+                  `AFFILIATION`,
+                  this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/svgs/affiliation.svg`)
+                ).addSvgIcon(
+                  `BASE`,
+                  this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/svgs/base.svg`)
+                ).addSvgIcon(
+                  `NAME`,
+                  this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/svgs/name.svg`)
+                ).addSvgIcon(
+                  `OCCUPATION`,
+                  this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/svgs/occupation.svg`)
                 );
               }
 
@@ -83,7 +95,7 @@ export class HeroDetailsComponent implements OnInit, AfterViewInit {
   openDialog(url): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '1000px',
-      data: url
+      data: {'url': url}
     });
 
     dialogRef.afterClosed().subscribe(result => {

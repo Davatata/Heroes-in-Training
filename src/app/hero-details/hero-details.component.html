@@ -66,10 +66,22 @@
           <div class="tab-body">
             <h2 class="blue-font upper">Biography</h2>
             <mat-list id="bio_list">
-              <mat-list-item>Real Name: {{hero.realName}}, Age: {{hero.age}}</mat-list-item>
-              <mat-list-item>Occupation: {{hero.occupation}}</mat-list-item>
-              <mat-list-item>Base of operations: {{hero.baseOfOperations}}</mat-list-item>
-              <mat-list-item>Affiliation: {{hero.affiliation}}</mat-list-item>
+              <mat-list-item>
+                <mat-icon class="bio-icon" mat-list-icon svgIcon="NAME"></mat-icon>
+                Real Name: {{hero.realName}}, Age: {{hero.age}}
+              </mat-list-item>
+              <mat-list-item>
+                <mat-icon class="bio-icon" mat-list-icon svgIcon="OCCUPATION"></mat-icon>
+                Occupation: {{hero.occupation}}
+              </mat-list-item>
+              <mat-list-item>
+                <mat-icon class="bio-icon" mat-list-icon svgIcon="BASE"></mat-icon>
+                Base of operations: {{hero.baseOfOperations}}
+              </mat-list-item>
+              <mat-list-item>
+                <mat-icon class="bio-icon" mat-list-icon svgIcon="AFFILIATION"></mat-icon>
+                Affiliation: {{hero.affiliation}}
+              </mat-list-item>
               <mat-list-item class="hero-bio-quote">"{{hero.heroQuote}}"</mat-list-item>
               <mat-list-item class="pre-wrap backstory">{{hero.heroBackstory}}</mat-list-item>
             </mat-list>

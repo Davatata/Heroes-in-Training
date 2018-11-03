@@ -144,3 +144,9 @@ mat-card {
 .artwork-img {
   background-size: contain !important;
 }
+
+.submission-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 10px;
+}

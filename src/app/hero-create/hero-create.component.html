@@ -448,7 +448,14 @@
     </div>
 
     <!-- Submission -->
-    <div class="grid-container">
+    <div class="submission-grid-container">
+      <div class="grid-item">
+        <button type="button"
+                mat-raised-button
+                style="float: left"
+                (click)="clearForm()"
+                [disabled]="!changeMade">Reset</button>
+      </div>
       <div *ngIf="!httpService.editMode" class="grid-item">
         <button type="button"
         class="submit"

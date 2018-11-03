@@ -282,3 +282,8 @@
 .edit-button-row {
   text-align: center;
 }
+
+.bio-icon {
+  padding: 0 10px 0 0 !important;
+  align-self: self-start !important;
+}
