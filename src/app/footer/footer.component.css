@@ -33,9 +33,29 @@
 .icon-bg:hover {
   background-color: #f9ab4f;
 }
+
 #footer-author {
   font-family: sans-serif;
   font-weight: bold;
   font-style: italic;
   color: darkgray;
+}
+
+a.footer-router-link {
+  text-decoration: none;
+  color: #919191;
+  font-family: sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  font-size: 12px;
+}
+
+a.footer-router-link:hover {
+  color: #f9ab4f;
+}
+
+.footer-link-divider {
+  color: #919191;
+  font-weight: bold;
+  font-size: 20px;
 }

@@ -194,6 +194,22 @@ img.hero-ability-icon {
   font-family: sans-serif;
 }
 
+.hit-header {
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 1.5em;
+  text-align: center;
+  font-style: italic;
+  padding: 2em 5px 0 5px;
+  font-weight: bold;
+  font-variant: normal;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  color: white;
+  word-spacing: 5px;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 2px black;
+}
+
 .hero-bio-icon {
   width: 24px;
   height: 24px;

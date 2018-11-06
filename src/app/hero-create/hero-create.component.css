@@ -91,7 +91,7 @@ mat-card {
 .art-grid-container {
   display: grid;
   grid-gap: 5px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 0 10px;
 }
 
@@ -149,4 +149,20 @@ mat-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 0 10px;
+}
+
+.ability-shift-container {
+  float: right;
+}
+
+.ability-shift-button {
+  margin: 0 10px;
+  background: #f2f2f2;
+}
+
+@media(max-width: 360px) {
+  .ability-shift-container {
+    float: none;
+    margin: 15px 0 15px -5px;
+  }
 }

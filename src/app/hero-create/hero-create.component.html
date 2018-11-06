@@ -320,33 +320,36 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button color="warn"
+              <div *ngIf="currentHero.abilities.length > 1"
+                    class="ability-shift-container">
+                  <button mat-mini-fab color=""
+                          type="button"
+                          class="icon-bg no-box-shadow"
+                          aria-label="twitter"
+                          style="margin:0 10px; background: #f2f2f2;"
+                          (click)="moveAbilityUp(i)">
+                    <fa-icon [icon]="faArrowUp"></fa-icon>
+                  </button>
+                  <button mat-mini-fab color=""
+                          type="button"
+                          class="icon-bg no-box-shadow"
+                          aria-label="twitter"
+                          style="margin:0 10px; background: #f2f2f2;"
+                          (click)="moveAbilityDown(i)">
+                    <fa-icon [icon]="faArrowDown"></fa-icon>
+                  </button>
+                </div>
+            <button mat-stroked-button color="warn"
+                    style="margin-right: 10px;"
                     type="button"
                     (click)="removeCard(i)">Remove</button>
-            <button mat-button color="primary"
+            <button mat-stroked-button color="primary"
                     type="button"
                     [disabled]="currentAbility.name !== '' ||
                                 currentAbility.icon !== '' ||
                                 currentAbility.description !== '' "
                     (click)="editCard(i)">Edit</button>
-            <div *ngIf="currentHero.abilities.length > 1" style="float:right">
-              <button mat-mini-fab color=""
-                      type="button"
-                      class="icon-bg no-box-shadow"
-                      aria-label="twitter"
-                      style="margin:0 10px;"
-                      (click)="moveAbilityUp(i)">
-                <fa-icon [icon]="faArrowUp"></fa-icon>
-              </button>
-              <button mat-mini-fab color=""
-                      type="button"
-                      class="icon-bg no-box-shadow"
-                      aria-label="twitter"
-                      style="margin:0 10px;"
-                      (click)="moveAbilityDown(i)">
-                <fa-icon [icon]="faArrowDown"></fa-icon>
-              </button>
-            </div>
+
           </mat-card-actions>
         </mat-card>
       </div>
@@ -434,10 +437,11 @@
                 [src]="artItem.value"
                 [alt]="currentHero.heroName">
             <mat-card-actions>
-              <button mat-button color="warn"
+              <button mat-stroked-button color="warn"
+                      style="margin-right: 10px;"
                       type="button"
                       (click)="removeArt(i)">Remove</button>
-              <button mat-button color="primary"
+              <button mat-stroked-button color="primary"
                       type="button"
                       [disabled]="currentArtwork !== '' "
                       (click)="editArt(i)">Edit</button>

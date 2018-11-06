@@ -211,6 +211,7 @@ export class HeroCreateComponent implements OnInit, OnDestroy, AfterViewInit {
       if (result) {
         console.log('Clearing form', result);
         this.clearCurrentHero();
+        this.httpService.clearUnsavedHero();
         this.heroForm.reset();
         this.changeMade = false;
       }

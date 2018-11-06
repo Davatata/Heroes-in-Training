@@ -1,8 +1,23 @@
 <footer>
   <div id="hit-footer">
     <div class="grid-container">
+      <div class="grid-item" style="align-self: center; padding-top: 2em;">
+        <a class="footer-router-link" [routerLink]="['/home']">HOME</a>
+        <span class="footer-link-divider"> | </span>
+        <a class="footer-router-link" [routerLink]="['/hero-create']">CREATE HERO</a>
+        <span class="footer-link-divider"> | </span>
+        <a class="footer-router-link" [routerLink]="['/gallery']">GALLERY</a>
+      </div>
+      <!-- <div class="grid-item" style="align-self: center; padding-top: 2em;">
+
+      </div>
+      <div class="grid-item" style="align-self: center; padding-top: 2em;">
+      </div> -->
+    </div>
+
+    <div class="grid-container">
       <div class="grid-item" style="align-self: center;">
-        <p class="footer-item">
+        <p class="footer-item" style="padding-top:0;">
           "Always remember: Never accept the world as it appears to be. Dare to see it for what it could be."
         </p>
         <p class="footer-item" style='float:center; padding: 0;'>
