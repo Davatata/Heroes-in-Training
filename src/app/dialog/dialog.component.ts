@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+
 
 @Component({
   selector: 'app-dialog',
@@ -8,11 +9,13 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
+  step = -1;
 
   @ViewChild('slide') slideshow: any;
 
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
+    public snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data) {}
 
   onNoClick(): void {
@@ -27,4 +30,15 @@ export class DialogComponent implements OnInit {
     }
   }
 
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  reportHero() {
+    // console.log('send report');
+    this.snackBar.open('Report Sent', '', {
+      duration: 3000
+    });
+    this.dialogRef.close();
+  }
 }

@@ -183,4 +183,8 @@ export class HttpService implements OnInit, OnDestroy {
     this.unsavedHero = null;
     localStorage.removeItem('unsavedHero');
   }
+
+  // cardMenu(userId, heroId) {
+
+  // }
 }

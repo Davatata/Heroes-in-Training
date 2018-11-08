@@ -12,5 +12,14 @@
       <p *ngIf="hero.heroDetailDescription.length >= 100">
         {{hero.heroDetailDescription.split(' ').slice(0,20).join(' ')}}...</p>
     </mat-card-content>
+    <mat-card-actions align="end">
+      <!-- <button mat-stroked-button
+              (click)="reportHero(hero.heroName, hero.userId, hero.heroId)">OPTIONS</button> -->
+      <button mat-icon-button>
+        <mat-icon aria-label="Settings"
+                  style="color:#00000040;"
+                  (click)="openSettings(hero.heroName, hero.userId, hero.heroId)">settings</mat-icon>
+      </button>
+    </mat-card-actions>
   </mat-card>
 </a>

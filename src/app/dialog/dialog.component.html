@@ -18,4 +18,28 @@
   </div>
 </ng-container>
 
+<ng-container *ngIf="data?.settings">
+  <h1 mat-dialog-title>Options</h1>
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Report {{data.heroName}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>report</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field appearance="outline">
+        <textarea rows="4" matInput placeholder="Reasons for reporting"></textarea>
+      </mat-form-field>
+
+      <mat-action-row>
+        <button mat-button color="primary" (click)="reportHero()">Send</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ng-container>
+
 

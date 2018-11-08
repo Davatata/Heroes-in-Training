@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -14,7 +14,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './main-nav﻿.component.html',
   styleUrls: ['./main-nav﻿.component.css']
 })
-export class MainNavComponent {
+export class MainNavComponent implements OnInit {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -29,6 +29,11 @@ export class MainNavComponent {
                 this.matIconRegistry.addSvgIcon(`ow`,
                   this.domSanitizer.bypassSecurityTrustResourceUrl(`../../assets/svgs/ow.svg`));
               }
+
+  ngOnInit() {
+    const element = document.querySelector('mat-sidenav-content') || window;
+    element.scrollTo(0, 0);
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
