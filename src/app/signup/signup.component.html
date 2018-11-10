@@ -10,6 +10,7 @@
             type="email"
             [(ngModel)]="email"
             name="email"
+            (focus)="httpService.error = ''"
             required>
     </mat-form-field>
 
@@ -20,12 +21,15 @@
             [(ngModel)]="password"
             name="password"
             minlength="6"
+            (focus)="httpService.error = ''"
             required>
     </mat-form-field>
+    <mat-error class="credential-error" *ngIf="httpService.error">{{httpService.error}}</mat-error>
+
     <div class="credential-link">
       <a [routerLink]="['/login']"
            routerLinkActive="router-link-active"
-           class="hit-nav-button">Have an account? Log in here. </a>
+           class="hit-nav-button auth-redirect">Have an account? Log in here. </a>
     </div>
     <button class="authButton"
             type="submit"

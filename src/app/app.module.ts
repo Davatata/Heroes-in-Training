@@ -21,6 +21,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
@@ -94,6 +95,7 @@ library.add(faTwitter, faGithub, faLinkedin);
     MatSlideToggleModule,
     MatExpansionModule,
     MatSnackBarModule,
+    MatMenuModule,
   ],
   entryComponents: [DialogComponent],
   providers: [AngularFireDatabase],

@@ -59,8 +59,8 @@ export class HeroDetailsComponent implements OnInit, AfterViewInit {
               }
 
   ngOnInit() {
-    this.userParam = this.route.snapshot.paramMap.get('u');
-    this.heroParam = this.route.snapshot.paramMap.get('h');
+    this.userParam = this.route.snapshot.queryParamMap.get('u');
+    this.heroParam = this.route.snapshot.queryParamMap.get('h');
     const localU = localStorage['hit-u'];
     const localH = localStorage['hit-h'];
 

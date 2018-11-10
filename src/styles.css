@@ -216,3 +216,11 @@ img.hero-ability-icon {
   fill: #00c3ff;
   float: left;
 }
+
+.auth-redirect {
+  text-decoration: none;
+}
+
+.credential-error {
+  text-align: center;
+}

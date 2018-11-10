@@ -9,7 +9,6 @@ import {MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
-  step = -1;
 
   @ViewChild('slide') slideshow: any;
 
@@ -30,15 +29,15 @@ export class DialogComponent implements OnInit {
     }
   }
 
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  reportHero() {
+  showReported(reportText) {
     // console.log('send report');
     this.snackBar.open('Report Sent', '', {
-      duration: 3000
+      duration: 4000
     });
+    this.dialogRef.close(reportText);
+  }
+
+  close() {
     this.dialogRef.close();
   }
 }

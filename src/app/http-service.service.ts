@@ -31,6 +31,8 @@ export class HttpService implements OnInit, OnDestroy {
   heroesObservable: Observable<any>;
   params = {};
   editMode = false;
+  reportedHeroes = [];
+  error: string;
 
   heroName = 'genji';
   tempHero;
@@ -65,6 +67,9 @@ export class HttpService implements OnInit, OnDestroy {
                     this.yourHeroes$ = db.list(`${firebaseAuth.auth.currentUser.uid}`);
                   }
                 });
+
+                this.reportedHeroes = JSON.parse(localStorage['reportedHeroes'] || '[]');
+                console.log(this.reportedHeroes);
               }
 
   ngOnInit() {
@@ -90,6 +95,7 @@ export class HttpService implements OnInit, OnDestroy {
         });
       })
       .catch(err => {
+        this.error = err.message;
         console.log('Something went wrong:', err.message);
       });
   }
@@ -109,6 +115,11 @@ export class HttpService implements OnInit, OnDestroy {
         });
       })
       .catch(err => {
+        if (err.message === 'The password is invalid or the user does not have a password.') {
+          this.error = 'Invalid credentials.';
+        } else {
+          this.error = err.message;
+        }
         console.log('Something went wrong:', err.message);
       });
   }
@@ -184,7 +195,13 @@ export class HttpService implements OnInit, OnDestroy {
     localStorage.removeItem('unsavedHero');
   }
 
-  // cardMenu(userId, heroId) {
-
-  // }
+  reportHero(heroName, userId, heroId, reason) {
+    const heroUrl = userId + '/' + heroId;
+    const link = `http://localhost:4200/hero-details?h=${heroId}&u=${userId}`;
+    if (!this.reportedHeroes.includes(heroId)) {
+      localStorage['reportedHeroes'] = JSON.stringify([heroId, ...this.reportedHeroes]);
+    }
+    console.log('Reason:', reason, link);
+    console.log('Report this hero', userId, heroId);
+  }
 }

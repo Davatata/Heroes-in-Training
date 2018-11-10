@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { MatDialog, MatMenuTrigger } from '@angular/material';
 
 import { HttpService } from '../http-service.service';
 import { DialogComponent } from '../dialog/dialog.component';
+import { Hero } from '../models/hero.model';
 
 @Component({
   selector: 'app-hero-card',
@@ -12,6 +13,8 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class HeroCardComponent implements OnInit {
 
   @Input('hero') hero: any;
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+
   constructor(public httpService: HttpService,
               public dialog: MatDialog) { }
 
@@ -27,7 +30,8 @@ export class HeroCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       // console.log('The dialog was closed', result); // result undefined or true
       if (result) {
-        console.log('clicked ok');
+        // console.log('Reason:', result);
+        this.httpService.reportHero(heroName, userId, heroId, result);
       } else {
         console.log('canceled');
       }
@@ -35,11 +39,18 @@ export class HeroCardComponent implements OnInit {
     return false;
   }
 
-  openSettings(heroName, userId, heroId) {
+  openSettings() {
     console.log('settings');
-    event.stopImmediatePropagation();
-    this.openCardMenu(heroName, userId, heroId);
+    event.stopPropagation();
     return false;
+  }
+
+  someMethod() {
+    this.trigger.openMenu();
+  }
+
+  reportHero(heroName, userId, heroId) {
+    this.openCardMenu(heroName, userId, heroId);
   }
 
 }

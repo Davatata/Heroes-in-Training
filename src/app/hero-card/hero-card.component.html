@@ -15,11 +15,22 @@
     <mat-card-actions align="end">
       <!-- <button mat-stroked-button
               (click)="reportHero(hero.heroName, hero.userId, hero.heroId)">OPTIONS</button> -->
-      <button mat-icon-button>
+      <!-- <button mat-icon-button>
         <mat-icon aria-label="Settings"
                   style="color:#00000040;"
                   (click)="openSettings(hero.heroName, hero.userId, hero.heroId)">settings</mat-icon>
+      </button> -->
+      <button mat-icon-button [matMenuTriggerFor]="menu"
+              (click)="openSettings()">
+        <mat-icon aria-label="Settings"
+                  style="color:#00000040;">more_vert</mat-icon>
       </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="reportHero(hero.heroName, hero.userId, hero.heroId)">
+          <mat-icon>report</mat-icon>
+          <span>Report Content</span>
+        </button>
+      </mat-menu>
     </mat-card-actions>
   </mat-card>
 </a>

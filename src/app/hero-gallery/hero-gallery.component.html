@@ -18,7 +18,8 @@
 
   <div class="gallery-grid-container">
     <ng-container *ngFor="let hero of httpService.heroesObservable | async" >
-      <div class="grid-item" *ngIf="role === 'A' || hero.role === role">
+      <div class="grid-item" *ngIf="(role === 'A' || hero.role === role)
+                  && !httpService.reportedHeroes.includes(hero.heroId)">
         <app-hero-card  [hero]="hero"></app-hero-card>
       </div>
     </ng-container>
