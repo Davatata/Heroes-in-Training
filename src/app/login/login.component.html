@@ -1,42 +1,46 @@
-<div style="min-height: calc(80vh - 100px); padding-top: 50px;">
-  <h2 style="text-align: center;">Log In</h2>
-  <form *ngIf="!(httpService.user$ | async)"
-        class="example-form"
-        #loginForm="ngForm"
-        (ngSubmit)="login(); loginForm.reset()">
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Email</mat-label>
-      <input matInput
-            type="email"
-            [(ngModel)]="email"
-            name="email"
-            pattern=""
-            (focus)="httpService.error = ''"
-            required>
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Password</mat-label>
-      <input matInput
-              type="password"
-              [(ngModel)]="password"
-              name="password"
-              minlength="6"
+<app-spinner *ngIf="httpService.loading; else form;"></app-spinner>
+<ng-template #form>
+  <div style="min-height: calc(80vh - 100px); padding-top: 50px;">
+    <h2 class="credential-header">Log In</h2>
+    <form *ngIf="!(httpService.user$ | async)"
+          class="example-form"
+          #loginForm="ngForm"
+          (ngSubmit)="login(); loginForm.reset()">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput
+              type="email"
+              [(ngModel)]="email"
+              name="email"
+              pattern=""
               (focus)="httpService.error = ''"
               required>
-    </mat-form-field>
-    <mat-error class="credential-error" *ngIf="httpService.error">{{httpService.error}}</mat-error>
+      </mat-form-field>
 
-    <div class="credential-link">
-    <a [routerLink]="['/signup']"
-         routerLinkActive="router-link-active"
-         class="hit-nav-button auth-redirect">Haven't signed up? Go here. </a>
-    </div>
-    <button class="authButton"
-            mat-raised-button
-            type="submit"
-            [disabled]="!email || !password || !loginForm.form.valid">
-      Login
-    </button>
-  </form>
-</div>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput
+                type="password"
+                [(ngModel)]="password"
+                name="password"
+                minlength="6"
+                (focus)="httpService.error = ''"
+                required>
+      </mat-form-field>
+      <mat-error class="credential-error" *ngIf="httpService.error">{{httpService.error}}</mat-error>
+
+      <div class="credential-link">
+      <a [routerLink]="['/signup']"
+          routerLinkActive="router-link-active"
+          class="hit-nav-button auth-redirect"
+          (click)="httpService.error = ''">Haven't signed up? Go here. </a>
+      </div>
+      <button class="authButton"
+              mat-raised-button
+              type="submit"
+              [disabled]="!email || !password || !loginForm.form.valid">
+        Login
+      </button>
+    </form>
+  </div>
+</ng-template>

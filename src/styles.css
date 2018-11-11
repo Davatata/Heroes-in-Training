@@ -189,6 +189,21 @@ img.hero-ability-icon {
   float: right;
 }
 
+.credential-link a {
+  font-family: sans-serif;
+  color: cornflowerblue;
+}
+
+.credential-link a:hover {
+  text-decoration: underline;
+}
+
+.credential-header {
+  text-align: center;
+  font-family: sans-serif;
+  text-transform: uppercase;
+}
+
 .mat-error {
   text-transform: uppercase;
   font-family: sans-serif;

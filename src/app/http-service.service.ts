@@ -33,6 +33,7 @@ export class HttpService implements OnInit, OnDestroy {
   editMode = false;
   reportedHeroes = [];
   error: string;
+  loading = false;
 
   heroName = 'genji';
   tempHero;
@@ -80,10 +81,12 @@ export class HttpService implements OnInit, OnDestroy {
   }
 
   signup(email: string, password: string) {
+    this.loading = true;
     this.firebaseAuth
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
+        this.loading = false;
         console.log('Success!');
         this.router.navigate(['/home']);
         // this.userId = this.firebaseAuth.auth['O'];
@@ -95,16 +98,19 @@ export class HttpService implements OnInit, OnDestroy {
         });
       })
       .catch(err => {
+        this.loading = false;
         this.error = err.message;
         console.log('Something went wrong:', err.message);
       });
   }
 
   login(email: string, password: string) {
+    this.loading = true;
     this.firebaseAuth
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(value => {
+        this.loading = false;
         console.log('Nice, logged in!');
         this.router.navigate(['/home']);
         this.firebaseAuth.authState.subscribe(data => {
@@ -115,8 +121,12 @@ export class HttpService implements OnInit, OnDestroy {
         });
       })
       .catch(err => {
+        this.loading = false;
         if (err.message === 'The password is invalid or the user does not have a password.') {
           this.error = 'Invalid credentials.';
+        } else if (err.message ===
+            'There is no user record corresponding to this identifier. The user may have been deleted.') {
+              this.error = 'User not found.';
         } else {
           this.error = err.message;
         }
