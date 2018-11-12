@@ -1,6 +1,11 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit, HostListener } from '@angular/core';
+import { Component,
+          OnInit,
+          OnDestroy,
+          ViewChild,
+          ElementRef,
+          AfterViewInit,
+          HostListener } from '@angular/core';
  import { NgForm } from '@angular/forms';
-// import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 import { Hero } from '../models/hero.model';
 import { Ability } from '../models/ability.model';

@@ -23,4 +23,9 @@ export class AppComponent implements OnInit, OnDestroy {
     // this.subscription.unsubscribe();
   }
 
+  onActivate(event) {
+    // window.scroll(0, 0);
+    document.querySelector('.mat-sidenav-content').scrollTop = 0;
+}
+
 }

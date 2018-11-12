@@ -3,7 +3,6 @@ import { MatDialog, MatMenuTrigger } from '@angular/material';
 
 import { HttpService } from '../http-service.service';
 import { DialogComponent } from '../dialog/dialog.component';
-import { Hero } from '../models/hero.model';
 
 @Component({
   selector: 'app-hero-card',

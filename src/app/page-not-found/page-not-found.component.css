@@ -1,0 +1,17 @@
+.not-found {
+  font-family: sans-serif;
+  text-transform: uppercase;
+  color: indianred;
+  text-align:center;
+  font-weight: bold;
+  min-height: 400px;
+  padding:20px;
+  margin-top: 3em;
+}
+
+.not-found-link {
+  text-decoration: none !important;
+  line-height: 1.6;
+  display: inline-flex;
+  vertical-align: middle;
+}
