@@ -4,8 +4,16 @@
       <div class="grid-item" style="align-self: center; padding-top: 2em;">
         <a class="footer-router-link" [routerLink]="['/home']">HOME</a>
         <span class="footer-link-divider"> | </span>
-        <a class="footer-router-link" [routerLink]="['/hero-create']">CREATE HERO</a>
-        <span class="footer-link-divider"> | </span>
+        <ng-container *ngIf="httpService.user$ | async; else notLoggedIn">
+          <a class="footer-router-link" [routerLink]="['/hero-create']">CREATE HERO</a>
+          <span class="footer-link-divider"> | </span>
+        </ng-container>
+        <ng-template #notLoggedIn>
+          <a [routerLink]="['/login']" class="footer-router-link">SIGN IN</a>
+          <span class="footer-link-divider"> | </span>
+          <a [routerLink]="['/signup']" class="footer-router-link">SIGN UP</a>
+          <span class="footer-link-divider"> | </span>
+        </ng-template>
         <a class="footer-router-link" [routerLink]="['/gallery']">GALLERY</a>
       </div>
       <!-- <div class="grid-item" style="align-self: center; padding-top: 2em;">

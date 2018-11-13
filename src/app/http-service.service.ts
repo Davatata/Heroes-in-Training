@@ -9,6 +9,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { Hero } from './models/hero.model';
+import { MatSnackBar } from '@angular/material';
 
 const CACHE_KEY = 'httpRepoCache';
 
@@ -44,6 +45,7 @@ export class HttpService implements OnInit, OnDestroy {
               private http: HttpClient,
               private db: AngularFireDatabase,
               private router: Router,
+              public snackBar: MatSnackBar,
               public firebaseAuth: AngularFireAuth) {
                 this.user$ = firebaseAuth.user;
                 this.heroList$ = db.list('heroes');
@@ -86,15 +88,25 @@ export class HttpService implements OnInit, OnDestroy {
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
-        this.loading = false;
-        console.log('Success!');
-        this.router.navigate(['/home']);
-        // this.userId = this.firebaseAuth.auth['O'];
-        this.firebaseAuth.authState.subscribe(data => {
-          if (data && data.uid) {
-            this.userId = data.uid;
-            this.yourHeroes$ = this.db.list(`${data.uid}`);
-          }
+        value.user.sendEmailVerification()
+        .then( () => {
+            this.loading = false;
+            console.log('Sign up success!');
+            this.router.navigate(['/login']);
+            this.snackBar.open('Check email to verify', '', {
+              duration: 4000
+            });
+            // this.userId = this.firebaseAuth.auth['O'];
+            // this.firebaseAuth.authState.subscribe(data => {
+            //   if (data && data.uid) {
+            //     this.userId = data.uid;
+            //     this.yourHeroes$ = this.db.list(`${data.uid}`);
+            //   }
+            // });
+        })
+        .catch(err => {
+          this.error = err.message;
+          console.log('Something went wrong:', err.message);
         });
       })
       .catch(err => {
@@ -110,15 +122,20 @@ export class HttpService implements OnInit, OnDestroy {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(value => {
-        this.loading = false;
-        console.log('Nice, logged in!');
-        this.router.navigate(['/home']);
-        this.firebaseAuth.authState.subscribe(data => {
-          if (data && data.uid) {
-            this.userId = data.uid;
-            this.yourHeroes$ = this.db.list(`${data.uid}`);
-          }
-        });
+        if (value.user.emailVerified) {
+          this.loading = false;
+          console.log('Nice, logged in!');
+          this.router.navigate(['/home']);
+          this.firebaseAuth.authState.subscribe(data => {
+            if (data && data.uid) {
+              this.userId = data.uid;
+              this.yourHeroes$ = this.db.list(`${data.uid}`);
+            }
+          });
+        } else {
+          this.loading = false;
+          throw Error('Check email for account verificatin link.');
+        }
       })
       .catch(err => {
         this.loading = false;
@@ -171,7 +188,7 @@ export class HttpService implements OnInit, OnDestroy {
     this.hero$ = this.http.get(`${this.url}/${heroUrl}.json`);
     // console.log('getting hero');
     this.router.navigate(['/hero-details'], { queryParams: this.params });
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }
 
   editHero() {

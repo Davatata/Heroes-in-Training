@@ -2,7 +2,7 @@
 <ng-template #form>
   <div style="min-height: calc(80vh - 100px); padding-top: 50px;">
     <h2 class="credential-header">Sign Up</h2>
-    <form *ngIf="!(httpService.user$ | async)"
+    <form *ngIf="!(httpService.user$ && httpService.user$.emailVerified | async)"
           #signupForm="ngForm"
           (ngSubmit)="signup(); signupForm.reset()"
           class="example-form">

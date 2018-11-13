@@ -22,7 +22,8 @@
                       letter-spacing: 10px;">HIT</span>
 
     </mat-toolbar>
-    <mat-nav-list *ngIf="httpService.user$ | async" style="padding: 0;">
+    <mat-nav-list style="padding: 0;"
+      *ngIf="httpService.user$ | async" >
       <a [routerLink]="['/hero-create']"
         routerLinkActive="router-link-active"
         mat-list-item
@@ -50,7 +51,8 @@
           (click)="openDialog()"
           >Logout</button></a>
     </mat-nav-list>
-    <mat-nav-list *ngIf="!(httpService.user$ | async)" style="padding: 0;">
+    <mat-nav-list style="padding: 0;"
+      *ngIf="!(httpService.user$ | async)">
       <a [routerLink]="['/login']"
          routerLinkActive="router-link-active"
          mat-list-item
@@ -98,7 +100,8 @@
         <div style="flex:5%" *ngIf="isHandset$ | async"></div>
         <div style="flex:5%" *ngIf="isHandset$ | async"></div>
         <div *ngIf="!(isHandset$ | async)">
-          <mat-nav-list *ngIf="!(httpService.user$ | async)" style="display: inline-flex; padding: 0 15px;">
+          <mat-nav-list style="display: inline-flex; padding: 0 15px;"
+            *ngIf="!(httpService.user$ | async)">
             <a [routerLink]="['/login']"
               routerLinkActive="router-link-active"
               mat-list-item
@@ -115,7 +118,8 @@
               (click)="drawer.toggle()"
               class="hit-main-nav-button">GALLERY</a>
           </mat-nav-list>
-          <mat-nav-list *ngIf="httpService.user$ | async" style="display: inline-flex; padding: 0 15px;">
+          <mat-nav-list style="display: inline-flex; padding: 0 15px;"
+            *ngIf="httpService.user$ | async">
             <a [routerLink]="['/hero-create']"
             routerLinkActive="router-link-active"
             mat-list-item
