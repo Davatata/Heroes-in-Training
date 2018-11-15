@@ -30,6 +30,8 @@ mat-form-field {
 
 .text-center {
   text-align: center;
+  text-transform: uppercase;
+  font-family: sans-serif;
 }
 
 

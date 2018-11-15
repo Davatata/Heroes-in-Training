@@ -25,8 +25,8 @@
   </mat-form-field>
 
   <mat-action-row>
-      <button mat-button color="primary" (click)="close()">Cancel</button>
-      <button mat-button [disabled]="!report.value" color="warn" (click)="showReported(report.value)">Send Report</button>
+      <button mat-flat-button style="margin-right: 10px;" color="primary" (click)="close()">Cancel</button>
+      <button mat-flat-button [disabled]="!report.value" color="warn" (click)="showReported(report.value)">Send Report</button>
   </mat-action-row>
 </ng-container>
 
