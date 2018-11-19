@@ -29,6 +29,7 @@ export class HttpService implements OnInit, OnDestroy {
   hero$: Observable<any>;
   heroList$: AngularFireList<any>;
   yourHeroes$: AngularFireList<any>;
+  reported$: AngularFireList<any>;
   heroesObservable: Observable<any>;
   params = {};
   editMode = false;
@@ -49,6 +50,7 @@ export class HttpService implements OnInit, OnDestroy {
               public firebaseAuth: AngularFireAuth) {
                 this.user$ = firebaseAuth.user;
                 this.heroList$ = db.list('heroes');
+                this.reported$ = db.list('reported');
 
                 this.heroesObservable = this.heroList$.snapshotChanges().pipe(
                   map(changes =>
@@ -223,6 +225,7 @@ export class HttpService implements OnInit, OnDestroy {
   }
 
   reportHero(heroName, userId, heroId, reason) {
+    reason = reason.trim();
     const heroUrl = userId + '/' + heroId;
     const link = `http://localhost:4200/hero-details?h=${heroId}&u=${userId}`;
     if (!this.reportedHeroes.includes(heroId)) {
@@ -230,5 +233,11 @@ export class HttpService implements OnInit, OnDestroy {
     }
     console.log('Reason:', reason, link);
     console.log('Report this hero', userId, heroId);
+    this.reported$.push({
+      'heroLink': link,
+      'reason': reason
+    }).then(_ => {
+      location.reload();
+    });
   }
 }
