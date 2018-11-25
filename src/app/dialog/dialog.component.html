@@ -18,6 +18,10 @@
   </div>
 </ng-container>
 
+<ng-container *ngIf="data?.Unverified">
+  <h1 mat-dialog-title>Must be logged in to report.</h1>
+</ng-container>
+
 <ng-container *ngIf="data?.settings">
   <h2 mat-dialog-title>Reasons For Reporting</h2>
   <mat-form-field appearance="outline">

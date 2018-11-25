@@ -94,7 +94,8 @@ export class HttpService implements OnInit, OnDestroy {
         .then( () => {
             this.loading = false;
             console.log('Sign up success!');
-            this.router.navigate(['/login']);
+            this.logout();
+            // this.router.navigate(['/login']);
             this.snackBar.open('Check email to verify', '', {
               duration: 4000
             });
@@ -136,6 +137,7 @@ export class HttpService implements OnInit, OnDestroy {
           });
         } else {
           this.loading = false;
+          this.logout();
           throw Error('Check email for account verificatin link.');
         }
       })

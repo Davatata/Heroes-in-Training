@@ -21,20 +21,28 @@ export class HeroCardComponent implements OnInit {
   }
 
   openCardMenu(heroName, userId, heroId) {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '600px',
-      data: {'settings': true, 'heroName': heroName }
-    });
+    const user = this.httpService.firebaseAuth.auth.currentUser;
+    if (user && user.emailVerified) {
+      const dialogRef = this.dialog.open(DialogComponent, {
+        width: '600px',
+        data: {'settings': true, 'heroName': heroName }
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed', result); // result undefined or true
-      if (result) {
-        // console.log('Reason:', result);
-        this.httpService.reportHero(heroName, userId, heroId, result);
-      } else {
-        console.log('canceled');
-      }
-    });
+      dialogRef.afterClosed().subscribe(result => {
+        // console.log('The dialog was closed', result); // result undefined or true
+        if (result) {
+          // console.log('Reason:', result);
+          this.httpService.reportHero(heroName, userId, heroId, result);
+        } else {
+          console.log('canceled');
+        }
+      });
+    } else {
+      this.dialog.open(DialogComponent, {
+        width: '600px',
+        data: {'Unverified': true}
+      });
+    }
     return false;
   }
 
