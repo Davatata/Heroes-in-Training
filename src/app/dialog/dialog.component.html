@@ -34,4 +34,16 @@
   </mat-action-row>
 </ng-container>
 
+<ng-container *ngIf="data?.forgotPassword">
+  <h2 mat-dialog-title>Enter email</h2>
+  <mat-form-field appearance="outline">
+    <input rows="4" matInput placeholder="" required #email>
+  </mat-form-field>
+
+  <mat-action-row>
+      <button mat-flat-button style="margin-right: 10px;" color="secondary" (click)="close()">Cancel</button>
+      <button mat-flat-button [disabled]="!email.value" color="primary" (click)="changePassword(email.value)">Change Password</button>
+  </mat-action-row>
+</ng-container>
+
 

@@ -30,10 +30,12 @@
       <mat-error class="credential-error" *ngIf="httpService.error">{{httpService.error}}</mat-error>
 
       <div class="credential-link">
-      <a [routerLink]="['/signup']"
-          routerLinkActive="router-link-active"
-          class="hit-nav-button auth-redirect"
-          (click)="httpService.error = ''">Haven't signed up? Go here. </a>
+        <a [routerLink]="['/signup']"
+            routerLinkActive="router-link-active"
+            class="hit-nav-button auth-redirect"
+            (click)="httpService.error = ''">Haven't signed up? Go here. </a><br><br>
+        <a  class="hit-nav-button forgot-password"
+            (click)="forgotPassword()">Forgot password?</a>
       </div>
       <button class="authButton"
               mat-raised-button

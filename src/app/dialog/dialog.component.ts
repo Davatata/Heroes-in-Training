@@ -40,4 +40,11 @@ export class DialogComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
+
+  changePassword(email) {
+    this.snackBar.open('Email sent', '', {
+      duration: 4000
+    });
+    this.dialogRef.close(email);
+  }
 }

@@ -128,7 +128,7 @@ export class HttpService implements OnInit, OnDestroy {
         if (value.user.emailVerified) {
           this.loading = false;
           console.log('Nice, logged in!');
-          this.router.navigate(['/home']);
+          this.router.navigate(['/gallery']);
           this.firebaseAuth.authState.subscribe(data => {
             if (data && data.uid) {
               this.userId = data.uid;
@@ -241,5 +241,18 @@ export class HttpService implements OnInit, OnDestroy {
     }).then(_ => {
       location.reload();
     });
+  }
+
+  forgotPassword(email) {
+    email = email.trim();
+    this.firebaseAuth.auth.sendPasswordResetEmail(email)
+      .then(() => console.log('email sent'))
+      .catch((error) => {
+        if (error.message === 'There is no user record corresponding to this identifier. The user may have been deleted.') {
+          console.log('Email not found');
+        } else {
+          console.log(error.message);
+        }
+      });
   }
 }

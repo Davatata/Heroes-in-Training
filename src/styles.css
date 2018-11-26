@@ -239,3 +239,8 @@ img.hero-ability-icon {
 .credential-error {
   text-align: center;
 }
+
+.forgot-password {
+  text-decoration: none;
+  cursor: pointer;
+}
