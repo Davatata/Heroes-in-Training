@@ -23,3 +23,7 @@ mat-form-field {
 mat-panel-title {
   flex-basis: auto !important;
 }
+
+button {
+  text-transform: uppercase;
+}

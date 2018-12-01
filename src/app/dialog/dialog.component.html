@@ -46,4 +46,19 @@
   </mat-action-row>
 </ng-container>
 
+<ng-container *ngIf="data?.deleteHero">
+  <h2 style="color:red;" mat-dialog-title>Enter {{data.heroName.toUpperCase()}} to confirm delete.</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Hero Name</mat-label>
+    <input rows="4" matInput placeholder="" required #hero>
+  </mat-form-field>
+
+  <mat-action-row>
+      <button mat-flat-button style="margin-right: 10px;" color="secondary" (click)="close()">Cancel</button>
+      <button mat-flat-button [disabled]="hero.value !== data.heroName.toUpperCase()"
+              (click)="deleteHero(data.heroName)"
+              color="warn">Delete Hero</button>
+  </mat-action-row>
+</ng-container>
+
 

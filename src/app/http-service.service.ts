@@ -163,21 +163,27 @@ export class HttpService implements OnInit, OnDestroy {
   }
 
   addHero(hero: Hero) {
-    this.yourHeroes$.push(hero).then(res => {
-      const userId = res.path.pieces_[0];
-      const heroId = res.path.pieces_[1];
-      this.heroList$.set(heroId, {
-        'heroId': heroId,
-        'heroName': hero.heroName,
-        'userId': userId,
-        'design': hero.design,
-        'role' : hero.role[0].toUpperCase(),
-        'heroDetailDescription': hero.heroDetailDescription
-      });
-      this.editMode = false;
-      this.clearUnsavedHero();
-      this.getHero(userId, heroId);
-    });
+    try {
+      if (this.firebaseAuth.auth.currentUser) {
+        this.yourHeroes$.push(hero).then(res => {
+          const userId = res.path.pieces_[0];
+          const heroId = res.path.pieces_[1];
+          this.heroList$.set(heroId, {
+            'heroId': heroId,
+            'heroName': hero.heroName,
+            'userId': userId,
+            'design': hero.design,
+            'role' : hero.role[0].toUpperCase(),
+            'heroDetailDescription': hero.heroDetailDescription
+          });
+          this.editMode = false;
+          this.clearUnsavedHero();
+          this.getHero(userId, heroId);
+        });
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
   getHero(userId: string, heroId: string) {
@@ -207,18 +213,24 @@ export class HttpService implements OnInit, OnDestroy {
   updateHero(hero: Hero) {
     const heroId = this.params['h'];
     const userId = this.params['u'];
-    this.yourHeroes$.update(heroId, hero);
-    this.heroList$.update(heroId, {
-      'heroId': heroId,
-      'heroName': hero.heroName,
-      'userId': userId,
-      'design': hero.design,
-      'role' : hero.role[0].toUpperCase(),
-      'heroDetailDescription': hero.heroDetailDescription
-    });
-    this.editMode = false;
-    this.clearUnsavedHero();
-    this.router.navigate(['/hero-details']);
+    try {
+      if (this.firebaseAuth.auth.currentUser.uid === userId) {
+        this.yourHeroes$.update(heroId, hero);
+        this.heroList$.update(heroId, {
+          'heroId': heroId,
+          'heroName': hero.heroName,
+          'userId': userId,
+          'design': hero.design,
+          'role' : hero.role[0].toUpperCase(),
+          'heroDetailDescription': hero.heroDetailDescription
+        });
+        this.editMode = false;
+        this.clearUnsavedHero();
+        this.router.navigate(['/hero-details']);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
   clearUnsavedHero() {
@@ -254,5 +266,22 @@ export class HttpService implements OnInit, OnDestroy {
           console.log(error.message);
         }
       });
+  }
+
+  deleteHero() {
+    const heroId = this.params['h'];
+    const userId = this.params['u'];
+    try {
+      if (this.firebaseAuth.auth.currentUser.uid === userId) {
+        this.yourHeroes$.remove(heroId);
+        this.heroList$.remove(heroId);
+        this.router.navigate(['/gallery']);
+        this.editMode = false;
+        this.clearUnsavedHero();
+        this.hero$ = null;
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 }

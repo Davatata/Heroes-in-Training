@@ -47,4 +47,8 @@ export class DialogComponent implements OnInit {
     });
     this.dialogRef.close(email);
   }
+
+  deleteHero(heroName) {
+    this.dialogRef.close(heroName);
+  }
 }

@@ -1,4 +1,4 @@
-<a style="text-decoration: none; cursor: pointer;"
+<a style="text-decoration: none; cursor: pointer;" aria-labelledby="hero button"
    (click)="httpService.getHero(hero.userId, hero.heroId)">
   <mat-card class="hit-display-card">
     <mat-card-header>
@@ -20,13 +20,14 @@
                   style="color:#00000040;"
                   (click)="openSettings(hero.heroName, hero.userId, hero.heroId)">settings</mat-icon>
       </button> -->
-      <button mat-icon-button [matMenuTriggerFor]="menu"
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-labelledby="settings"
               (click)="openSettings()">
         <mat-icon aria-label="Settings"
                   style="color:#00000040;">more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="reportHero(hero.heroName, hero.userId, hero.heroId)">
+        <button mat-menu-item aria-labelledby="report hero"
+                (click)="reportHero(hero.heroName, hero.userId, hero.heroId)">
           <mat-icon>report</mat-icon>
           <span>Report Content</span>
         </button>

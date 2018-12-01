@@ -105,4 +105,20 @@ export class HeroDetailsComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+  deleteHero(heroName) {
+    console.log(heroName);
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '1000px',
+      data: {'deleteHero': true, 'heroName': heroName}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if (result) {
+        console.log('Deleted', heroName);
+        this.httpService.deleteHero();
+      }
+    });
+  }
 }

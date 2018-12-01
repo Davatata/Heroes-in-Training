@@ -18,9 +18,11 @@
           <div class="tab-body">
 
           <!-- edit button -->
-          <div class="button-row"
-               *ngIf="httpService.firebaseAuth.auth?.currentUser?.uid === httpService.params['u']">
-            <button (click)="editHero()" mat-raised-button>Edit Hero</button>
+          <div *ngIf="httpService.firebaseAuth.auth?.currentUser?.uid === httpService.params['u']">
+            <div class="button-row">
+              <button (click)="editHero()" style="margin-right: 10px;" mat-raised-button>EDIT HERO</button>
+              <button (click)="deleteHero(hero.heroName)" mat-raised-button color="warn">DELETE HERO</button>
+            </div>
           </div>
 
             <div class="grid-detail-container">
