@@ -73,18 +73,11 @@ export class HeroDetailsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit() {
-    // console.log('Scrolling to top');
-    // window.scroll(0, 0);
-    // this.innerWidth = window.innerWidth;
-  }
+  ngAfterViewInit() {}
 
-  getHero() {
-    // this.httpService.getHero(this.heroName);
-  }
-  addHero() {
-    // this.httpService.addHero({});
-  }
+  getHero() {}
+
+  addHero() {}
 
   editHero() {
     this.httpService.editHero();

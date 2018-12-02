@@ -2,7 +2,6 @@
    (click)="httpService.getHero(hero.userId, hero.heroId)">
   <mat-card class="hit-display-card">
     <mat-card-header>
-      <!-- <div mat-card-avatar class="hit-card-image"></div> -->
       <mat-card-title>{{hero.heroName}}</mat-card-title>
     </mat-card-header>
     <img mat-card-image class="hero-card-image" [src]="hero.design" [alt]="hero.heroName">
@@ -13,13 +12,6 @@
         {{hero.heroDetailDescription.split(' ').slice(0,20).join(' ')}}...</p>
     </mat-card-content>
     <mat-card-actions align="end">
-      <!-- <button mat-stroked-button
-              (click)="reportHero(hero.heroName, hero.userId, hero.heroId)">OPTIONS</button> -->
-      <!-- <button mat-icon-button>
-        <mat-icon aria-label="Settings"
-                  style="color:#00000040;"
-                  (click)="openSettings(hero.heroName, hero.userId, hero.heroId)">settings</mat-icon>
-      </button> -->
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-labelledby="settings"
               (click)="openSettings()">
         <mat-icon aria-label="Settings"

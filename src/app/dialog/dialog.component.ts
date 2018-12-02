@@ -21,16 +21,9 @@ export class DialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  ngOnInit() {
-    if (this.data) {
-      console.log(this.data);
-      // this.slideshow.goToSlide(this.data.index);
-      // this.slideshow.goToSlide(3);
-    }
-  }
+  ngOnInit() {}
 
   showReported(reportText) {
-    // console.log('send report');
     this.snackBar.open('Report Sent', '', {
       duration: 4000
     });

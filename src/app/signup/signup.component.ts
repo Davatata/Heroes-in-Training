@@ -20,5 +20,4 @@ export class SignupComponent implements OnInit {
     this.email = this.password = '';
   }
 
-
 }

@@ -29,12 +29,8 @@ export class HeroCardComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        // console.log('The dialog was closed', result); // result undefined or true
         if (result) {
-          // console.log('Reason:', result);
           this.httpService.reportHero(heroName, userId, heroId, result);
-        } else {
-          console.log('canceled');
         }
       });
     } else {
@@ -47,7 +43,6 @@ export class HeroCardComponent implements OnInit {
   }
 
   openSettings() {
-    console.log('settings');
     event.stopPropagation();
     return false;
   }
@@ -59,5 +54,4 @@ export class HeroCardComponent implements OnInit {
   reportHero(heroName, userId, heroId) {
     this.openCardMenu(heroName, userId, heroId);
   }
-
 }

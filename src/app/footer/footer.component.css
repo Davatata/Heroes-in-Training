@@ -21,9 +21,7 @@
 .footer-grid-container {
   display: grid;
   grid-template-columns: 7fr 1fr;
-  /* grid-template-columns: auto auto auto; */
   padding: 0 10px;
-  /* background-color: #354967; */
 }
 
 .icon-bg {

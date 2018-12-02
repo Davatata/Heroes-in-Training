@@ -187,7 +187,6 @@
   grid-template-columns: 1fr 4fr;
   background-color: rgba(19, 42, 77, 0.2);
   margin-bottom:5px;
-  /* grid-template-rows: 400px; */
 }
 
 .ability-grid-icon {
@@ -202,7 +201,6 @@
     grid-template-columns: 1fr;
   }
   .hit-ability-icon {
-    /* max-width: 70px; */
     max-width: 25%;
   }
   .ability-grid-icon {
@@ -250,15 +248,6 @@
   text-transform: uppercase;
   font-size: 1.3em;
 }
-
-/* .icon-container {
-  background-color: rgba(64, 82, 117, 0.4);
-  border-radius: 50%;
-  border: 2px solid gray;
-  padding: 15px;
-  width: 60px;
-  height: 60px;
-} */
 
 /* From playoverwatch */
 .additional-art-container {

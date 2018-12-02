@@ -74,7 +74,6 @@ export class HttpService implements OnInit, OnDestroy {
                 });
 
                 this.reportedHeroes = JSON.parse(localStorage['reportedHeroes'] || '[]');
-                console.log(this.reportedHeroes);
               }
 
   ngOnInit() {
@@ -95,17 +94,9 @@ export class HttpService implements OnInit, OnDestroy {
             this.loading = false;
             console.log('Sign up success!');
             this.logout();
-            // this.router.navigate(['/login']);
             this.snackBar.open('Check email to verify', '', {
               duration: 4000
             });
-            // this.userId = this.firebaseAuth.auth['O'];
-            // this.firebaseAuth.authState.subscribe(data => {
-            //   if (data && data.uid) {
-            //     this.userId = data.uid;
-            //     this.yourHeroes$ = this.db.list(`${data.uid}`);
-            //   }
-            // });
         })
         .catch(err => {
           this.error = err.message;
@@ -196,9 +187,7 @@ export class HttpService implements OnInit, OnDestroy {
     localStorage['hit-h'] = heroId;
     localStorage['hit-u'] = userId;
     this.hero$ = this.http.get(`${this.url}/${heroUrl}.json`);
-    // console.log('getting hero');
     this.router.navigate(['/hero-details'], { queryParams: this.params });
-    // window.scrollTo(0, 0);
   }
 
   editHero() {

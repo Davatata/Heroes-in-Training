@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpService } from './http-service.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -20,11 +19,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.httpService.logout();
-    // this.subscription.unsubscribe();
   }
 
   onActivate(event) {
-    // window.scroll(0, 0);
     document.querySelector('.mat-sidenav-content').scrollTop = 0;
 }
 
