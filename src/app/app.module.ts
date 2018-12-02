@@ -46,6 +46,9 @@ import { DialogComponent } from './dialog/dialog.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { HeroGalleryComponent } from './hero-gallery/hero-gallery.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { AuthGuard } from './auth.guard';
+import { HeroGuard } from './hero.guard';
+
 import {SlideshowModule} from 'ng-simple-slideshow';
 
 library.add(faTwitter, faGithub, faLinkedin);
@@ -98,7 +101,7 @@ library.add(faTwitter, faGithub, faLinkedin);
     MatMenuModule,
   ],
   entryComponents: [DialogComponent],
-  providers: [AngularFireDatabase],
+  providers: [AngularFireDatabase, AuthGuard, HeroGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

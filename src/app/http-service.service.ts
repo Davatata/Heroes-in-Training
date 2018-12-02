@@ -284,4 +284,13 @@ export class HttpService implements OnInit, OnDestroy {
       console.log(error.message);
     }
   }
+
+  isLoggedIn() {
+    console.log('current user', this.firebaseAuth.auth.currentUser);
+    return this.firebaseAuth.auth.currentUser ? true : false;
+  }
+
+  isHeroStored() {
+    return localStorage['hit-h'] && localStorage['hit-u'] ? true : false;
+  }
 }

@@ -6,8 +6,6 @@ import { Location } from '@angular/common';
 import {MatDialog, MatIconRegistry} from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
 
-
-
 @Component({
   selector: 'app-hero-details',
   templateUrl: './hero-details.component.html',
