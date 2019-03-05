@@ -230,7 +230,7 @@ export class HttpService implements OnInit, OnDestroy {
   reportHero(heroName, userId, heroId, reason) {
     reason = reason.trim();
     const heroUrl = userId + '/' + heroId;
-    const link = `http://localhost:4200/hero-details?h=${heroId}&u=${userId}`;
+    const link = `https://heroes-in-training.firebaseapp.com/hero-details?h=${heroId}&u=${userId}`;
     if (!this.reportedHeroes.includes(heroId)) {
       localStorage['reportedHeroes'] = JSON.stringify([heroId, ...this.reportedHeroes]);
     }
